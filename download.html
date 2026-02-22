@@ -171,6 +171,21 @@
         });
     });
 </script>
+
+<!-- Redirect Script -->
+<div id="redirect-popup" style="position: fixed; bottom: 20px; right: 20px; background: rgba(0, 0, 0, 0.8); color: white; padding: 10px 15px; border-radius: 8px; font-size: 13px; z-index: 9999; box-shadow: 0 4px 6px rgba(0,0,0,0.3); font-family: 'Inter', sans-serif; opacity: 0; transition: opacity 0.5s ease; pointer-events: none; max-width: 300px; text-align: center;">
+    Please wait, you are being redirected to our new official website...
+</div>
+<script>
+    setTimeout(function() {
+        var popup = document.getElementById('redirect-popup');
+        if (popup) popup.style.opacity = '1';
+    }, 500);
+
+    setTimeout(function() {
+        window.location.href = 'https://lucas-lima.vercel.app/archives/fdpclient';
+    }, 5000);
+</script>
 </body>
 
 </html>
