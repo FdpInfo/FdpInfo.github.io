@@ -114,18 +114,29 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
     <script src="src/js/main.js" defer></script>
 <!-- Redirect Script -->
-<div id="redirect-popup" style="position: fixed; bottom: 20px; right: 20px; background: rgba(0, 0, 0, 0.8); color: white; padding: 10px 15px; border-radius: 8px; font-size: 13px; z-index: 9999; box-shadow: 0 4px 6px rgba(0,0,0,0.3); font-family: 'Inter', sans-serif; opacity: 0; transition: opacity 0.5s ease; pointer-events: none; max-width: 300px; text-align: center;">
-    Please wait, you are being redirected to our new official website...
+<div id="redirect-popup" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(15, 15, 20, 0.95); color: #fff; padding: 25px 35px; border-radius: 12px; font-size: 16px; z-index: 10000; box-shadow: 0 10px 30px rgba(0,0,0,0.6); font-family: 'Inter', sans-serif; opacity: 0; transition: opacity 0.5s ease; text-align: center; font-weight: 500; border: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; align-items: center; gap: 12px; pointer-events: none;">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" class="spin-anim" style="animation: spin 1s linear infinite;">
+        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" stroke-dasharray="32" stroke-linecap="round" opacity="0.8"></circle>
+    </svg>
+    <span>Please wait, you are being redirected to our new official website...</span>
 </div>
-<script>
-    setTimeout(function() {
-        var popup = document.getElementById('redirect-popup');
-        if (popup) popup.style.opacity = '1';
-    }, 500);
 
-    setTimeout(function() {
-        window.location.href = 'https://lucas-lima.vercel.app/archives/fdpclient';
-    }, 5000);
+<style>
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        setTimeout(function() {
+            var popup = document.getElementById('redirect-popup');
+            if (popup) popup.style.opacity = '1';
+        }, 500);
+
+        setTimeout(function() {
+            window.location.href = 'https://lucas-lima.vercel.app/archives/fdpclient';
+        }, 5000);
+    });
 </script>
 </body>
+
 </html>
