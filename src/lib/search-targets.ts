@@ -23,7 +23,7 @@ export const SEARCH_TARGETS: SearchTarget[] = [
   { group: "Pages", label: "Home", href: "/", hint: "Page", keywords: "start landing main inicio principal" },
   { group: "Pages", label: "Download", href: "/download/", hint: "Page", keywords: "get install baixar beta build latest setup injector" },
   { group: "Pages", label: "Community", href: "/community/", hint: "Page", keywords: "discord members hub social join" },
-  { group: "Pages", label: "Changelogs", href: "/changelogs/", hint: "Page", keywords: "updates versions notes releases history known issues bugs" },
+  { group: "Pages", label: "Changelogs", href: "https://fdpinfo.github.io/next/changelogs/", hint: "Page", keywords: "updates versions notes releases history known issues bugs", external: true },
   { group: "Pages", label: "Donate & Plans", href: "/donate/", hint: "Page", keywords: "support pricing plans buy money pay" },
   { group: "Pages", label: "Privacy policy", href: "/privacy/", hint: "Legal", keywords: "gdpr data cookies legal" },
   { group: "Pages", label: "Terms of Service", href: "/tos/", hint: "Legal", keywords: "tos legal rules agreement" },

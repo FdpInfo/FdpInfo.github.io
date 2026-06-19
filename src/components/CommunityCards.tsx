@@ -68,9 +68,9 @@ export function CommunityCards({
       </a>
 
       {/* Changelog — opens the in-site changelog AND the GitHub releases */}
-      <Link
+      <a
         className="hub-card"
-        href="/changelogs"
+        href="/next/changelogs/"
         onClick={() => openInNewTab(githubReleases)}
       >
         <CardBody
@@ -83,7 +83,7 @@ export function CommunityCards({
           desc="Opens the full in-site changelog and the GitHub releases in a new tab."
           cta="View changelog & GitHub"
         />
-      </Link>
+      </a>
 
       {/* Report a bug — opens a new GitHub issue */}
       <a

@@ -1,8 +1,6 @@
 import Link from "next/link";
 import { asset } from "@/lib/asset";
-import { ChangelogLink } from "@/components/ChangelogLink";
 import { DownloadLink } from "@/components/DownloadLink";
-import { GITHUB_RELEASES } from "@/lib/community-data";
 
 export function Footer() {
   return (
@@ -56,12 +54,12 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <ChangelogLink
+                <a
                   className="text-color-gray-300 transition-all transition-duration-150ms transition-ease-in-out hover-text-gray"
-                  releases={GITHUB_RELEASES}
+                  href="/next/changelogs/"
                 >
                   Changelog
-                </ChangelogLink>
+                </a>
               </li>
             </ul>
           </div>
