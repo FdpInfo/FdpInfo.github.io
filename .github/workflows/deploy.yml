@@ -1,0 +1,80 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment, don't cancel in-progress runs.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Compute base path
+        id: bp
+        shell: bash
+        run: |
+          REPO="${{ github.event.repository.name }}"
+          OWNER_LC=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
+          REPO_LC=$(echo "$REPO" | tr '[:upper:]' '[:lower:]')
+          # Custom domain (CNAME) or a <owner>.github.io user/org page -> served
+          # from the domain root, so no base path. Otherwise it's a project page
+          # served at /<repo>, so prefix everything with /<repo>.
+          if [ -f public/CNAME ] || [ "$REPO_LC" = "$OWNER_LC.github.io" ]; then
+            echo "base=" >> "$GITHUB_OUTPUT"
+          else
+            echo "base=/$REPO" >> "$GITHUB_OUTPUT"
+          fi
+          echo "Resolved base path: '$(grep base= "$GITHUB_OUTPUT" | tail -1)'"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build static export
+        run: npm run build
+        env:
+          NEXT_PUBLIC_BASE_PATH: ${{ steps.bp.outputs.base }}
+          # Used by the download-count fetch to avoid GitHub API rate limits.
+          GITHUB_TOKEN: ${{ github.token }}
+
+      - name: Check built assets (no broken/unprefixed references)
+        run: node scripts/check-assets.mjs
+        env:
+          NEXT_PUBLIC_BASE_PATH: ${{ steps.bp.outputs.base }}
+
+      - name: Disable Jekyll (keep _next folder)
+        run: touch out/.nojekyll
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

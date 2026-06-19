@@ -1,0 +1,799 @@
+~ B16 (#45c92b3)
++ Added New ClickGUI system (Neverlose style)
++ Added New Spotify UI
++ Added New Spotify Module
++ Added Spotify GUI element
++ Added TargetStrafe Module
++ Added tooltips to truncated module headers (prevents slider obstruction)
++ Added Spotify Integration backend
++ Added header icons support in ClickGUI
++ New ESP Preview Viwerer in ClickGUI
++ Improved ESP Preview UI
++ Improved visual clarity in ESP controls
++ Improved UI module layout
++ Formatted number settings for concise float values
++ Added subcategories for Client, Movement, Player, Visual
++ Improved ESP Preview rendering & components
++ Improved ESP Controls panel visuals
+~ Removed unused / useless folders (cleanup)
+~ Removed redundant folder structures (secondary cleanup)
+~ B15 (#46648fa)
++ Added ESP2D Module.
++ Added plugins: save-log option;
++ Added plugins: payload-channel discovery.
++ Added Silent View option to ChestStealer.
++ Added TPS command.
++ Added Bloom Color option
++ Added middle-click binding for ClickGUI in YzyGUI.
++ Added NoSlow Grim 2.3.72 (1.9+) mode.
++ Added NoFall Grim 2.3.72 (1.9+) mode.
++ Added Furnace option to Stealer.
++ Added GUI update to show last commit & last release info.
++ Added plugins options: notify suspicion on every auto scan.
++ Added third-person FOV control for Camera.
++ Added dimension & biome to watermark.
++ Added online indicator to watermark.
++ Added FileManager support for local plugins.
++ Added Plugins configurable rescan/timeout;
++ Added Plugins cunified suspicious detection;
++ Added Plugins visible-width wrapping;
++ Added Plugins debug-gated payload hints;
++ Added Plugins windowed aggregation;
++ Added Plugins case-insensitive dedupe;
++ Added Plugins infer plugins from channels;
++ Added health display in Tab list.
++ Added enemies display in Tab list.
++ Added team compatibility in Tab list.
++ Added friends display in Tab list.
++ Added Image ESP in TargetESP.
++ Added “Points” mode for TargetESP.
++ Added improved 2D ESP processing pipeline (ESP2D).
++ Update ESP tags / more RGB colors.
++ Added ESP2D hpBar styles.
++ Added ESP2D team colors compatible.
++ Added HUD feature to save image element to file.
++ Added HTTP cache.
++ Added LunarClient brand update.
++ Added Discord button in GuiUpdate.
++ Added missing implementations.
+* Fixed unused drawImageMark.
+* Chams use existing Color instance instead of creating new one
+* Fixed ArrayIndexOutOfBoundsException and GL stack overflow in ESP2.
+* Fixed black screen when using armor with custom model.
+* Fixed Lunar Client F3 select.
+* Fixed Camera handlers honoring “View off”.
+* Fixed TabList: enforce “move self to top” ordering and add ♛ prefix for local player.
+* Fixed TabList: restore header/footer toggles and reserve dynamic width for numeric ping.
+* Fixed Tab-overlay: reserve dynamic width for numeric ping to prevent name overlap.
+* Fixed incorrect method calls; replaced with correct API methods.
+* Fixed ClickGUI category close bug when modules are expanded.
+* Fixed scroll direction; implemented singleton pattern and improved error handling.
+* Fixed YzyGUI resource icon.
+* Fixed ClickGUI initialization by reusing GUI instances.
+* Fixed InfiniteAura ConcurrentModification (#1404) with extended loop sequence.
+* Fixed Mixins: set remap=false on library methods (Guava, LWJGL).
+* Fixed UserUtils wrong cache usage.
+* Fixed method name typos.
+* Fixed stream not closed.
+~ Refactored IRC: improved packet serialization with PooledByteBufAllocator.
+~ Refactored IRC: moved packet types to external lib.
+~ Refactored IRC: updated lib and bootstrap system.
+~ Refactored GUI: added coroutine scope for AbstractScreen.
+~ Refactored future creation to simplify usage.
+~ Refactored preload failure handling for clarity.
+~ Chore: removed unrecommended usages.
+~ Chore: removed duplicated classes.
+~ Chore: replaced deprecated Char.toInt() with Char.code.
+~ Chore(deps): bumped okhttp 5.0.0-alpha.14 → 5.0.0-alpha.16.
+~ Chore(deps): updated IRC.
+~ Chore(deps): bumped flatlaf and git-properties (dependabot).
+~ Chore(plugins): removed unused variable.
+~ B14 (#8dde77c)
++ ClickGUI Dropdown pretty Gradients
++ Added Better Rotations and correct movement for Polar/Grim AntiCheat.
++ Added velocity GrimVertical mode.
++ Added desync fix disabler; removed patched Miniblox disabler.
++ Added custom model option for Female & BOOBS EDITION mode.
++ Added multiTargets option in TargetHUD.
++ Added TabGUI Module.
++ Added DashTrail Module.
++ Added LineGraphs Module.
++ Added DamageParticle Module.
++ Added cache improvement for rearview module.
++ Added Wings RGB color option & onlyThirdPerson setting.
++ Added TNTTRails options (Lines, Area, Particles).
++ Added KillAura ForceFirstHit option.
++ Added smoother KillAura AimPointBox positions.
++ Added glint color value option.
++ Added notifier item alerts for armor enchants, Fireball, Ender Pearl, TNT, and other items.
++ Added notifications background mode.
++ Added CombatManager onHitEntity listeners.
++ Added freezeTarget option in TargetHUD.
++ Added padding option in TargetHUD.
++ Added hit bubbles speed feature.
++ Added option to show Ping in TabGUI.
++ Added breast physics for female mode.
++ Added 'female no armor' option.
++ Added female mode compatibility with armors.
++ Added enable fake lag render model option.
++ Added async tick support with new async/loop event handlers implementation.
++ Added background option for popups.
++ Added sidebar scroll for sideGUI.
++ Added components in sideGUI.
++ Added dropdown custom color options.
++ Added active panel gradient rect option in dropdown.
++ Added dropdown drawGradientRect feature.
++ Added clickGUI scale option in dropdown.
++ Added gradient rect header in dropdown GUI.
++ Added Discord URL update.
++ Added extra decimal place for float value options.
++ Added subjective settings for module values.
++ Added On-Press animations for Keystrokes.
++ Added selective corner rounding for ArrayList element rectangles.
++ Added gradient colors and improved button compositions.
+* Fixed hit bubbles FOV causing black screens.
+* Fixed targets borders issues.
+* Fixed KillAura invalid prediction.
+* Fixed TargetHUD background rendering.
+* Fixed jumpcircles black screen bug.
+* Fixed DashTrail setDirection issue.
+* Fixed client user-agent issue.
+* Fixed FakeLag RenderModel, AutoWalk conflict, and Notification element concurrent modifications.
+* Fixed projectile rendering for non-selected entities.
+* Fixed download button visibility in popup/update.
+* Fixed JumpEvent spam in singleplayer mode.
+* Fixed sideGUI focus issues when clickGUI is open.
+* Fixed KillAura ClickOnly option causing unintended clicks.
+* Fixed lunar brand issue.
+* Fixed Grim BadPacketsV alert patch.
+* Fixed scoreboard visual issues with Minecraft font.
+* Fixed KillAura AutoBlock not updating block status after slot change.
+* Fixed FontRenderer null text input handling.
+* Fixed FreeLook visual issues and increased Backtrack delay limit.
+~ Refactored collection optimization in Backtrack module.
+~ Refactored Java version warning to popup.
+~ Refactored build.gradle; removed loombok dependency.
+~ Refactored file extensions from .java to .kt.
+~ Refactored TabGUI initialization optimization.
+~ Refactored SnakeGame for improved performance.
+~ Removed frost shader for performance.
+~ B13 (#2e1a894)
++ Added AntiCheatDector Module.
++ Added FontManager UI.
++ Added RenderAimPointBox option for KillAura.
++ Added AntiCheat detect in watermark.
++ Added watermark element.
++ Added check Java version at start.
++ Added Grizzly & matrix anticheat detect
++ Added new hud visuals
++ Added (Custom) FontManager.
++ Added notifications color mode.
++ Added Miniblox disabler.
++ Added expanded Velocity range.
++ Added HotKeys element.
++ Added new fonts.
++ Added KillAura GenerateClicksBasedOnDistance option.
++ Added attack event notifier.
++ Added notifier drink alert.
++ Added Font FIleFilter.
++ Added value owner.
++ Added color value use client theme utils.
++ Added Git properties update 2.4.0 to 2.4.2.
++ Added AltManager move up/move down
++ Scoreboardedge rounding options for rectangles.
++ Added TabGUI icons.
++ Added merged item notifier in notifier module.
++ Added FrostBlur suboption to TargetHUD.
++ Added Improved range value options handling.
++ Added jump circles not texture mode / cleanup.
++ Added frost shader.
++ Added arraylist better look - icons & improvisations.
++ Added intave mode - anticheat detector.
++ Added time in notification.
++ Added Modern Effect Style
++ Added ArrayList Icon
++ Added hotkey color mode / padding.
++ Added Configurable.isExpanded.
+~ Refactored Icon local.
+~ Refactored Proper implementation for air/ground ticks.
+~ Refactored Value system, Kotlin 2.0.21.
++ Added better keystroke default settings.
++ Added keystrokes shrink + border options.
++ Added invcleaner shears & tnt slot sort.
++ Added blockstoeagle & maxsneakticks range.
++ Scaffold telly ticksuntilrots range could be useful to bypass ac by randomizing.
++ Added polar/notification AntiCheatDetector.
++ Added compass bypass in AntiCheatDetects.
++ Added scoreboard element now can expand from the right side if left horizontal side is chosen.
++ Added Outline Rect in FDPDropdown/roundedRectRadius option.
++ Added tabgui/scoreboard corners & icons options.
++ Added color rgba in settingcomponent.
++ Added text value in setting components improvements.
++ Added ClickGUI Text Editor functionalitY
++ Simplified text and color picker configuration
++ Expanded options using right-click on color name (hex text)
++ R-G-B-A options navigation using up/down arrow keys.
++ Added f*cker Works perfectly when moving around
++ f*cker Hypixel mode break block above the bed then the bed regardless of position
++ Added New rotation randomization pattern mode LazyFlick + MinRotationDifferenceResetTiming option (dedicated to polar anticheat).
++ Surroundings mode doesn't constantly switch to breaking a new block if the last target isnt obstructed or out of range.
+* Backtrack freezing when condition isn't met.
+* Armor color in armoritems vertical.
+* RotationSettings ResetTicks condition.
+* Remapper issues.
+* Editor panel nullpointerexc.
+* Switch language freezing.
+* Rotation settings missed in NoFall MLG and NoRotateSet.
+* flight -> fly.
+* Duplicated rotation settings in Scaffold.
+* True positions not updating when target is out of screen.
+* Options in NoRotateSet.
+* ByteBuffer flip calls causing issues on non Java 8 versions.
+* AngleResetDifference option not being visible in NoRotateSet.
+* Few settings not working / ForwardTrack causing NPE during render.
+* Tabgui random nonsense.
+* Fixes in layout.
+* Fonts issues.
+* Fixed Wrong font download.
+* Fixed Reverted circle smoothness because the point mode does not adjust properly to game scaling.
+* Fixed Anticheat detect only in new world.
+* Fixed Github artifact@v4.
+* Fixed Addall cleanup.
+* Fixed Hat making hotbar blocks overlap amount texts.
+* Fixed Nameprotect handle in watermarker.
+* Fixed StackOverFlow from NoRotationDisabler option from Disabler.
+* Fixed KillAura not working when Fucker is enabled and player is close to own bed.
+* Fixed Adapt Fonts old version JSON format.
+* Fixed Fix shadow in imagebutton.
+* Fixed Excluded values in Configurable.values
+* Fixed Notification debug
+~ Refactored Check domain on scoreboard title & snakegame cleanup.
+~ Refactored Recode eagle maxsneaktime.
+~ Refactored Applied back red formatting.
+~ Refactored Fucker cleanup code.
+~ Refactored Java detection only for first start.
+~ Refactored ClickGUI Panel
+~ Refactored Improve downloads: fix StaffDetector incorrect use, preload SRG remapper file, HTTP code cleanup.
+~ Refactored ClickGUI Panel
+~ Chores: Small Scaffold Cleanup; Altmanager chinese translation & translation button/text; Tower cleanup; update build.gradle - remove implementation alias; Min/Max variables replaced with ranged values. Should free up like 2% of screen space.
+~ Chores: Applied back red formatting.
+~ Refactored Recode eagle maxsneaktime
+~ Refactored Value System: Kotlin 2.0.21
+~ Refactored Panel
+~ Refactored ArrayListBetter Look
+~ Refactored Cleanup mainmenu / fix background / changelog/bugs message
+~ Refactored Cleanup quittbutton
+~ Refactored Cleanup HitBubles
+~ Refactored Cleanup antifireball
+~ Refactored Cleanup effects / modern mode / color mode / background mode / fixes in borders
+~ Refactored Cleanup anticheatdetector
+~ Refactored Color Modes in Notifications and Fixed styles
+~ Refactored Reverted circle smoothness because the point mode does not adjust properly to game scaling.
+~ Refactored Improve downloads: fix StaffDetector incorrect use, preload SRG remapper file, HTTP code cleanup.
+~ Refactored Proper implementation for air/ground ticks.
+~ lombok from 1.18.34 to 1.18.36.
+~ B12 (#57c18ad)
++ Added Watchdog Inventory & MotionHop Disabler.
++ Added Verus Experimental Disabler.
++ Added Beta Verus Disabler.
++ Added WaterMark in GUI.
++ Added Cleanup Disablers.
++ Added Blend Colors Feature.
++ Added Hat Texture Option.
++ Added China Hat Recode.
++ Added Show Server TPS in Watermaker.
++ Added ClickGUI AutoScroll.
++ Added Freelook Autof5 Option.
++ Added KillAura: GenerateSpotBasedOnDistance Option.
++ Added ArrayList FadeColor Improvements.
++ Added New Color Themes.
++ Added ESP Gaussian Mode.
++ Added API with Dispatcher.
++ Added RenderModel Visual Option to FakeLag.
++ Added Color Themes (ClientTheme).
++ Added HexColor Mode.
++ Added ColorValue Module.
++ Added Remove Unused Fonts.
++ Added Nursultan & Inter Font.
++ Added FontValue/Range Value in Settings Components.
++ Added Image Shadow and Color Options.
++ Added Spacing Color in Setting Components.
++ Added Custom Alts Name Prefix.
++ Added Labymod Client Brand & Updated LC Version.
++ Added Spacing Support for Multiple Color Values.
++ Added Color Picker Display on Right Click.
++ Added Easier Handling of Sliders & Opacity Slider.
++ Added Basic Configuration Support.
++ Added Caching Implementation.
++ Added Color Picker Position Fixes.
++ Added Option Modifying Support.
++ Added Hue Slider Synchronization with Non-ClickGUI Value Changes.
++ Added SnakeGame Enhancements:
++ Dynamic Obstacles Based on Game Modes (Easy, Normal, Hard).
++ Collision Detection with Obstacles and Snake Body.
++ High Score Tracking.
++ Gradient Borders and Dynamic Color Transitions.
++ Enhanced Movement Logic to Prevent Opposite-Direction Inputs.
++ Three Difficulty Modes with Distinct Speeds and Obstacle Mechanics.
++ HUD Elements Displaying Score, High Score, and Current Game Mode.
++ Optimized Food and Obstacle Placement.
++ Modular Refactoring for Improved Maintainability.
++ Reset Logic Improvements for Proper Game State Reinitialization.
++ Performance Optimizations.
++ Smoother and More Responsive Input Handling.
++ Added ColorValue Enhancements:
++ Separate Hue Slider Value.
++ Improved Text Appearance When Color Picker is Inactive.
++ Config System Support.
++ Opacity Slider.
++ Added ScriptManager Cleanup & File Chooser Improvements:
++ Non-exposure of Mutable Collections.
++ Fixed Wrong Script Load ZIP Command.
++ Load ZIP Cleanup.
++ Multiple File Filters.
++ File Filter Constants.
++ Added Sneak Timing Options for Scaffold.
++ Added Copy Button for Error Dialog.
+~ Updated JumpCircles for Better Performance.
+~ Updated ColorValue in Setting Components Refactor.
+~ Updated Optimized JSON Loading from Web.
+~ Updated FontRenderer Optimizations.
+~ Updated API Refactor for Asynchronous Image Loading.
+~ Updated GUI Cape Manager Utilization of Non-Suspending Calls.
+~ Updated Error Handling in GUI Update for API Reload Failures.
+~ Updated Loading Bar and Progress Updates in GUI Update.
+~ Updated Improved Logging in API Connector Utilities.
+~ Updated Scheduled API Checks and Image Loading During Client Startup.
+~ Updated Lazy Loading and LRU Cache Size Optimization.
+~ Updated Optimized Usage of Triple.
+~ Updated Renamed TickActions Extensions of Module.
+~ Updated YZYGUI FontRenderer Improvements.
+~ Updated SettingComponents Cleanup.
+~ Updated Modules Code Cleanup and Refactoring.
+~ Updated Optimized Entity Rendering with EntityLookup API.
+~ Updated Default Implementation of Listenable HandleEvents.
+~ Updated FontRenderer Optimizations for ClickGUI Performance.
+~ Updated Refactored Event System with Stateless Singleton Events.
+~ Updated PointerESP Cleanup with Team-Based Coloring Improvements.
+~ Updated Simplified Rotation Logic for Enhanced Performance and Customization.
+~ Updated Improved KillAura Switch Mode Logic and Performance.
+~ Updated Utilities Moved to Respective Categories.
+~ Updated SilentHotbar for Better Slot Reset Behavior.
+~ Updated BlockESP Optimized with Coroutines.
+~ Updated Removed Unnecessary Code Checks Across Modules.
+~ Updated Converted Files from Java to Kotlin for Enhanced Readability and Functionality.
+~ Updated Cleaned Up YZY GUI Animations and Loading Issues.
+~ Updated Modules Code Cleanup.
+* Fixed Color Picker Visibility When Armor Element is Disabled.
+* Fixed Duplicate Option Names.
+* Fixed NoSlow Functionality.
+* Fixed Sliders Synchronization When Loading the Client.
+* Fixed Scroll Visibility.
+* Fixed ClickGUI Cloud Configs.
+* Fixed FakeLag Packet Order Issues for Near-Perfect Accuracy.
+* Fixed Backtrack Breaking KillAura's New Entity-Finding Method.
+* Fixed KillAura Swinging When Any Client GUI is Active.
+* Fixed Smooth-Hotbar Incorrect Speed Calculations.
+* Fixed NameTags Blocks Visibility Issue.
+* Fixed Breadcrumbs Rendering Issues with Player Hand Effects.
+* Fixed SilentHotbar Not Detecting Scroll-Switched Slots.
+* Fixed AutoTool Preventing Manual Slot Switching.
+* Fixed Designer Screen Incorrect Font Height.
+* Fixed Integer/Float Values Not Loading from Config.
+* Fixed Scaffold Failing to Rotate at Small Differences Using StartFirstRotationSlow.
+* Fixed Custom Visuals Not Displayed Properly on Screen.
+* Fixed Tracers Lines Drawing Incorrectly to Enemy Positions.
+* Fixed FreeCam Rendering and Input Detection Issues.
+* Fixed AutoClicker NPE When Player's Hand is Empty.
+* Fixed KillAura Sprint Handling and Targeting Issues.
+* Fixed Scaffold Down Option Incorrectly Hidden.
+* Fixed PacketDebugger Displaying Obfuscated Packet Fields.
+* Fixed Entity Lookup Rendering Position for Unicode Texts.
+* Fixed LRU Cache for getStringWidth.
+* Fixed AutoRod Invalid Slot.
+* Fixed NameTags Rendering with Bobbing Effect When Tracers Enabled.
+* Fixed BedPlates Module Displaying Culled Information.
+* Fixed BedPlates Update Loop.
+* Fixed Scaffold Slot Switch Not Following Vanilla Logic.
+- Cleanup SnakeGame Module.
+- Cleanup Disabler Module.
+- Cleanup SettingComponents.
+- Added StaffDetector asspixel and oc-tc Modes.
+- Removed SimpleFontManager.
+- Renamed TickActions Extensions of Module.
+- Refactored Scaffold Sneak Options.
+- Refactored GUI New Chat Mixin for Code Cleanup.
+- Converted Files to Kotlin for Improved Readability and Functionality.
+~ B11 (#dac565e)
++ LRU Cache for GameFontRenderer & AWTFontRenderer.
++ Optimized Text Rendering with GameFontRenderer.
++ Scaffold Eagle Mode (OnGround, OnAir, Both).
++ StaffDetector Originera Mode.
++ New Swing Theme (LookAndFeel).
++ API Font Extraction.
+~ Major Improvements
+~ Refactored Event System.
+~ Refactored Rendering Pipeline.
+~ Optimized Memory Usage for Text.
+~ Improved FDP DropDownGUI Performance.
+~ SideGUI Cleanup & Outline.
+~ TickBase & Packet Handling Improvements.
+~ KillAura AutoBlock Improvements.
+~ Optimized Entity Searching.
+~ Refactored API Code.
+~ Converted Files to Kotlin.
+* Fixed Font Issues on Older Java.
+* Fixed Glsl Shader Issues on macOS.
+* Fixed Crash with AutoArmor.
+* Fixed Issues with TickBase and Backtrack.
+* Fixed NoFall MLG Rotations.
+* Fixed FreeLook with Tracers.
+* Fixed  Scaffold Raycast Logic.
+* Fixed CombatManager NullPointerException.
+* Fixed Incorrect Colors on Teams.
+* Fixed Missing Colors on Cached Text.
++ Crash Report Dialog Improvements.
++ MacroManager Direct Instance.
++ TimerRange OnForwardOnly & IsInLiquid.
++ AssumeNonVolatile in Scoreboard.
++ forceBlockWhenStill Option for KillAura AutoBlock.
+~ Improvements
+~ Cleaned up `TimerRange` module.
+~ Refactored HUD Config.
+~  `ModuleManager.get` returns nullable.
+~ Improved Scoreboard Height.
+~ Main Menu Cleanup.
+~ ClientTheme Logic Improvements.
+~ Remapper Optimization.
+~  Gson API Refactoring.
+~  GuiScreen Refactoring.
+~ Script Module Event Optimization.
+~ Optimized BlockESP.
+~ Moved Utilities to Categories.
+* Corrected Text Alignment & Width.
+* Fixed CustomHotbar Font Issue.
+* Fixed Invalid BlockESP Positions.
+* Fixed Forwardtrack Model Color.
+* Fixed Model Element Rendering with TargetHUD.
+* Fixed Custom Font Property.
+* Fixed Noslow & Sprint.
+* Fixed Duplicate AutoDisable Call.
+* Fixed Incorrect Module Events.
+* Fixed Combat Visuals Events.
+* Corrected Missing Glyph Fallback.
+* Fixed Scoreboard Blending.
+~ B10 (#20ff477)
++ Updated All Configs (.config list or open SideGUI)
++ New SideGUI ColorThemeClient
++ New SideGUI FileManager
++ Improved Rotations code
++ Added New Event System
++ Save Color Theme config
++ Added Reset option for all modules.
++ Added FireFlies
++ Added HitBubbles module.
++ Added JumpCircles module.
++ Added Notifies module.
++ Added MaxRetrievalWaitingTime
++ Added Keystrokes HUD element.
++ Added OnlyWhenEnemyGoesBack option to SuperKnockback.
++ Added Backtrack with Min/Max delays.
++ Added Visual effects for missed hits in KillAura.
++ Added Int/Float range options for modules.
++ Added Dome visuals to TNTESP module.
++ Added Breadcrumbs with line height support.
++ Added RenderSelf option to Nametags.
++ Added CombatVisuals new Mark(Circle).
++ Added Eagle: onlyOnGround option to Scaffold.
++ Added Legitimize Rotation option for rotation modules.
++ Added ReverseYaw rotation support for Scaffold.
++ Added InventoryMove motion improvements.
++ Added Fireball Indicator option.
++ Added Position Interpolation for Projectiles Module.
++ Added ClickRecorder Module.
++ Added OldGrim Noweb and Nofluid options.
++ Added support for Intave14 Lowhop and InitialBoost.
++ added NoFall MLG (supports block edges, proper placements/retrievals).
++ Added Improved rotation speed curve for RandomizeRotations.
+* Fixed ClickGUI cloud configs not working
+* Fixed FakeLag packet order issues, achieving near-perfect accuracy.
+* Fixed Backtrack breaking KillAura's new entity-finding method.
+* Fixed KillAura not swinging when any client GUI is active.
+* Fixed Smooth-Hotbar using incorrect speed calculations.
+* Fixed NameTags blocks visibility issue.
+* Fixed Breadcrumbs rendering issues with player hand effects.
+* Fixed SilentHotbar not detecting scroll-switched slots.
+* Fixed AutoTool preventing manual slot switching.
+* Fixed Designer Screen using incorrect font height.
+* Fixed Integer/Float values not loading from config.
+* Fixed Scaffold failing to rotate at small differences using StartFirstRotationSlow.
+* Fixed Custom Visuals not being displayed properly on-screen.
+* Fixed Tracers Lines drawing incorrectly to enemy positions.
+* Fixed FreeCam rendering and input detection issues.
+* Fixed AutoClicker NPE when the player's hand is empty.
+* Fixed KillAura Sprint handling and targeting issues.
+* Fixed Scaffold Down Option incorrectly hidden.ance in ClickGUI.
+~ FontRenderer for optimized performance in ClickGUI.
+~ Refactored Event System with stateless singleton events.
+~ Cleaned up PointerESP with team-based coloring improvements.
+~ Simplified Rotation Logic for better performance and customization.
+~ Improved KillAura Switch Mode logic and performance.
+~ Moved utilities into their respective categories.
+~ Updated SilentHotbar for better slot reset behavior.
+~ Optimized BlockESP to use coroutines.
+~ Removed unnecessary code checks across modules.
+~ Converted files from Java to Kotlin for improved readability and functionality.
+~ Cleaned up YZY GUI animations and loading issues.+
+~ B9 (#5635c78)
++ Added ClickGUI style FDP
++ Added ClickGUI style YZY
++ Config GUI MENU
++ Added update client in main menu
++ Open clickgui in mainmenu
++ Added SilentHotbar module
++ Added PointerESP Module
++ Added Fightbot module
++ Added ColorSettings option
++ Added Ignite Module
++ Added Noclip module
++ Added ChinaHat Module
++ Added MurderDector Module
++ Added Spider Module
++ Added hypixel speed lowhop
++ Added hypixel velocity
++ Added autoclicker onlyblock option
++ Added new button rendering method
++ Added alwaysbehind & duplicateprofile antibot
++ Added separate highlight & background border
++ Added simple flagcheck last server pos
++ Added Smooth hot-bar slot HUD module option
++ Added ChatBypass Module
++ Added custom hotbar
++ Added staffdetector velocity autoleave
++ Added ProjectileAimbot (otheritems & gravitytype)
++ Added velocity check staffdetector
++ Added fakelag min/max distance
++ Added BlockSafe Scaffold option
++ Added IntaveReduce velocity
++ Added vanilla options FDP v5.6.1
++ Added Intave Disabler
++ Added Killaura check scaffold/blink/noeat/blocking option
++ Added Invalidspeed antibot & fixed duplicateInTab/Name
++ Added improvements blink utils / outgoingValue blink mode
++ Added optimized Gradient Shader
++ Added improved Default Local Config
++ Updated HUD Elements:
+- Added block counter as default
+- Added borders width/colors
+- Added "onScaffold" options
+- Added "showBlock" options
+- Added "blockamount/blockcount" placeholder
+* Fixed effects null pointer issues
+* Fixed proper HUD elements GL reset
+* Fixed scaffold blocksafe, image color & text background scale
+* Fixed all gradient colors being shown
+* Fixed playsound ConcurrentModificationException
+* Fixed ChatBypass starting
+* Fixed ConcurrentModificationException Crash
+* Fixed default vanilla flight not flying
+* Fixed blink utils suffix
+* Fixed vulcan 0 0 velocity
+* Fixed killaura F5 deprecation
+* Fixed attempt at fixing concurrent exceptions
+* Fixed wireframe storageesp
+* Fixed default text background scale
+* Fixed bedbreaker ignoreOwnBed improvement
+* Fixed Text Element CPS display
+~ Refactored and cleaned up YZY ClickGUI
+~ Removed useless check in mixinguiscreen
+~ Improved performance (do not change Kotlin version)
+~ Replaced "on/off" rotation modes with a boolean "Rotations" option
+~ Cleaned up ChatBypass module
+~ Reverted blink
+~ Ported blink options FDP v5.6.1
+~ Cleaned up disabler module / hypixel disabler
+~ Simplified the way of making rotation options for modules
+~ Cleaned up and optimized Arraylist Element
+~ B8 (dd25a2e)
++ Added GuiTheme Color
++ Added FreeLook module
++ Added ForwardTrack module
++ Added ClearGlass Mode in NoRender Module
++ Added GodBridge Pre-rotate functionality (from Nextgen) to Scaffold
+* Fixed projectiles GL
++ Added rounded-rect to blackhotbar
+~ Renamed mineblaze(hop/timer) -> intave(hop/timer)
++ Added delay functionality for AutoArmor - PostInventoryCloseDelay option
+* Fixed TickBase being movement-detected by anti-cheats
+* Fixed storageesp wireframe render bug
++ Added Fucker RenderPos status
+* Fixed jumpOnUserInput not working properly
++ Added Discord RPC redirection
+~ Refactored Notifications structure better
+* Fixed verusfly flagging badpacketO
++ Added Clear Block option in NoRender Module
+~ Cleaned up Tower module
+* Fixed tower rotations, vulcan velocity & scaffold disabler
++ Added Show Number option - ScoreboardElement
++ Added FreezeYCamera option to Scaffold
+* Fixed ForwardTrack not displaying positions correctly in Singleplayer
++ Added ItemESP ItemTextTag option
+~ Improved flagcheck (ghostblock & countertickreset)
++ Added blockoverlay depth3d option
+* Fixed gradient shader stuttering (sometimes)
+~ Improved tickbase
++ Added TargetESP Lies, Jello, FDP Mode
++ Added KeepTabList
+* Fixed mlg mode settings displaying incorrectly
+~ Refactored Theme color default
+* Fixed realistic rotations
++ Added blockoverlay modes (box, otherbox, outline)
+* Fixed custom background
++ Added AutoPlay BedWarsHelp option
+* Fixed nametags not rendering correctly
+~ Refactored MainMenu Color view
+~ Improved performance for entities in NoRender
++ Added BedPlates Module
++ Added NameTags Enchant / Indicator Mode
+* Fixed smooth arraylist mode sometimes leaving tiny space between modules
+~ Improved SimulateShortStop option, fixed InventoryMove breaking rotations
+* Fixed start status not changing on production environments
+~ Removed AutoJump option
++ Added more block overlay blocks support
+* Fixed flagcheck ghostblock falses fix
+~ Renamed UseStaticRotation to UseOptimizedPitch
+* Fixed some misalignment in arraylist rect
+~ Completion: pt_br, zh_cn, zh_tw. Translate
+~ B7 (#25d9fe5)
+* Fixed APIConnecter load image
+* Fixed GUI crashing on resize
++ Added NameTags Style 3D / 2D
++ Added sneaking manually while using eagle
++ Added fakelag blinkonaction options
++ Added uncphopnew pt.2
++ Added NameTags show armor durability
++ Added lb nextgen ncphop speed & strafe strength
++ Updated staffdetector staffs list
++ Improved nuker (blocks & lightopacity)
++ Moved inventory cleaner > player category
++ Added invmanager maxfishingrod stacks
++ Added ItemESP ItemTextTag option
++ Added ItemESP text mode
++ Added Effects Style FDP/Classic/Default
++ Added NameTags Enchant / Indicator Mode
++ Added KillAura priority (OnLadder, InLiquid, InWeb)
++ Added TargetESP Lies, Jello, FDP Mode
+* Fixed start status not changing on production environments
+* Fixed unformatted names generating the opposites
+* Fixed tickbase spam ticking
+* Fixed issue with maxRenderDistanceSq values
+* Fixed ItemESP small fix
+* Fixed KillAura priority statement
+* Fixed InvMove IntaveMode
+* Renamed mineblaze(hop/timer) -> intave(hop/timer)
+* Slightly improved uncphopnew
+* Changed ItemESP text mode to an option
+~ B6 RELEASE:
+* Fixed proper renderutils color reset
+* Fixed scoreboard rect color reset
+* Fixed localconfig delete command
+* Fixed blink antivoid with scaffold
++ Added fishing rods
++ Added Experimental packet cancel option to Backtrack
+* Fixed blink antivoid
++ Added newpushdown animation
++ Added backtrack desync & add reset to backtrack
++ Added verusfhop speed mode, improve verusglide fly mode
+* Refactored MLG nofall
++ Added back target styles
+* Fixed log4j syntax
+* Fixed tower rotating even if rotations are off
++ Added modes to tickbase module
+* Fixed chat alert - armor element
++ Added atributes blink color - armor element
++ Added armor Alert Repair Reminder Threshold / Alert Durability Threshold
+* Fixed armor element alignment atributes / cleanup code
+* Fixed keybindmanager bind names / cleanup code
++ Added macro manager / macro command / macro on binds
++ Added invmove fullMovements/nomoveclicks/noDetectable/rotate mode
++ Added keybind manager ui
+* Fixed make all visual cheststealer values subjective
+* Refactored move jumpstrafe and fix maxverticalspeed
+* Fixed verusglide fly flags
++ Added scaffold jumpstrafe option
+* Fixed use infix for safe division
++ Added blink antivoid & renamed bugup -> antivoid
+* Fixed save division cast int to float
+* Fixed safe division for randomclickdelay
++ Added invutils finditemarray, selfinteract optimization
++ Updated speed HypixelHop
++ Added the line option to fakelag
++ In singleplayer you can only blink via receive mode
+* Fixed MinEnemyRotDiffToIgnore option
+* Fixed JumpDirections option in Sprint
+* Fixed subjective values not being subjective (InventoryManager)
+* Fixed projectiles sidehit null
++ Fixed, improved & optimized staff detector
++ Added velocity pause on explosion
++ Added antibot capabilities mode
++ Added blinkautoblock blink ticks
++ Added inventorymove mouse support
++ Added Color Theme client / I will bring the interface soon
+* Fixed disabler values / killaura slow down on direction change
++ Added noslow foodonly & drinkonly & intave consume
++ Added MinRotationDiffFromEnemyToIgnore to SuperKnockback
+* Fixed tickbase line option & backtrack isSelected
++ Added NoRotation (Min/Max)HorizontalBodySearch, MinRotationDifference/RotationRecorder module
+* Fixed black hotbar option not being aligned correctly
+* Fixed blinkautoblock sequence
+* Fixed missing tower option to scaffold
+* Fixed Safe division for rotation slow down calculations
++ Added World Color option ambience
++ Added Ambience dynamic/day/dusk/night mode
+* Fixed Godbridge mode as Godbridge rotation mode
++ Made TickBase's visuals customizable
++ Added NotOnMove option to Tower
++ Added vulcan tower
++ Added hypixel bypasses (nofall, autoblock)
++ Improved & added more option to customspeed
++ Added tickbase min/max range, changes, only killaura
++ Added InventoryManager
+~ B5 RELEASE:
++ Added Log4j, CommandComplete, Inventory, MultiverseCore - server crasher
++ Made slow rotation starts occur a bit more realistically
+* Fixed fireball fly values
++ Added antifireball ticks check
++ Added verus glide & uncp lowhop
+* Fixed nullpointer spam
+* Fixed backtrack chunk & tickbase working with no targets
++ Added Border Classic Notifications and fix commands AddAll, Clip, ConnectCommand
++ Added SnakeGame color and font size
++ Made SimulateShortStop perform a bit more realistic
++ Added Chance option to SuperKnockback
++ Added Config Command - openfolder/create config(bug creating wrong format)/list config/delete config/load config/current
+* Fixed TimerRange use spot
++ Added a bit of a more realistic speed change for the Relative...
++ Added GuiClicker Module
++ Added notifications classic style
+~ B4 RELEASE:
++ Added Inventory Plus HUD Module (working)
++ Added NoRender Module && remove target command (you can use .target because have module)
++ Added Chams Hand Mode / color options / behind options / textured and possible use legacy mode
+* Fixed target commands
++ Added RearView Custom Fov/FrameBuffer/ThirdPersonView
+* Fixed ClientBrandRetriever does not interrupt with connection
+* Fixed IRC Commands
++ Added Better Spot randomization
++ Added Item Rotation Animate
++ Added Rear View Element
++ Added Camera View Module
++ Added matrix speed modes ("MatrixHop2", "Matrix6.6.1", "Matrix6.9.2")
++ Added verus speed modes ("OldHop", "Float", "Ground", "YPort", "YPort2")
++ Added Combat Visuals - fakesharp option
++ Added Combat Visuals (KillESP + AttackEffects (Combine Modules))
++ Added Arraylist Fade Color
++ Added Arraylist Top RectMode
++ Added Arraylist Special RectMode
++ Added Arraylist Outline RectMode
++ Added HealthWarn Module
++ Added Glint Module
++ Added FakePlayer Module
++ Added KillESP Mode Sims
++ Added KillESP Mode Zavz
+- Removed ExperimentalLinearCurveRotation option
+* Fixed SlowDownOnDirectionChange
+* Renamed randomization related options from KillAura
++ Added Body point targeting options
+* Moved all Rotations module's options to rotation-utilizing modules
++ Added Disabler Mode: BasicDisabler
++ Added Disabler Node: noRotationDisabler
+* Fixed Memory Leak
++ Added CrossHair option on HUD Module
+* Fixed check distance to entity for noRotation in killaura
++ Added TickBase Module
++ Added KillESP Module
+* Fixed KillAura Reach
+* Fixed KillAura AutoBlock Disable
++ Added RU translate update
+* Fixed Many Bugs
+* Improved Main Menu

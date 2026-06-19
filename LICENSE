@@ -1,0 +1,41 @@
+FDP Client Website — Proprietary License
+Copyright (c) 2026 Lucas Lima ("Zywl") — lucas-lima.xyz. All rights reserved.
+
+This software and all associated source code, design, layout, text, images, and other
+assets in this repository (the "Work") are the exclusive property of the copyright
+holder and are protected by copyright and other intellectual property laws.
+
+1. No license granted.
+   No permission is granted to any person or entity to use, copy, reproduce, modify,
+   adapt, translate, merge, publish, distribute, sublicense, sell, host, deploy, or
+   create derivative works from the Work, in whole or in part, by any means, without
+   the prior written permission of the copyright holder.
+
+2. Viewing.
+   The Work is made publicly viewable on GitHub for transparency and reference only.
+   Viewing the source does not grant any right to reuse it.
+
+3. Prohibited use.
+   The Work must not be used, in whole or in part, for any unlawful, malicious,
+   fraudulent, deceptive, or otherwise harmful purpose, nor to impersonate the
+   copyright holder, the "FDP Client" or "Zywl" brands, or any associated website, nor
+   to mislead users into believing that an unauthorized copy is official.
+
+4. Trademarks.
+   The names "FDP Client", "FDPCLIENT", "Zywl", "lucas-lima.xyz", and any associated
+   logos and branding are not licensed and may not be used without written permission.
+
+5. Third-party components.
+   This project depends on third-party software (for example Next.js, React, Swiper and
+   AOS) and may include third-party fonts and assets, each licensed under their own
+   terms. This license applies only to the original code and content authored by the
+   copyright holder, and not to those third-party components, which remain governed by
+   their respective licenses.
+
+6. No warranty.
+   The Work is provided "as is", without warranty of any kind, express or implied,
+   including but not limited to the warranties of merchantability, fitness for a
+   particular purpose, and non-infringement. In no event shall the copyright holder be
+   liable for any claim, damages, or other liability arising from the Work or its use.
+
+For permission requests, contact the copyright holder at https://lucas-lima.xyz.

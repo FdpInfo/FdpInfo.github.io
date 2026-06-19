@@ -1,0 +1,241 @@
+/* Centered command palette (Ctrl/Cmd+K quick navigation). Self-contained so it
+   doesn't depend on the ported utility classes. Matches the dark/purple theme. */
+
+.cmdk-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 2.25rem;
+  padding: 0 0.7rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  background: rgba(30, 41, 59, 0.45);
+  color: rgb(203, 213, 225);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+}
+.cmdk-trigger:hover {
+  border-color: rgba(168, 85, 247, 0.55);
+  background: rgba(51, 65, 85, 0.5);
+  color: #fff;
+}
+.cmdk-trigger svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+.cmdk-trigger-label {
+  opacity: 0.9;
+}
+.cmdk-trigger-kbd {
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+  margin-left: 0.15rem;
+  padding: 0.1rem 0.35rem;
+  border-radius: 5px;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  background: rgba(15, 23, 42, 0.6);
+  font-size: 0.68rem;
+  color: rgb(148, 163, 184);
+}
+@media (max-width: 640px) {
+  .cmdk-trigger {
+    height: 2.25rem;
+    width: 2.25rem;
+    padding: 0;
+    justify-content: center;
+  }
+  .cmdk-trigger-label,
+  .cmdk-trigger-kbd {
+    display: none;
+  }
+}
+
+.cmdk-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 12vh 1rem 1rem;
+  background: rgba(2, 6, 23, 0.72);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  animation: cmdk-fade 0.16s ease-out;
+}
+.cmdk-panel {
+  width: min(640px, 100%);
+  max-height: 76vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 14px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  background: rgb(15, 23, 42);
+  box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(126, 34, 206, 0.12);
+  animation: cmdk-pop 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.cmdk-input-row {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.95rem 1.1rem;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+}
+.cmdk-input-row svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  color: rgb(148, 163, 184);
+}
+.cmdk-input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: rgb(241, 245, 249);
+  font-size: 1rem;
+  font-family: inherit;
+}
+.cmdk-input::placeholder {
+  color: rgb(100, 116, 139);
+}
+.cmdk-esc {
+  flex-shrink: 0;
+  padding: 0.1rem 0.4rem;
+  border-radius: 5px;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  background: rgba(2, 6, 23, 0.6);
+  font-size: 0.68rem;
+  color: rgb(148, 163, 184);
+}
+.cmdk-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(148, 163, 184, 0.3) transparent;
+}
+.cmdk-list::-webkit-scrollbar {
+  width: 10px;
+}
+.cmdk-list::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.25);
+  border-radius: 9999px;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+.cmdk-group-label {
+  padding: 0.6rem 0.7rem 0.3rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgb(100, 116, 139);
+}
+.cmdk-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.6rem 0.7rem;
+  border: none;
+  border-radius: 9px;
+  background: transparent;
+  color: rgb(226, 232, 240);
+  font-size: 0.9rem;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.cmdk-item:hover {
+  background: rgba(51, 65, 85, 0.4);
+}
+.cmdk-item.is-active {
+  background: rgba(126, 34, 206, 0.22);
+  color: #fff;
+}
+.cmdk-item-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  border-radius: 7px;
+  background: rgba(126, 34, 206, 0.15);
+  color: rgb(196, 181, 253);
+}
+.cmdk-item.is-active .cmdk-item-icon {
+  background: rgba(168, 85, 247, 0.35);
+  color: #fff;
+}
+.cmdk-item-icon svg {
+  width: 15px;
+  height: 15px;
+}
+.cmdk-item-label {
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cmdk-item-hint {
+  flex-shrink: 0;
+  font-size: 0.7rem;
+  color: rgb(100, 116, 139);
+}
+.cmdk-item.is-active .cmdk-item-hint {
+  color: rgb(203, 213, 225);
+}
+.cmdk-empty {
+  padding: 2rem 1rem;
+  text-align: center;
+  color: rgb(100, 116, 139);
+  font-size: 0.9rem;
+}
+.cmdk-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0.6rem 1.1rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.12);
+  font-size: 0.7rem;
+  color: rgb(100, 116, 139);
+}
+.cmdk-footer span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.cmdk-footer b {
+  padding: 0.05rem 0.3rem;
+  border-radius: 4px;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  background: rgba(2, 6, 23, 0.5);
+  font-weight: 500;
+  color: rgb(148, 163, 184);
+}
+
+@keyframes cmdk-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes cmdk-pop {
+  from { opacity: 0; transform: translateY(-8px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cmdk-overlay,
+  .cmdk-panel {
+    animation: none;
+  }
+}

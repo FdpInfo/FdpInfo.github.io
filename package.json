@@ -1,17 +1,34 @@
 {
-  "name": "fdpinfo.github.io",
+  "name": "fdpclient-next",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/FdpInfo/FdpInfo.github.io.git"
-  },
   "private": true,
+  "license": "UNLICENSED",
+  "author": {
+    "name": "Lucas Lima (Zywl)",
+    "url": "https://lucas-lima.xyz"
+  },
+  "description": "FDP Client landing page rebuilt with Next.js + React + TypeScript (pixel-perfect port).",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
   "dependencies": {
-    "express": "^4.21.2"
+    "aos": "^2.3.4",
+    "next": "^15.5.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "swiper": "^12.2.0"
+  },
+  "devDependencies": {
+    "@types/aos": "^3.0.7",
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "^5.7.0"
+  },
+  "overrides": {
+    "postcss": ">=8.5.10"
   }
 }

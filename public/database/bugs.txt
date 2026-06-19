@@ -1,0 +1,41 @@
+#b15
+* NoSlow Grim 2.3.72 mode desync with specific actions.
+* InfiniteAura concurrent modification (extended loop sequence).
+* TPS command not returning expected values on some servers.
+* Plugins payload-channel aggregation duplicating entries.
+* Plugins payload inference issues with channel names
+* Dimension & biome display in watermark overlapping in small GUIs.
+* Lunar Client F3 select issue.
+* Third-person FOV camera control not syncing with handlers.
+* GUI last commit/release info not displaying properly.
+* Online indicator in watermark not refreshing consistently.
+* YzyGUI scroll direction bug.
+* ClickGUI initialization failing (fixed by reusing GUI instances).
+* Mixins remap issue on library methods (Guava, LWJGL).
+* ESP2D team colors not applying correctly.
+* ESP2D rendering crash from ArrayIndexOutOfBoundsException.
+* ESP2D GL stack overflow issue.
+* Unused drawImageMark call in ESP2D.
+* Custom model causing black screen when wearing armor.
+* Camera handlers not honoring “View off” setting.
+* TabList enforcing “move self to top” ordering and ♛ prefix for local player.
+* TabList header/footer toggles not restoring correctly.
+* TabList numeric ping not reserving width properly.
+* Chams use existing Color instance instead of creating new one
+* Tab-overlay name overlap due to missing dynamic width for ping.
+* Incorrect method calls replaced with correct API methods.
+* ClickGUI categories not closing when modules are expanded.
+* UserUtils wrong cache usage.
+* YzyGUI resource icon missing.
+* Method name typos.
+* Stream not being closed properly.
+* Silent View option in ChestStealer not applied correctly in some cases.
+* Singleton pattern missing in parts of GUI initialization.
+* Error handling improvements to prevent crashes.
+* Plugin system variables left unused.
+* ESP2D hpBar style rendering glitches under certain conditions.
+* TabList display inconsistencies for enemies/friends/teams.
+* HUD image saving minor issues with file output.
+* Plugins local FileManager initialization bugs.
+* Plugins auto scan false positives with suspicious detection.
+#39 lines
