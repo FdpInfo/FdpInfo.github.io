@@ -13,6 +13,13 @@ import { BuyModal } from "@/components/BuyModal";
 export default function Home() {
   return (
     <>
+      {/* Same behaviour as the legacy fork home: render the full content (so
+          Google indexes it on the root and the root keeps ranking) but send
+          real visitors to the /next experience after 1s. */}
+      <meta
+        httpEquiv="refresh"
+        content="1; url=https://fdpinfo.github.io/next/"
+      />
       <div className="display-flex min-height-100vh flex-direction-column overflow-hidden">
         <Header />
         <Hero />
