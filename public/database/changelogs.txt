@@ -1,4 +1,4 @@
-~ B17 (#18858f7)
+~ B17 (#d8bccea)
 > NextGen ClickGUI
 + In-game web ClickGUI rendered via an embedded browser
 + MultiSelect, KeyBind and Vec3 config value types with ClickGUI editors
@@ -112,6 +112,7 @@
 ~ Armor typed swap binds, legit mode, no-drop control, smart filtering, backup logic and cycle swaps
 ~ AutoArmor manual armor binds and legit armor filter
 ~ InfiniteAura enhanced with advanced KillAura features
+~ InfiniteAura teleport diagonal pathfinding with a search budget
 ~ ServerLag enhanced with advanced features
 ~ InventoryCleaner ranks and limits potions by strength, plus more options
 ~ AutoFarm wall-range, swap-back delay and disable-on-full
@@ -207,6 +208,7 @@
 * Fail gracefully on preload/asset/font network errors
 * Tolerate the embedded browser's late init error on 1.8.9 and fetch its runtime off the render thread
 * Open the web ClickGUI in the default browser when the embedded browser is unavailable
+* Make the in-game web ClickGUI download reliably on old/launcher JVMs over HTTP with bundled TLS roots instead of overriding the global TLS factory
 * Prevent ClickGUI NaN slider position when a value's min equals max
 * Fix ClickGUI slider, toggle, scroll-clip, text-edit and config-save correctness
 * Render BlockValue settings in the fdpdropdown style
@@ -226,6 +228,7 @@
 * Keep your own first-person swing on NoSwing and suppress only the server packet
 * Correct swing animation speed calculation
 * Wire Animations held-item Z-offset and scale into the first-person renderer
+* HitSelect only triggers hit-later-in-trades after taking knockback
 > Removed
 - Eclipse plugin and Kotlin compile dependencies
 - omni-sprint from Scaffold sprint
