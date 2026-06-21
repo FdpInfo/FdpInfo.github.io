@@ -139,7 +139,9 @@ export default function ChangelogsPage() {
           {/* Stats */}
           <div className="cm-stats" data-aos="fade-up">
             <div className="cm-stat">
-              <div className="cm-stat-num">{meta.version.toUpperCase()}</div>
+              <div className="cm-stat-num">
+                {changelog[0]?.name ?? meta.version.toUpperCase()}
+              </div>
               <div className="cm-stat-lbl">Latest build</div>
             </div>
             <div className="cm-stat">
