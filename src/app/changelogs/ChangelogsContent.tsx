@@ -38,7 +38,7 @@ const CHANGELOG_CSS = `
 .cl-group-title{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#c4b5fd;background:rgba(168,85,247,.07);border-top:1px solid rgba(51,65,85,.4);padding:.65rem 1.2rem .5rem;}
 .cl-version details>div:first-of-type .cl-group-title,.cl-version>div:first-of-type .cl-group-title{border-top:none;}
 .cl-item{display:flex;gap:.6rem;font-size:.85rem;color:#cbd5e1;line-height:1.5;align-items:flex-start;}
-.cl-tag{flex:0 0 auto;font-size:.6rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;padding:.12rem .35rem;border-radius:4px;margin-top:.15rem;width:3.7rem;text-align:center;}
+.cl-tag{flex:0 0 auto;font-size:.6rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;padding:.12rem .45rem;border-radius:4px;margin-top:.1rem;min-width:3.7rem;width:auto;text-align:center;white-space:nowrap;}
 .cl-tag.added{color:#6ee7b7;background:rgba(16,185,129,.13);}
 .cl-tag.fixed{color:#7dd3fc;background:rgba(14,165,233,.13);}
 .cl-tag.changed{color:#c4b5fd;background:rgba(139,92,246,.14);}
