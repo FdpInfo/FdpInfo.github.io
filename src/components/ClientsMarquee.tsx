@@ -1,12 +1,15 @@
+"use client";
+
 import { ParticleField } from "@/components/effects/ParticleField";
 import { asset } from "@/lib/asset";
+import { useI18n } from "@/lib/i18n";
 
 const LOGOS = [
-  { src: "/src/resources/svg/hypixellogonew-removebg-preview.svg", alt: "Client 01", width: 110, height: 21, className: undefined },
-  { src: "/src/resources/svg/cubecraftlogo-removebg-preview.svg", alt: "Client 03", width: 107, height: 33, className: "margem-topo-0-25rem" },
-  { src: "/src/resources/svg/mmclogo.svg", alt: "Client 03", width: 107, height: 33, className: "margem-topo-0-25rem" },
-  { src: "/src/resources/svg/blocksmclogo-removebg-preview.svg", alt: "Client 03", width: 107, height: 33, className: "margem-topo-0-25rem" },
-  { src: "/src/resources/svg/invaldedlands-removebg-preview.svg", alt: "Client 03", width: 107, height: 33, className: "margem-topo-0-25rem" },
+  { src: "/src/resources/svg/hypixellogonew-removebg-preview.svg", altKey: 0, width: 110, height: 21, className: undefined },
+  { src: "/src/resources/svg/cubecraftlogo-removebg-preview.svg", altKey: 1, width: 107, height: 33, className: "margem-topo-0-25rem" },
+  { src: "/src/resources/svg/mmclogo.svg", altKey: 2, width: 107, height: 33, className: "margem-topo-0-25rem" },
+  { src: "/src/resources/svg/blocksmclogo-removebg-preview.svg", altKey: 3, width: 107, height: 33, className: "margem-topo-0-25rem" },
+  { src: "/src/resources/svg/invaldedlands-removebg-preview.svg", altKey: 4, width: 107, height: 33, className: "margem-topo-0-25rem" },
 ];
 
 const MARQUEE_CSS = `
@@ -18,6 +21,7 @@ const MARQUEE_CSS = `
 `;
 
 export function ClientsMarquee() {
+  const { t } = useI18n();
   // Duplicate the set so the CSS translateX(-50%) loop is perfectly seamless.
   const loop = [...LOGOS, ...LOGOS];
 
@@ -44,7 +48,7 @@ export function ClientsMarquee() {
                       <img
                         className={logo.className}
                         src={asset(logo.src)}
-                        alt={logo.alt}
+                        alt={t.clients.alt[logo.altKey]}
                         width={logo.width}
                         height={logo.height}
                         loading="lazy"

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useI18n } from "@/lib/i18n";
 
 const METHODS: { label: string; discount?: string }[] = [
   { label: "Crypto", discount: "-10%" },
@@ -17,6 +18,7 @@ const METHODS: { label: string; discount?: string }[] = [
  * opens it; clicking the overlay or pressing Escape closes it.
  */
 export function BuyModal() {
+  const { t } = useI18n();
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -57,38 +59,37 @@ export function BuyModal() {
               </h2>
               <section aria-labelledby="information-heading" className="mt-2">
                 <h3 id="information-heading" className="sr-only">
-                  Product information
+                  {t.buyModal.informationHeading}
                 </h3>
                 <p className="text-2xl text-gray-900 dark:text-gray-200">
-                  $24.99
+                  {t.buyModal.price}
                 </p>
                 <div className="mt-6">
-                  <h4 className="sr-only">Tags</h4>
+                  <h4 className="sr-only">{t.buyModal.tagsHeading}</h4>
                   <div className="flex items-center align-middle">
                     <div className="flex items-center align-middle">
                       <button className="rounded-full bg-indigo-600 text-white text-sm pb-0.5 px-2 mr-0.5">
-                        Minecraft
+                        {t.buyModal.tag}
                       </button>
                     </div>
-                    <p className="sr-only">1 tags</p>
+                    <p className="sr-only">{t.buyModal.tagsCount}</p>
                     <p className="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-200">
-                      1 tags{" "}
+                      {t.buyModal.tagsCount}{" "}
                     </p>
                   </div>
                 </div>
               </section>
               <section aria-labelledby="options-heading" className="mt-5">
                 <h3 id="options-heading" className="sr-only">
-                  Product Coupon
+                  {t.buyModal.optionsHeading}
                 </h3>
                 <div>
                   <div className="mb-5">
                     <h4 className="text-sm font-bold text-gray-900 dark:text-gray-100">
-                      Description
+                      {t.buyModal.descriptionHeading}
                     </h4>
                     <p className="mt-1 space-y-6 text-sm text-gray-700 dark:text-gray-300">
-                      Supports Windows, MacOS, Linux. You&apos;ll receive
-                      lifetime updates.
+                      {t.buyModal.description}{" "}
                       https://www.youtube.com/watch?v=5AGQH1--4iY
                     </p>
                   </div>
@@ -103,7 +104,7 @@ export function BuyModal() {
                         id="headlessui-label-:r5:"
                         role="none"
                       >
-                        Choose a payment method
+                        {t.buyModal.choosePaymentMethod}
                       </label>
                       <div className="mt-1 grid grid-cols-4 gap-2" role="none">
                         {METHODS.map((m) => (
@@ -126,14 +127,11 @@ export function BuyModal() {
                       </div>
                       <div className="mb-5">
                         <p className="mt-1 space-y-6 text-sm text-gray-700 dark:text-gray-300">
-                          We also support Apple Pay, Bancontact, Bank Transfer
-                          (US), Debit, Credit, Pre-Paid, Cashapp, Giropay, GPay,
-                          iDeal, Klarna, Prezelewy24, SEPA Direct, Sofort, Venmo,
-                          QIWI/Тинькофф/Альфа банк/ВТБ/Почта банк at our reseller{" "}
+                          {t.buyModal.resellerBefore}{" "}
                           <a href=" falta">
                             <b>Spezz </b>
                           </a>{" "}
-                          with a 10 percent discount.{" "}
+                          {t.buyModal.resellerAfter}{" "}
                         </p>
                       </div>
                     </div>

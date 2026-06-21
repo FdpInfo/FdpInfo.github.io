@@ -1,8 +1,13 @@
+"use client";
+
 import Link from "next/link";
 import { asset } from "@/lib/asset";
 import { SearchTrigger } from "@/components/SearchTrigger";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { useI18n } from "@/lib/i18n";
 
 export function Header() {
+  const { t } = useI18n();
   return (
     <header className="absoluto z-index-30 largura-100porcento">
       <div className="mx-auto largura-maxima-72rem padding-left-right-1rem media-padding-horizontal-1-5rem">
@@ -22,12 +27,15 @@ export function Header() {
               <li className="display-flex alinhar-itens-centro">
                 <SearchTrigger />
               </li>
+              <li className="display-flex alinhar-itens-centro margem-esquerda-1rem">
+                <LanguageSwitcher />
+              </li>
               <li className="margem-esquerda-1-5rem">
                 <Link
                   className="font-size-0-875rem font-weight-500 text-color-gray-200 transition-all transition-duration-150ms transition-ease-in-out hover-text-white"
                   href="/community"
                 >
-                  Discord
+                  {t.nav.discord}
                 </Link>
               </li>
               <li className="margem-esquerda-1-5rem">
@@ -37,7 +45,7 @@ export function Header() {
                 >
                   <span className="zywl-relativo exibir-inline-flex alinhar-itens-centro">
                     {" "}
-                    Donate Now!{" "}
+                    {t.nav.donateNow}{" "}
                     <span className="margem-esquerda-0-25rem letter-spacing-0 text-color-purple-600 transition-transform transition-duration-150ms transition-ease-in-out c8087">
                       -&gt;
                     </span>

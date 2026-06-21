@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { AosInit } from "@/components/effects/AosInit";
 import { CommandPalette } from "@/components/CommandPalette";
+import { LanguageProvider } from "@/lib/i18n";
 import { asset, BASE_PATH } from "@/lib/asset";
 
 // Structured data: identifies the site (WebSite) and the product
@@ -113,8 +114,10 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
         />
-        {children}
-        <CommandPalette />
+        <LanguageProvider>
+          {children}
+          <CommandPalette />
+        </LanguageProvider>
         <AosInit />
         {/* Google Analytics loads for every visitor so traffic is always detected. */}
         <Script

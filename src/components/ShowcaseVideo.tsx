@@ -1,7 +1,11 @@
+"use client";
+
 import { HighlightGroup } from "@/components/effects/HighlightGroup";
 import { asset } from "@/lib/asset";
+import { useI18n } from "@/lib/i18n";
 
 export function ShowcaseVideo() {
+  const { t } = useI18n();
   return (
     <section id="showcase" className="zywl-relativo">
       <div
@@ -33,10 +37,10 @@ export function ShowcaseVideo() {
         <div className="border-bottom-width-1px border-color-rgb-30-41-59 padding-bottom-3rem padding-top-4rem padding-inferior-5rem padding-superior-8rem">
           <div className="mx-auto largura-maxima-48rem padding-bottom-3rem text-align-center padding-inferior-5rem">
             <h2 className="heading-md bg-linear-gradient gradient-from-gray gradient-to-gray gradient-to-gray-0-6 background-clip-text padding-bottom-1rem text-color-transparent ">
-              Wanna take a look?
+              {t.showcase.title}
             </h2>
             <p className="font-size-1-125rem text-color-gray-300">
-              This is FDP -&gt;
+              {t.showcase.subtitle}
             </p>
           </div>
           <div className="mx-auto largura-maxima-48rem">

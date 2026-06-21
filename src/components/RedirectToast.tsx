@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useI18n } from "@/lib/i18n";
 
 const TOAST_CSS = `
 #redirect-toast{position:fixed;bottom:1.5rem;right:1.5rem;z-index:9999;display:flex;align-items:center;gap:0.65rem;background:rgba(15, 10, 30, 0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(168, 85, 247, 0.35);border-radius:0.6rem;padding:0.6rem 0.9rem;box-shadow:0 8px 32px rgba(0,0,0,0.45), 0 0 0 1px rgba(168,85,247,0.08) inset;animation:slideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;max-width:360px;overflow:hidden;}
@@ -23,6 +24,7 @@ export function RedirectToast({
 }: {
   target?: string;
 }) {
+  const { t } = useI18n();
   const [seconds, setSeconds] = useState(3);
   const [stopped, setStopped] = useState(false);
   const intervalRef = useRef(0);
@@ -63,17 +65,17 @@ export function RedirectToast({
         </div>
         <div className="toast-text">
           <span className="toast-title">
-            {stopped ? "Redirect stopped" : "Redirecting to the downloads page"}
+            {stopped ? t.redirectToast.stoppedTitle : t.redirectToast.title}
           </span>
           <span className="toast-sub">
             {stopped
-              ? "Browse the builds on this page."
-              : "Taking you to our official site…"}
+              ? t.redirectToast.stoppedSub
+              : t.redirectToast.sub}
           </span>
         </div>
         {stopped ? (
           <a className="toast-go" href={target}>
-            Go now
+            {t.redirectToast.goNow}
           </a>
         ) : (
           <>
@@ -81,7 +83,7 @@ export function RedirectToast({
               {seconds}
             </span>
             <button type="button" className="toast-stop" onClick={stop}>
-              Stop
+              {t.redirectToast.stop}
             </button>
             <div className="toast-progress"></div>
           </>

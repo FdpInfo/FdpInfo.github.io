@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ParticleField } from "@/components/effects/ParticleField";
 import { AlpineTransition } from "@/components/effects/AlpineTransition";
 import { asset } from "@/lib/asset";
+import { useI18n } from "@/lib/i18n";
 
 const BTN_BASE =
   "display-flex largura-100porcento alinhar-itens-centro border-radius-0-25rem border-width-1px bg-color-rgb-30-41-59-25 padding-left-right-0-75rem padding-top-bottom-0-5rem font-size-0-875rem font-weight-500 text-color-gray-50 transition-all transition-duration-150ms transition-ease-in-out hover-opacity-1";
@@ -26,6 +27,7 @@ const ICON_BOX =
   "zywl-relativo display-flex altura-4rem largura-4rem rotacao-menos-14deg alinhar-itens-centro justificar-conteudo-centro border-radius-1rem border-width-1px border-color-transparent shadow-xl bg-linear-gradient-gray-padding before-content-absolute before-content-inset-0 before-content-border-radius-1rem before-content-bg-opacity-0-3";
 
 export function FeatureTabs() {
+  const { t } = useI18n();
   const [tab, setTab] = useState<"1" | "2" | "3">("1");
 
   return (
@@ -57,16 +59,15 @@ export function FeatureTabs() {
                 <div>
                   <div className="exibir-inline-flex bg-linear-gradient gradient-from-purple gradient-to-light-purple background-clip-text padding-bottom-0-75rem font-weight-500 text-color-transparent ">
                     {" "}
-                    The best Minecraft cheat{" "}
+                    {t.features.eyebrow}{" "}
                   </div>
                 </div>
                 <h3 className="heading-sm bg-linear-gradient gradient-from-gray gradient-to-gray gradient-to-gray-0-6 background-clip-text padding-bottom-0-75rem text-color-transparent ">
                   {" "}
-                  Dominate your opponents with FDP{" "}
+                  {t.features.title}{" "}
                 </h3>
                 <p className="margem-inferior-2rem font-size-1-125rem text-color-gray-300">
-                  Active Development, Bypass popular servers, Highly
-                  Customizable, Free Download. flawlessly with FDP.
+                  {t.features.desc}
                 </p>
                 <div className="margem-topo-2rem largura-maxima-20rem margem-y-0-5rem media-margem-x-auto">
                   <button
@@ -84,7 +85,7 @@ export function FeatureTabs() {
                     >
                       <path d="M14 0a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12Zm0 14V2H2v12h12Zm-3-7H5a1 1 0 1 1 0-2h6a1 1 0 0 1 0 2Zm0 4H5a1 1 0 0 1 0-2h6a1 1 0 0 1 0 2Z" />
                     </svg>
-                    <span>Constant Updates</span>
+                    <span>{t.features.tab1}</span>
                   </button>
                   <button
                     className={tabClass(tab === "2")}
@@ -101,7 +102,7 @@ export function FeatureTabs() {
                     >
                       <path d="M2 6H0V2a2 2 0 0 1 2-2h4v2H2v4ZM16 6h-2V2h-4V0h4a2 2 0 0 1 2 2v4ZM14 16h-4v-2h4v-4h2v4a2 2 0 0 1-2 2ZM6 16H2a2 2 0 0 1-2-2v-4h2v4h4v2Z" />
                     </svg>
-                    <span>Supports all Minecraft versions</span>
+                    <span>{t.features.tab2}</span>
                   </button>
                   <button
                     className={tabClass(tab === "3")}
@@ -118,7 +119,7 @@ export function FeatureTabs() {
                     >
                       <path d="M14.3.3c.4-.4 1-.4 1.4 0 .4.4.4 1 0 1.4l-8 8c-.2.2-.4.3-.7.3-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l8-8ZM15 7c.6 0 1 .4 1 1 0 4.4-3.6 8-8 8s-8-3.6-8-8 3.6-8 8-8c.6 0 1 .4 1 1s-.4 1-1 1C4.7 2 2 4.7 2 8s2.7 6 6 6 6-2.7 6-6c0-.6.4-1 1-1Z" />
                     </svg>
-                    <span>State of the art bypasses</span>
+                    <span>{t.features.tab3}</span>
                   </button>
                 </div>
               </div>

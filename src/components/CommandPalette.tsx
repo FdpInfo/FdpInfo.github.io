@@ -14,6 +14,7 @@ import {
   GROUP_ORDER,
   type SearchTarget,
 } from "@/lib/search-targets";
+import { useI18n } from "@/lib/i18n";
 
 const SearchIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -70,6 +71,7 @@ function score(t: SearchTarget, raw: string) {
 }
 
 export function CommandPalette() {
+  const { t } = useI18n();
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [active, setActive] = useState(0);
@@ -78,10 +80,34 @@ export function CommandPalette() {
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
 
+  const targets = useMemo<SearchTarget[]>(() => {
+    const items = t.search?.items as
+      | Record<string, { label?: string; hint?: string } | undefined>
+      | undefined;
+    return SEARCH_TARGETS.map((target) => {
+      const localized = items?.[target.key];
+      return {
+        ...target,
+        label: localized?.label ?? target.label,
+        hint: localized?.hint ?? target.hint,
+      };
+    });
+  }, [t]);
+
+  const groupLabel = useCallback(
+    (group: SearchTarget["group"]) =>
+      group === "Sections"
+        ? t.search.groupSections
+        : group === "Links"
+          ? t.search.groupLinks
+          : t.search.groupPages,
+    [t]
+  );
+
   const results = useMemo(() => {
     const raw = query.trim().toLowerCase();
     const terms = raw.split(/\s+/).filter(Boolean);
-    const scored = SEARCH_TARGETS.map((t, i) => ({ t, i })).filter(({ t }) =>
+    const scored = targets.map((t, i) => ({ t, i })).filter(({ t }) =>
       matches(t, terms)
     );
     if (raw) {
@@ -90,7 +116,7 @@ export function CommandPalette() {
       scored.sort((a, b) => score(a.t, raw) - score(b.t, raw) || a.i - b.i);
     }
     return scored.map((s) => s.t);
-  }, [query]);
+  }, [query, targets]);
 
   const searching = query.trim().length > 0;
 
@@ -242,7 +268,7 @@ export function CommandPalette() {
       className="cmdk-overlay"
       role="dialog"
       aria-modal="true"
-      aria-label="Site search"
+      aria-label={t.palette.dialogAriaLabel}
       onMouseDown={(e) => {
         if (e.target === e.currentTarget) close();
       }}
@@ -253,7 +279,7 @@ export function CommandPalette() {
           <input
             ref={inputRef}
             className="cmdk-input"
-            placeholder="Search pages, sections…"
+            placeholder={t.palette.placeholder}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             role="combobox"
@@ -263,18 +289,20 @@ export function CommandPalette() {
             autoComplete="off"
             spellCheck={false}
           />
-          <span className="cmdk-esc">esc</span>
+          <span className="cmdk-esc">{t.palette.esc}</span>
         </div>
         <div
           className="cmdk-list"
           id="cmdk-list"
           role="listbox"
-          aria-label="Results"
+          aria-label={t.palette.resultsAriaLabel}
           ref={listRef}
         >
           {results.length === 0 && (
             <div className="cmdk-empty">
-              No results for “{query.trim()}”.
+              {t.palette.emptyPrefix}
+              {query.trim()}
+              {t.palette.emptySuffix}
             </div>
           )}
           {searching
@@ -284,7 +312,7 @@ export function CommandPalette() {
                 if (!items.length) return null;
                 return (
                   <div key={group}>
-                    <div className="cmdk-group-label">{group}</div>
+                    <div className="cmdk-group-label">{groupLabel(group)}</div>
                     {items.map((t) => {
                       flatIdx += 1;
                       return renderItem(t, flatIdx);
@@ -296,13 +324,13 @@ export function CommandPalette() {
         <div className="cmdk-footer">
           <span>
             <b>↑</b>
-            <b>↓</b> navigate
+            <b>↓</b> {t.palette.footer.navigate}
           </span>
           <span>
-            <b>↵</b> open
+            <b>↵</b> {t.palette.footer.open}
           </span>
           <span>
-            <b>esc</b> close
+            <b>esc</b> {t.palette.footer.close}
           </span>
         </div>
       </div>

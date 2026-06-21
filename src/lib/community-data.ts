@@ -103,13 +103,15 @@ export function getInjector(): { version: string; enabled: boolean } {
   return { version: parts[0] || "v1.0.0", enabled: (parts[1] || "true") === "true" };
 }
 
-export const GITHUB_RELEASES = "https://github.com/SkidderMC/FDPClient/releases";
-export const GITHUB_REPO = "https://github.com/SkidderMC/FDPClient/";
-export const GITHUB_ISSUES = "https://github.com/SkidderMC/FDPClient/issues";
-export const GITHUB_ISSUE_NEW =
-  "https://github.com/SkidderMC/FDPClient/issues/new";
+export {
+  GITHUB_RELEASES,
+  GITHUB_REPO,
+  GITHUB_ISSUES,
+  GITHUB_ISSUE_NEW,
+  FALLBACK_DOWNLOADS,
+} from "./community-constants";
 
-export const FALLBACK_DOWNLOADS = 100000;
+import { FALLBACK_DOWNLOADS } from "./community-constants";
 
 /**
  * Total downloads across all GitHub release assets, fetched at build time and

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { asset } from "@/lib/asset";
 import { BackHome } from "@/components/BackHome";
 import { SearchTrigger } from "@/components/SearchTrigger";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
 export function SecondaryHeader() {
   return (
@@ -22,6 +23,9 @@ export function SecondaryHeader() {
             <ul className="display-flex flex-crescer-1 flex-enrolar alinhar-itens-centro justificar-conteudo-fim">
               <li className="display-flex alinhar-itens-centro margem-direita-1-5rem">
                 <SearchTrigger />
+              </li>
+              <li className="display-flex alinhar-itens-centro margem-direita-1-5rem">
+                <LanguageSwitcher />
               </li>
               <li>
                 <BackHome />

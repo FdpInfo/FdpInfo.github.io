@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useI18n } from "@/lib/i18n";
 
 export function SearchTrigger() {
+  const { t } = useI18n();
   const [mod, setMod] = useState("Ctrl");
 
   useEffect(() => {
@@ -16,7 +18,7 @@ export function SearchTrigger() {
     <button
       type="button"
       className="cmdk-trigger"
-      aria-label="Search the site (open with Ctrl or Command + K)"
+      aria-label={t.nav.searchAria}
       aria-keyshortcuts="Control+K Meta+K"
       onClick={() => window.dispatchEvent(new Event("fdp:open-search"))}
     >
@@ -24,7 +26,7 @@ export function SearchTrigger() {
         <circle cx="11" cy="11" r="7" />
         <path d="m21 21-4.35-4.35" />
       </svg>
-      <span className="cmdk-trigger-label">Search</span>
+      <span className="cmdk-trigger-label">{t.nav.search}</span>
       <span className="cmdk-trigger-kbd">{mod}&nbsp;K</span>
     </button>
   );

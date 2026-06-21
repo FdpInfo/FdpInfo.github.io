@@ -7,6 +7,7 @@ import { Navigation } from "swiper/modules";
 import { ParticleField } from "@/components/effects/ParticleField";
 import { HighlightGroup } from "@/components/effects/HighlightGroup";
 import { asset } from "@/lib/asset";
+import { useI18n } from "@/lib/i18n";
 
 const SLIDE =
   "swiper-slide zywl-relativo altura-automatica overflow-hidden border-radius-1-5rem bg-color-rgb-30-41-59 padding-1px before-content-pointer-none before-content-absolute before-content-left-12rem before-content-top-12rem before-content-z-index-30 before-content-height-24rem before-content-width-24rem before-content-transform-mouse-x before-content-transform-mouse-y before-content-border-radius-9999px before-content-bg-purple before-content-opacity-0 before-content-filter-blur-100px before-content-transition-opacity before-content-transition-duration-500ms after-content-absolute after-content-inset-0 after-content-z-index-10 after-content-border-radius-inherit after-content-opacity-0 after-content-transition-opacity after-content-transition-duration-500ms after-content-radial-gradient hover-before-opacity-0-2 marcadorzao cahiq";
@@ -22,48 +23,49 @@ type Slide = {
   href: string;
 };
 
-const SLIDES: Slide[] = [
-  {
-    icon: "/src/resources/svg/carousel-icon-01.svg",
-    title: "100,000+ users",
-    desc: "100,000+ satisfied customers over the span of 4 years. ",
-    linkText: "Community & Support ",
-    href: "/community",
-  },
-  {
-    icon: "/src/resources/svg/carousel-icon-02.svg",
-    title: "99.9% uptime",
-    desc: "The client's platform offers 99.9% uptime.",
-    linkText: "Check Commits ",
-    href: "https://github.com/SkidderMC/FDPClient/commits/",
-  },
-  {
-    icon: "/src/resources/svg/carousel-icon-03.svg",
-    title: "90% positive feedback",
-    desc: "We have over 100,000 happy customers. When are you joining us?",
-    linkText: "Donate now ",
-    href: "/donate",
-  },
-  {
-    icon: "/src/resources/svg/carousel-icon-04.svg",
-    title: "Join Community",
-    desc: (
-      <>
-        We have community in our Discord servers. Join it{" "}
-        <b>
-          <a href="https://discord.com/invite/3XRFGeqEYD">
-            https://discord.com/invite/3XRFGeqEYD
-          </a>
-        </b>
-      </>
-    ),
-    linkText: "Click to join",
-    href: "/community",
-  },
-];
-
 export function Statistics() {
+  const { t } = useI18n();
   const ref = useRef<HTMLDivElement | null>(null);
+
+  const SLIDES: Slide[] = [
+    {
+      icon: "/src/resources/svg/carousel-icon-01.svg",
+      title: t.stats.s1Title,
+      desc: t.stats.s1Desc,
+      linkText: t.stats.s1Link,
+      href: "/community",
+    },
+    {
+      icon: "/src/resources/svg/carousel-icon-02.svg",
+      title: t.stats.s2Title,
+      desc: t.stats.s2Desc,
+      linkText: t.stats.s2Link,
+      href: "https://github.com/SkidderMC/FDPClient/commits/",
+    },
+    {
+      icon: "/src/resources/svg/carousel-icon-03.svg",
+      title: t.stats.s3Title,
+      desc: t.stats.s3Desc,
+      linkText: t.stats.s3Link,
+      href: "/donate",
+    },
+    {
+      icon: "/src/resources/svg/carousel-icon-04.svg",
+      title: t.stats.s4Title,
+      desc: (
+        <>
+          {t.stats.s4DescBefore}{" "}
+          <b>
+            <a href="https://discord.com/invite/3XRFGeqEYD">
+              https://discord.com/invite/3XRFGeqEYD
+            </a>
+          </b>
+        </>
+      ),
+      linkText: t.stats.s4Link,
+      href: "/community",
+    },
+  ];
 
   useEffect(() => {
     if (!ref.current) return;
@@ -96,14 +98,14 @@ export function Statistics() {
           <div className="mx-auto largura-maxima-48rem padding-bottom-3rem text-align-center padding-inferior-5rem">
             <div>
               <div className="exibir-inline-flex bg-linear-gradient gradient-from-purple gradient-to-light-purple background-clip-text padding-bottom-0-75rem font-weight-500 text-color-transparent ">
-                FDP Client
+                {t.stats.eyebrow}
               </div>
             </div>
             <h2 className="heading-md bg-linear-gradient gradient-from-gray gradient-to-gray gradient-to-gray-0-6 background-clip-text padding-bottom-1rem text-color-transparent ">
-              Our statistics
+              {t.stats.title}
             </h2>
             <p className="font-size-1-125rem text-color-gray-300">
-              FDP Client has been in the market from 2019.
+              {t.stats.subtitle}
             </p>
           </div>
           <div className="zywl-relativo before-content-absolute before-content-inset-0 before-content-z-index-20 before-content-transform-translate before-content-bg-gradient-left before-content-gradient-from-transparent before-content-gradient-to-blue before-content-gradient-to-position-20 after-content-absolute after-content-inset-0 after-content-z-index-20 after-content-transform-translate-100 after-content-bg-gradient-right after-content-gradient-from-transparent after-content-gradient-to-dark-blue after-content-gradient-to-position-20">
@@ -171,7 +173,7 @@ export function Statistics() {
           </div>
           <div className="margem-topo-2rem display-flex justificar-conteudo-fim">
             <button className="carousel-prev zywl-relativo z-index-20 display-flex altura-3rem largura-3rem alinhar-itens-centro justificar-conteudo-centro paredes">
-              <span className="sr-only">Previous</span>
+              <span className="sr-only">{t.stats.previous}</span>
               <svg
                 className="altura-1rem largura-1rem fill-blue-gray transition-all transition-duration-150ms transition-ease-in-out ca7b4"
                 viewBox="0 0 16 16"
@@ -181,7 +183,7 @@ export function Statistics() {
               </svg>
             </button>
             <button className="carousel-next zywl-relativo z-index-20 display-flex altura-3rem largura-3rem alinhar-itens-centro justificar-conteudo-centro paredes">
-              <span className="sr-only">Next</span>
+              <span className="sr-only">{t.stats.next}</span>
               <svg
                 className="altura-1rem largura-1rem fill-blue-gray transition-all transition-duration-150ms transition-ease-in-out ca7b4"
                 viewBox="0 0 16 16"
