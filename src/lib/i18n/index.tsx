@@ -4,6 +4,7 @@ import {
   createContext,
   useContext,
   useEffect,
+  useLayoutEffect,
   useMemo,
   useState,
   type ReactNode,
@@ -14,6 +15,12 @@ import { cn } from "./dictionaries/cn";
 import { ru } from "./dictionaries/ru";
 import { es } from "./dictionaries/es";
 import type { DeepPartial } from "./types";
+
+// Runs before the browser paints on the client (so the detected/saved locale is
+// applied with no English flash), and falls back to useEffect on the server to
+// avoid the SSR useLayoutEffect warning.
+const useIsomorphicLayoutEffect =
+  typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 export type Locale = "en" | "pt" | "cn" | "ru" | "es";
 
@@ -81,10 +88,11 @@ const I18nContext = createContext<I18nValue | null>(null);
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>("en");
 
-  // Resolve the initial locale after mount (never during SSR/first render, so
-  // server HTML and first hydration both stay English and React doesn't warn).
+  // Resolve the initial locale before the first client paint (so a non-English
+  // visitor lands directly on their language with no flash). SSR/hydration still
+  // start from English, so there's no hydration mismatch.
   // Priority: ?lang= query > saved choice > browser language > English.
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     let resolved: Locale | null = null;
     try {
       const fromUrl = new URLSearchParams(window.location.search).get(QUERY_KEY);
