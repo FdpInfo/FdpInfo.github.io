@@ -43,7 +43,9 @@ const CHANGELOG_CSS = `
 .cl-ver-count{margin-left:auto;font-size:.7rem;color:#cbd5e1;background:rgba(148,163,184,.12);padding:.18rem .6rem;border-radius:999px;white-space:nowrap;}
 .cl-arrow{color:#a855f7;font-size:.8rem;transition:transform .2s;}
 .cl-version[open] .cl-arrow{transform:rotate(90deg);}
-.cl-list{list-style:none;margin:0;padding:.75rem 1.2rem 1.05rem;display:flex;flex-direction:column;gap:.42rem;}
+.cl-list{list-style:none;margin:0;padding:.6rem 1.2rem .85rem;display:flex;flex-direction:column;gap:.42rem;}
+.cl-group-title{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#c4b5fd;background:rgba(168,85,247,.07);border-top:1px solid rgba(51,65,85,.4);padding:.65rem 1.2rem .5rem;}
+.cl-version details>div:first-of-type .cl-group-title,.cl-version>div:first-of-type .cl-group-title{border-top:none;}
 .cl-item{display:flex;gap:.6rem;font-size:.85rem;color:#cbd5e1;line-height:1.5;align-items:flex-start;}
 .cl-tag{flex:0 0 auto;font-size:.6rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;padding:.12rem .35rem;border-radius:4px;margin-top:.15rem;width:3.7rem;text-align:center;}
 .cl-tag.added{color:#6ee7b7;background:rgba(16,185,129,.13);}
@@ -181,16 +183,23 @@ export default function ChangelogsPage() {
                       {version.items.length} changes
                     </span>
                   </summary>
-                  <ul className="cl-list">
-                    {version.items.map((item, j) => (
-                      <li key={j} className="cl-item">
-                        <span className={`cl-tag ${item.type}`}>
-                          {TAG_LABEL[item.type]}
-                        </span>
-                        <span>{item.text}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  {version.groups.map((g, gi) => (
+                    <div key={gi}>
+                      {g.title ? (
+                        <div className="cl-group-title">{g.title}</div>
+                      ) : null}
+                      <ul className="cl-list">
+                        {g.items.map((item, j) => (
+                          <li key={j} className="cl-item">
+                            <span className={`cl-tag ${item.type}`}>
+                              {TAG_LABEL[item.type]}
+                            </span>
+                            <span>{item.text}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
                 </details>
               ))}
             </div>

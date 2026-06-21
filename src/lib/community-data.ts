@@ -3,7 +3,13 @@ import path from "path";
 
 export type ChangeType = "added" | "fixed" | "changed" | "removed";
 export type ChangeItem = { type: ChangeType; text: string };
-export type ChangeVersion = { name: string; meta: string; items: ChangeItem[] };
+export type ChangeGroup = { title: string | null; items: ChangeItem[] };
+export type ChangeVersion = {
+  name: string;
+  meta: string;
+  items: ChangeItem[];
+  groups: ChangeGroup[];
+};
 
 const TYPE_MAP: Record<string, ChangeType> = {
   "+": "added",
@@ -27,18 +33,38 @@ export function getChangelog(): ChangeVersion[] {
   const raw = readDb("changelogs.txt");
   const versions: ChangeVersion[] = [];
   let current: ChangeVersion | null = null;
+  let group: ChangeGroup | null = null;
   for (const line of raw.split(/\r?\n/)) {
     const t = line.trim();
     if (!t) continue;
     const header = t.match(/^~\s*B(\d+)\b\s*(.*)$/);
     if (header) {
-      current = { name: `B${header[1]}`, meta: header[2].trim(), items: [] };
+      current = {
+        name: `B${header[1]}`,
+        meta: header[2].trim(),
+        items: [],
+        groups: [],
+      };
       versions.push(current);
+      group = null;
+      continue;
+    }
+    // "> Section title" starts a sub-section within the current version.
+    const section = t.match(/^>\s+(.+)$/);
+    if (section && current) {
+      group = { title: section[1].trim(), items: [] };
+      current.groups.push(group);
       continue;
     }
     const item = t.match(/^([+*~-])\s+(.+)$/);
     if (item && current) {
-      current.items.push({ type: TYPE_MAP[item[1]], text: item[2].trim() });
+      const ci: ChangeItem = { type: TYPE_MAP[item[1]], text: item[2].trim() };
+      current.items.push(ci);
+      if (!group) {
+        group = { title: null, items: [] };
+        current.groups.push(group);
+      }
+      group.items.push(ci);
     }
   }
   return versions;

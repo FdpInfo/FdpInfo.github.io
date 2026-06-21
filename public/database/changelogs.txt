@@ -1,45 +1,74 @@
 ~ B17 (#18858f7)
-+ Modern rotation engine with request arbiter, math helpers and event hooks
-+ Global rotation engine override to force the modern engine clientwide
+> NextGen ClickGUI
 + In-game web ClickGUI rendered via an embedded browser
++ MultiSelect, KeyBind and Vec3 config value types with ClickGUI editors
++ ToggleableValueGroup and ModeValueGroup config types
+~ ClickGUI rendered in-game via a persistent pre-warmed embedded browser for instant opens
+~ Editable font setting in the web ClickGUI
+~ ClickGUI static mode via query params
+~ Neverlose-style ClickGUI header with icon chip and animated scoped search panel
+~ Draggable ClickGUI/Settings top nav, movable anywhere on screen and shared across styles
+> Main menu & screens
 + NextGen-style main menu redesign with cards, panels and font-icon dock
 + Native server-list screen matching the main menu
+~ fdpheadericons expanded with FA6 glyphs for the main menu
+~ Vanilla multiplayer and disconnect screens routed to the native server list
+~ NextGen browser download progress shown with percent, bar and HUD notifications, downloading in the background and pinned on-screen until it finishes
+> Rotation engine
++ Modern rotation engine with request arbiter, math helpers and event hooks
++ Global rotation engine override to force the modern engine clientwide
+~ Modern rotation engine integrated into the aim and scaffold modules
+> New bypasses
+~ Velocity legacy modes: Delayed, Grim, Grim1.17, GrimC07, GrimDamage, AAC4Reduce, AAC5.2.0, AAC5.2.0Combat, Cancel, Phase, SideStrafe with OnlyGround/OnlyCombat/noFire/OverrideDirection gates
+~ Velocity modes: MatrixReverse, AttackReduce, Spoof, Tick, AAC5Reduce, Intave, HypixelBoost, Minemen, MatrixSimple, Polar and Sentinel
+~ Flight legacy modes: VerusDamage, Delayed, Grim, Grim1.17, GrimC07, GrimDamage, AAC4Reduce, AAC5.2.0, AAC5.2.0Combat, Cancel, Phase, SideStrafe
+~ Flight modes: Creative, BlockDrop, Clip, FakeGround, FunCraft, TeleportRewinside plus Grim, Sentinel, Hylex and Polar
+~ Flight vanilla vertical speed setting
+~ LongJump legacy mode pack: Motion, Packet, BlockBB, Step, AttemptJump, AttemptDisable, GlobalTimer, TimerOnlyAir, Boost, NCPLatest, OldNCPDamage, MatrixFlag, OldMatrixHurt, Vulcan and more, plus Grim, Hypixel and Spartan
+~ LongJump no-auto-jump-while-using-item and reset-timer-on-ground options
+~ Speed modes: BlocksMC, LatestVerusHop, VerusDamage, VerusSpeeds, Vulcan with custom onPreMotion behavior, plus Grim, Sentinel, Hylex and Polar
+~ Step modes: Matrix6.7.0, NCPNew, OldAAC, AAC4.4.0, Vulcan, Verus, BlocksMC with Timer options
+~ Step extra delay and jump simulation options
+~ NoSlow modes: OnlyGround, OnlyMove, AntiSwitchItem, AAC4, OldIntave, Medusa, HypixelNew, SpamItemChange, SpamPlace, SpamEmptyPlace, Matrix, GrimAC with legacy teleport setback handling
+~ NoFall modes: Vanilla, AlwaysSpoof, Damage, MotionFlag, Phase, HypixelBlink, HypixelFlag, Packet1, Packet2, Verus, OldVulcan, LatestVulcan, Matrix variants, AAC variants, plus Polar, Sentinel and Intave
+~ Jesus modes: AAC4.2.1, Jump, Legit, Matrix, SilentYPort, Twilight, Vulcan
+~ NoWeb modes for Grim, Vulcan, Verus and Matrix
+~ Scaffold Jump, Sneak, Sprint and Breezily modes with autojump, godBridge movement, separate jump rotation and expanded rotation options
+~ Reusable DirectionalInput movement abstraction
+> New modules
 + KillAura Raytrace mode (Normal/Strict), with Strict only attacking when the ray lands on the target
 + Surround module
++ AutoCrafter that auto-crafts a configured item via the crafting grid
 + AutoBuild module
++ AutoDodge module with SimulatedArrow prediction
++ AutoPearl module
++ AutoBuff module
++ Anchor module
++ BlockTrap module
++ PacketMine module
++ AutoFarm module
++ AutoTrap that places cobweb at the target's feet to trap them
 + HoleFiller module
 + HoleESP module
 + VoidESP module
-+ Anchor module
-+ BlockTrap module
-+ AutoTrap that places cobweb at the target's feet to trap them
 + LiquidFiller module
 + LiquidPlace module
 + AirPlace module
 + BlockIn module
 + BlockWalk module
 + BlockBounce module
-+ PacketMine module
 + MoreCarry module
 + SwordBlock module
 + Replenish module
 + ReverseStep module
-+ AutoFarm module
-+ AutoPearl module
 + AutoShoot module
-+ AutoBuff module
 + SmartEat module
-+ AutoDodge module with SimulatedArrow prediction
-+ AutoCrafter that auto-crafts a configured item via the crafting grid
 + AutoShop module
 + AutoQueue module
 + AutoLeave module
-+ AutoF5 perspective module
 + TargetLock module
 + AntiAim module
 + SpinBot module
-+ BookBot module
-+ Notebot module
 + Macros module
 + ClickTp module
 + Freeze module
@@ -72,38 +101,13 @@
 + FakeLag ServerPosBox showing your server-side hitbox position while lagging
 + Settings module to remove value limits
 + Command builder with itemdata and enchant commands
-+ MultiSelect, KeyBind and Vec3 config value types with ClickGUI editors
-+ ToggleableValueGroup and ModeValueGroup config types
++ BookBot module
++ Notebot module
++ AutoF5 perspective module
 + JumpEffect cosmetic module
 + Twerk cosmetic module
 + Vomit cosmetic module
-+ ChestStealer Instant refill option
-~ Modern rotation engine integrated into the aim and scaffold modules
-~ ClickGUI rendered in-game via a persistent pre-warmed embedded browser for instant opens
-~ Editable font setting in the web ClickGUI
-~ ClickGUI static mode via query params
-~ Neverlose-style ClickGUI header with icon chip and animated scoped search panel
-~ Draggable ClickGUI/Settings top nav, movable anywhere on screen and shared across styles
-~ NextGen-style main menu redesign with cards, panels and font-icon dock
-~ fdpheadericons expanded with FA6 glyphs for the main menu
-~ Vanilla multiplayer and disconnect screens routed to the native server list
-~ NextGen browser download progress shown with percent, bar and HUD notifications, downloading in the background and pinned on-screen until it finishes
-~ Velocity legacy modes: Delayed, Grim, Grim1.17, GrimC07, GrimDamage, AAC4Reduce, AAC5.2.0, AAC5.2.0Combat, Cancel, Phase, SideStrafe with OnlyGround/OnlyCombat/noFire/OverrideDirection gates
-~ Velocity modes: MatrixReverse, AttackReduce, Spoof, Tick, AAC5Reduce, Intave, HypixelBoost, Minemen, MatrixSimple, Polar and Sentinel
-~ Flight legacy modes: VerusDamage, Delayed, Grim, Grim1.17, GrimC07, GrimDamage, AAC4Reduce, AAC5.2.0, AAC5.2.0Combat, Cancel, Phase, SideStrafe
-~ Flight modes: Creative, BlockDrop, Clip, FakeGround, FunCraft, TeleportRewinside plus Grim, Sentinel, Hylex and Polar
-~ Flight vanilla vertical speed setting
-~ LongJump legacy mode pack: Motion, Packet, BlockBB, Step, AttemptJump, AttemptDisable, GlobalTimer, TimerOnlyAir, Boost, NCPLatest, OldNCPDamage, MatrixFlag, OldMatrixHurt, Vulcan and more, plus Grim, Hypixel and Spartan
-~ LongJump no-auto-jump-while-using-item and reset-timer-on-ground options
-~ Speed modes: BlocksMC, LatestVerusHop, VerusDamage, VerusSpeeds, Vulcan with custom onPreMotion behavior, plus Grim, Sentinel, Hylex and Polar
-~ Step modes: Matrix6.7.0, NCPNew, OldAAC, AAC4.4.0, Vulcan, Verus, BlocksMC with Timer options
-~ Step extra delay and jump simulation options
-~ NoSlow modes: OnlyGround, OnlyMove, AntiSwitchItem, AAC4, OldIntave, Medusa, HypixelNew, SpamItemChange, SpamPlace, SpamEmptyPlace, Matrix, GrimAC with legacy teleport setback handling
-~ NoFall modes: Vanilla, AlwaysSpoof, Damage, MotionFlag, Phase, HypixelBlink, HypixelFlag, Packet1, Packet2, Verus, OldVulcan, LatestVulcan, Matrix variants, AAC variants, plus Polar, Sentinel and Intave
-~ Jesus modes: AAC4.2.1, Jump, Legit, Matrix, SilentYPort, Twilight, Vulcan
-~ NoWeb modes for Grim, Vulcan, Verus and Matrix
-~ Scaffold Jump, Sneak, Sprint and Breezily modes with autojump, godBridge movement, separate jump rotation and expanded rotation options
-~ Reusable DirectionalInput movement abstraction
+> Module improvements & options
 ~ Target rework with armor filter/swap, clan-hide and entity-visibility updates
 ~ Armor typed swap binds, legit mode, no-drop control, smart filtering, backup logic and cycle swaps
 ~ AutoArmor manual armor binds and legit armor filter
@@ -182,6 +186,8 @@
 ~ Arraylist name spacing and alpha-blend-range
 ~ AutoClicker gating options
 ~ Animations held-item Z-offset and scale in first-person
++ ChestStealer Instant refill option
+> Fixes & stability
 * Harden the client against crashes from event-handler, render-mixin, preload and inventory edge cases
 * Fix critical memory leaks across 7 modules
 * Restore reliable scaffold block placement and fix the target reset regression
@@ -220,6 +226,7 @@
 * Keep your own first-person swing on NoSwing and suppress only the server packet
 * Correct swing animation speed calculation
 * Wire Animations held-item Z-offset and scale into the first-person renderer
+> Removed
 - Eclipse plugin and Kotlin compile dependencies
 - omni-sprint from Scaffold sprint
 - duplicate animation and render-util code
