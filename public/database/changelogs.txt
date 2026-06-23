@@ -1,4 +1,4 @@
-~ B17 (#d8bccea)
+~ B17 (#b2d8660)
 > NextGen ClickGUI
 + In-game web ClickGUI rendered via an embedded browser
 + MultiSelect, KeyBind and Vec3 config value types with ClickGUI editors
@@ -8,16 +8,34 @@
 ~ ClickGUI static mode via query params
 ~ Neverlose-style ClickGUI header with icon chip and animated scoped search panel
 ~ Draggable ClickGUI/Settings top nav, movable anywhere on screen and shared across styles
++ FileValue config type with a crash-safe file picker (ValueKind.FILE) and a fileValue() builder DSL, rendered across every style
++ CurveValue config type with control-point sampling (ValueKind.CURVE) and a builder, rendered as an interactive curve graph across every style
++ Config value aliases so renamed settings still load (rename-safe configs)
++ Setting descriptions shown as hover tooltips in the native ClickGUI styles
++ High-quality on-demand glyph caching for non-ASCII characters instead of the blurry vanilla fallback
+~ Complete config value-type parity across all ClickGUI styles
+~ Setting descriptions made overridable per module
 > Main menu & screens
 + NextGen-style main menu redesign with cards, panels and font-icon dock
 + Native server-list screen matching the main menu
 ~ fdpheadericons expanded with FA6 glyphs for the main menu
 ~ Vanilla multiplayer and disconnect screens routed to the native server list
 ~ NextGen browser download progress shown with percent, bar and HUD notifications, downloading in the background and pinned on-screen until it finishes
+> Spotify
++ One-tap "Connect with Spotify" via an embedded PKCE client id — zero-settings Quick mode that opens the authorization the moment you enable the module
++ Zero-setup Local source that reads the now-playing track straight from the Windows media session (SMTC) — works with the Spotify desktop app or web player, no account or auth, with play/pause/next/previous through the same session
++ Standalone Spotify web player UI plus a brand-new in-game web player screen with an authentic Spotify look, auto-connect and album art
++ Now-playing state and playback control exposed over the nextgen ClickGUI REST bridge
+~ Auto-use the zero-setup Local source when no Web API credentials are set
+~ Real album art with correct non-ASCII artist names
+* Connect on old Java 8 launchers (TLS-verification bypass on the Web API client), null-safe token/playlist/track parsing, OAuth callback timeout and rotated-refresh-token persistence, plus player GUI fixes (row hit-test offset, progress-bar Int overflow/overshoot, volume slider snap-back, connection-error null race)
+* Now-playing worker never hangs the client and runs until cancelled instead of keying off the state flag
 > Rotation engine
 + Modern rotation engine with request arbiter, math helpers and event hooks
 + Global rotation engine override to force the modern engine clientwide
 ~ Modern rotation engine integrated into the aim and scaffold modules
++ Post-rotation action executor with arbiter auto-expiry
+~ Global rotation engine now defaults to Modern, with Ghost off by default
 > New bypasses
 ~ Velocity legacy modes: Delayed, Grim, Grim1.17, GrimC07, GrimDamage, AAC4Reduce, AAC5.2.0, AAC5.2.0Combat, Cancel, Phase, SideStrafe with OnlyGround/OnlyCombat/noFire/OverrideDirection gates
 ~ Velocity modes: MatrixReverse, AttackReduce, Spoof, Tick, AAC5Reduce, Intave, HypixelBoost, Minemen, MatrixSimple, Polar and Sentinel
@@ -107,6 +125,30 @@
 + JumpEffect cosmetic module
 + Twerk cosmetic module
 + Vomit cosmetic module
++ Kick module
++ SleepWalker module
++ AutoChatGame module
++ MiddleClickAction module
++ TextFieldProtect module
++ DankBobbing module
++ QuickPerspectiveSwap module
++ MobOwners module
++ NewChunks module
++ Trajectories module
++ Particles module
++ SkinChanger module with a file-picker skin source
++ ChestCleaner module
++ Derp module
++ MurderMystery module
++ AutoConfig module
++ ReportHelper module
++ CombineMobs module
++ Aspect module
++ AutoMobHeal module
++ BetterInventory module
++ BetterTitle module
++ HitFX module
++ SkinDerp to randomly toggle your skin model parts
 > Module improvements & options
 ~ Target rework with armor filter/swap, clan-hide and entity-visibility updates
 ~ Armor typed swap binds, legit mode, no-drop control, smart filtering, backup logic and cycle swaps
@@ -188,6 +230,19 @@
 ~ AutoClicker gating options
 ~ Animations held-item Z-offset and scale in first-person
 + ChestStealer Instant refill option
+~ KillAura RangeChance randomizes attack reach to slip past reach checks
+~ KillAura opt-in post-rotation attack
+~ AutoClicker setting descriptions
+~ NoSlowBreak MiningFatigue handling
+~ Ambience time presets
+~ StaffDetector tab highlight
+~ Hat and BlockOverlay enriched
+~ ServerCrasher and ChatControl enriched
+~ DashTrail density, scale, bloom and rainbow options
+~ CSGO crosshair moved into the Crosshair module
+~ Setting hover descriptions seeded across module categories
+~ New ClickPattern, ExpiringList, SimulatedPlayerCache and MovementCorrection helper utilities behind the newer module behavior
+~ ToggleCommand migrated to the command-builder DSL
 > Fixes & stability
 * Harden the client against crashes from event-handler, render-mixin, preload and inventory edge cases
 * Fix critical memory leaks across 7 modules
@@ -229,6 +284,11 @@
 * Correct swing animation speed calculation
 * Wire Animations held-item Z-offset and scale into the first-person renderer
 * HitSelect only triggers hit-later-in-trades after taking knockback
+* In-game ClickGUI browser loads from the local MCEF natives instead of the dead montoyo mirror — skips the unreachable remote update check and serves the on-disk manifest, ending the SSL/PKIX spam and virtual-mode fallback that left the browser dead
+* Regen stuck-timer flag fixed and the timer restored on disable
+* BrandSpoofer button setting now registers
+* Drop duplicate CurveValue renderers
+* Preserve the concrete config value type through describe()
 > Removed
 - Eclipse plugin and Kotlin compile dependencies
 - omni-sprint from Scaffold sprint
