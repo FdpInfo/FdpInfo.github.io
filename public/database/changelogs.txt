@@ -1,4 +1,4 @@
-~ B17 (#6020cf7)
+~ B17 (#4f4d0ea)
 > NextGen ClickGUI
 + In-game web ClickGUI rendered via an embedded browser
 + MultiSelect, KeyBind and Vec3 config value types with ClickGUI editors
