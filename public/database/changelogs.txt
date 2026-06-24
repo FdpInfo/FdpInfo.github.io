@@ -17,9 +17,7 @@
 ~ Setting descriptions made overridable per module
 + SideGui UI launcher with functional cards — HUD Designer, Font Manager, Alt Manager, Spotify, HUD, Configs and Capes (replacing the Coming Soon placeholders), with rounded cards and an animated hover glow
 + 12 color themes via a unified themeGradient, registered in the SideGui grid
-+ Real-time websocket event push to the web ClickGUI, surfacing value descriptions live as tooltips across non-combat module values too
 ~ In-game browser assets re-download on demand with a failure log
-~ On-demand glyphs packed into a bounded multipage font atlas
 > Main menu & screens
 + NextGen-style main menu redesign with cards, panels and font-icon dock
 + Native server-list screen matching the main menu
@@ -60,9 +58,9 @@
 + Bounded pathfinding with a search budget, node and cost limits and a safe fallback (diagonal moves), powering InfiniteAura teleport
 + Block placement pipeline that separates face, position, rotation and action
 + Tool scoring with configurable durability protection (AutoTool)
-+ Drag-aware projectile/ballistic solver using time and velocity bisection, shared by projectile aiming, arrow tracing and the incoming-arrow warning
++ Drag-aware projectile/ballistic solver using time and velocity bisection
 + Bounded N-tick simulate-ahead prediction powering AutoDodge and the trajectory features
-+ Rotation modes — Instant, PostMove and aim-after-action — decoupled from the action and released on packet send, with optional aim-vector debug
++ Rotation modes — Instant, PostMove and aim-after-action — decoupled from the action
 + Dynamic glyph-atlas allocator backing a bounded multipage on-demand font, with a safe fallback to the old renderer
 + AntiBot transparent, fully-configurable predicates (age, name, armor, radius) — always visible in config, never hidden
 > New bypasses
@@ -282,7 +280,6 @@
 ~ New ClickPattern, ExpiringList, SimulatedPlayerCache and MovementCorrection helper utilities behind the newer module behavior
 ~ ToggleCommand migrated to the command-builder DSL
 ~ AutoBuff unified health and status-effect auto-buff with a hold-to-use state machine
-~ AntiBot configurable transparent-bot predicates with corrected invalid-ground tracking
 ~ DamageParticle floating damage-number particles
 ~ Movement-based arrow dodging and an incoming-arrow warning, both driven by simulated trajectory planning
 ~ Optional drag-aware projectile aiming via the ballistic solver
