@@ -48,6 +48,23 @@
 + DynamicAccel distance- and crosshair-aware acceleration on the Modern smoothing
 + Sticky aim-spot preference that biases toward the least difference from the last point
 ~ Post-move actions released on packet send (with aim-vector debug)
+> Engine & architecture
++ Shared geometry math toolkit — lines, rays, planes, faces, vectors and intersection helpers — with test coverage
++ Immutable int-packed color type for fast, allocation-free render colors
++ Per-action randomized range value type, used by KillAura RangeChance
++ Config serialization hardening — atomic per-section writes, rename-safe value aliases and tolerant loading of malformed or mismatched values
++ Command builder DSL with typed, castable parameters and crash-safe tab-completion
++ Coroutine event bus with cancel/discard suspend handlers and producers for value, module, command and config changes
++ Reactive client-change event stream feeding the UI over a real-time websocket (replacing polling) with auto-reconnect
++ Incremental, bounded world scanning and block-location tracking that never stalls the client
++ Bounded pathfinding with a search budget, node and cost limits and a safe fallback (diagonal moves), powering InfiniteAura teleport
++ Block placement pipeline that separates face, position, rotation and action
++ Tool scoring with configurable durability protection (AutoTool)
++ Drag-aware projectile/ballistic solver using time and velocity bisection, shared by projectile aiming, arrow tracing and the incoming-arrow warning
++ Bounded N-tick simulate-ahead prediction powering AutoDodge and the trajectory features
++ Rotation modes — Instant, PostMove and aim-after-action — decoupled from the action and released on packet send, with optional aim-vector debug
++ Dynamic glyph-atlas allocator backing a bounded multipage on-demand font, with a safe fallback to the old renderer
++ AntiBot transparent, fully-configurable predicates (age, name, armor, radius) — always visible in config, never hidden
 > New bypasses
 ~ Velocity legacy modes: Delayed, Grim, Grim1.17, GrimC07, GrimDamage, AAC4Reduce, AAC5.2.0, AAC5.2.0Combat, Cancel, Phase, SideStrafe with OnlyGround/OnlyCombat/noFire/OverrideDirection gates
 ~ Velocity modes: MatrixReverse, AttackReduce, Spoof, Tick, AAC5Reduce, Intave, HypixelBoost, Minemen, MatrixSimple, Polar and Sentinel
@@ -270,7 +287,6 @@
 ~ Movement-based arrow dodging and an incoming-arrow warning, both driven by simulated trajectory planning
 ~ Optional drag-aware projectile aiming via the ballistic solver
 ~ MiddleClickAction consolidation
-+ Reusable client foundations — reactive client-change event bus, bounded world planning/prediction, tool scoring, world-space line/polyline render primitives and trajectory simulation, with test coverage
 > Fixes & stability
 * Harden the client against crashes from event-handler, render-mixin, preload and inventory edge cases
 * Fix critical memory leaks across 7 modules
