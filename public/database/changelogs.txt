@@ -1,4 +1,4 @@
-~ B17 (#b2d8660)
+~ B17 (#6020cf7)
 > NextGen ClickGUI
 + In-game web ClickGUI rendered via an embedded browser
 + MultiSelect, KeyBind and Vec3 config value types with ClickGUI editors
@@ -15,6 +15,11 @@
 + High-quality on-demand glyph caching for non-ASCII characters instead of the blurry vanilla fallback
 ~ Complete config value-type parity across all ClickGUI styles
 ~ Setting descriptions made overridable per module
++ SideGui UI launcher with functional cards — HUD Designer, Font Manager, Alt Manager, Spotify, HUD, Configs and Capes (replacing the Coming Soon placeholders), with rounded cards and an animated hover glow
++ 12 color themes via a unified themeGradient, registered in the SideGui grid
++ Real-time websocket event push to the web ClickGUI, surfacing value descriptions live as tooltips across non-combat module values too
+~ In-game browser assets re-download on demand with a failure log
+~ On-demand glyphs packed into a bounded multipage font atlas
 > Main menu & screens
 + NextGen-style main menu redesign with cards, panels and font-icon dock
 + Native server-list screen matching the main menu
@@ -30,12 +35,19 @@
 ~ Real album art with correct non-ASCII artist names
 * Connect on old Java 8 launchers (TLS-verification bypass on the Web API client), null-safe token/playlist/track parsing, OAuth callback timeout and rotated-refresh-token persistence, plus player GUI fixes (row hit-test offset, progress-bar Int overflow/overshoot, volume slider snap-back, connection-error null race)
 * Now-playing worker never hangs the client and runs until cancelled instead of keying off the state flag
++ Spotify-identical library browser — playlists, tracks, play and like
++ One-tap library connect via QUICK/PKCE
+~ Seek, shuffle and repeat controls, with the play/pause state lag fixed
 > Rotation engine
 + Modern rotation engine with request arbiter, math helpers and event hooks
 + Global rotation engine override to force the modern engine clientwide
 ~ Modern rotation engine integrated into the aim and scaffold modules
 + Post-rotation action executor with arbiter auto-expiry
 ~ Global rotation engine now defaults to Modern, with Ghost off by default
++ PointTracker aim-point system with best-hit selection and delay/lazy/gaussian processors, wired opt-in into KillAura, Aimbot, InfiniteAura, ProjectileAimbot and TimerRange
++ DynamicAccel distance- and crosshair-aware acceleration on the Modern smoothing
++ Sticky aim-spot preference that biases toward the least difference from the last point
+~ Post-move actions released on packet send (with aim-vector debug)
 > New bypasses
 ~ Velocity legacy modes: Delayed, Grim, Grim1.17, GrimC07, GrimDamage, AAC4Reduce, AAC5.2.0, AAC5.2.0Combat, Cancel, Phase, SideStrafe with OnlyGround/OnlyCombat/noFire/OverrideDirection gates
 ~ Velocity modes: MatrixReverse, AttackReduce, Spoof, Tick, AAC5Reduce, Intave, HypixelBoost, Minemen, MatrixSimple, Polar and Sentinel
@@ -149,6 +161,15 @@
 + BetterTitle module
 + HitFX module
 + SkinDerp to randomly toggle your skin model parts
++ AutoArmor module
++ ArmorSwap module
++ ArmorFilter module
++ TargetFocus module
++ HideClans module
++ EntityVisibilityFilter module
++ EasyPearl manual-throw ender pearl aim-assist
++ DebugRecorder AI data recorder
++ BetterTab tab sorting with a player cap
 > Module improvements & options
 ~ Target rework with armor filter/swap, clan-hide and entity-visibility updates
 ~ Armor typed swap binds, legit mode, no-drop control, smart filtering, backup logic and cycle swaps
@@ -243,6 +264,13 @@
 ~ Setting hover descriptions seeded across module categories
 ~ New ClickPattern, ExpiringList, SimulatedPlayerCache and MovementCorrection helper utilities behind the newer module behavior
 ~ ToggleCommand migrated to the command-builder DSL
+~ AutoBuff unified health and status-effect auto-buff with a hold-to-use state machine
+~ AntiBot configurable transparent-bot predicates with corrected invalid-ground tracking
+~ DamageParticle floating damage-number particles
+~ Movement-based arrow dodging and an incoming-arrow warning, both driven by simulated trajectory planning
+~ Optional drag-aware projectile aiming via the ballistic solver
+~ MiddleClickAction consolidation
++ Reusable client foundations — reactive client-change event bus, bounded world planning/prediction, tool scoring, world-space line/polyline render primitives and trajectory simulation, with test coverage
 > Fixes & stability
 * Harden the client against crashes from event-handler, render-mixin, preload and inventory edge cases
 * Fix critical memory leaks across 7 modules
@@ -289,6 +317,10 @@
 * BrandSpoofer button setting now registers
 * Drop duplicate CurveValue renderers
 * Preserve the concrete config value type through describe()
+* 20 runtime/logic fixes across modules from an adversarial review
+* Attacks now fire while standing still (drained orphaned post-move tasks)
+* Suppress value/module change events during bulk config load, with a lightweight loading-flag holder so headless value checks pass
+* Modern rotation smoothing cadence and crosshair detection matched to the reference
 > Removed
 - Eclipse plugin and Kotlin compile dependencies
 - omni-sprint from Scaffold sprint
