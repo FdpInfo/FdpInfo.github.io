@@ -1,3 +1,80 @@
+~ B18 (#9bfe57d)
+> NextGen ClickGUI
++ Collapsible, nested value groups — module settings grouped into collapsible configurables across the whole module list, rendered in every native style and the NextGen theme
++ MCEF mirror pool with SHA-256 integrity verification for browser assets
++ Theme manager for the NextGen ClickGUI
++ Web HUD bridge and a web main-menu bridge with a virtual-screen router (native menu kept, virtual screens gated off by default)
++ Persistent menu shell with portal tooltips and modals, no-cache UI serving and a chunked bundle
++ Shared module search with alias and keyword matching, in the ClickGUI and the in-game menu list
++ Search bar moved to the top, draggable search, collapsible categories in the dropdown style, and clearer group headers and color picker
+~ Browser asset download reworked — progressive step list with precise progress, fast-resume retry, a separate clean reinstall, and an HTTP mirror fetch so it installs on Java 8
+~ In-game bind and value changes sync live to the NextGen ClickGUI, matching nested values by key
+* Bundled browser demo mod no longer opens its broken screen and crashes
+* MCEF mixin no longer nulls assets mid-download, so the browser installs fully
+* Six audited defects in nested-group rendering
+> Config & value system
++ Value system extended with registries, value migration and group plumbing
++ Shared move/group helper hoisted to Configurable, dropping 62 per-module duplicates
++ Input validation rejects NaN, infinity and inverted ranges and validates toggles, binds and values in AutoSettings
+~ Registry maps cached with lazy initialization
+* Grouped values no longer lost when migrating flat legacy profiles, and newly-grouped children migrate into already-nested profiles
+* Cross-module shared values can no longer be stolen or duplicated, and duplicate value names that corrupted config round-trips were renamed
+* Leaf-first configurable lookup for duplicate names
+> Rotation & anticheat
++ Continuous anticheat detection with hardened server fingerprinting, ServerObserver telemetry and plugin-scan detection
++ Anticheat-aware mode advisor for velocity and criticals
+~ Modern rotation engine and settings refined, restoring self-motion prediction and legit speed jitter
+~ Placement, digging and Extinguish gate on the server rotation reaching the target
+~ Silent yaw sent as a continuous offset and unwrapped at the packet choke point to close the seam on strict anticheats
+~ Sprint-jump boost follows the sent yaw when movement is corrected, and sprint drops when a silent rotation diverges from movement
+~ Legacy Strafe correction defaults on so the legacy engine stays anticheat-safe
+* Silent rotation resets atomically on disable and input/rotation history clears on teardown to stop toggle-time flags
+> Combat
++ Target tracker, weapon scoring and KillAura value grouping
++ Shared humanized click-pattern engine for KillAura, AutoClicker and TpAura
++ KillAura PredictExitingRange fires an early last-hit as the target leaves reach
++ KillAura RangeIndicator draws an in-world reach ring that recolors on a reachable target
++ KillAura SoundOnSwingFail gives audible feedback when a swing misses
++ Criticals WhenSprinting drops sprint on attack so sprint-crits register
++ AutoShoot RequiresKillAura and NotDuringCombat gates, AutoWeapon SwitchBack, and KeepSprint chance with hurt-time motion variance
+~ Anticheat-aware velocity, killaura and criticals refinements
+* Five adversarially-verified defects in Velocity and KillAura, plus null-safe regen amplifier and enchantment lookup
+> New modules
++ EntityControl module
++ CrystalView module
++ ItemChams module
++ HideAppearance module
++ HandDerp module
++ DebugOverlay module
++ NoMissCooldown module
++ NoSlowBreak module
++ BetterChat module
++ JumpReset that hops or drops sprint on hit to cut knockback
++ GrimDebug diagnostic module for outgoing movement-packet patterns
++ Per-module keybinds with toggle, hold and smart actions plus modifiers
+> Module improvements & options
+~ Timer NormalizeDuringCombat resets game speed while fighting
+~ Scaffold shares vanilla jump physics to skip two-block jump-boost hops
+~ Nuker FloorMode clears a single flat block layer at a configurable offset
+~ AutoFarm UseFortune swaps to a Fortune tool before harvesting
+~ AutoQueue keyword triggers on chat, title or subtitle run a command or use-item action
+~ Phase Intave downward mining-phase mode, and Disabler intaveFly latch and buffers reset on disable
+~ GrimAnalysis mode in PacketDebugger with movement-packet diagnostics and incoming GrimAC alert capture
+~ ESP ColorMode adds Health- and Distance-based entity coloring
+~ Trajectories DetailedInfo labels landing distance and flight time
+~ ComboCounter overlay shows the current hit streak
+~ Keystrokes LMB/RMB buttons with a live CPS counter, and Effects Modern per-effect duration bar
+~ vclip command, and command tab-completion lists values nested in setting groups
+> Render
+~ RenderUtils modularized into focused helpers, with every call site migrated off the deprecated APIs
+~ Batched primitives and allocation-free world-to-screen, with ESP and ESP2D fixes
+~ ESP2D projection matrices cached once per entity and the rainbow color cache bounded
+> Fixes & stability
+* Every command routed through a unified builder runtime adapter, with numeric argument parsing hardened against non-finite input
+* Module registry validation fails fast with safe enable/disable rollback, and disabled modules no longer affect the game
+* Null-safe player spawn with a fallback profile when the tab-list entry is missing
+* Scaffold raycasts placement from the server rotation so strict anticheat accepts the block
+* Suspend-handler behaviors and a module enable-effect hook in the core, with a re-entrant config-loading scope
 ~ B17 (#4f4d0ea)
 > NextGen ClickGUI
 + In-game web ClickGUI rendered via an embedded browser
