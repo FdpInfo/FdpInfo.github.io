@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { asset } from "@/lib/asset";
 import { SecondaryHeader } from "@/components/SecondaryHeader";
 import { Footer } from "@/components/Footer";
@@ -26,6 +27,11 @@ const DL_CSS = `
 .dl-actions>*{flex:1;}
 .dl-note{margin-top:1.25rem;font-size:.78rem;color:#7c8aa3;text-align:center;max-width:42rem;margin-left:auto;margin-right:auto;}
 .dl-btn svg{margin-right:.55rem;flex-shrink:0;fill:currentColor;}
+.dl-about{max-width:42rem;margin:2.5rem auto 0;text-align:left;border:1px solid rgba(51,65,85,.5);border-radius:1.25rem;background:rgba(30,41,59,.22);padding:1.5rem 1.75rem;}
+.dl-about h2{font-size:1rem;font-weight:700;color:#f1f5f9;margin-bottom:.5rem;}
+.dl-about-body{font-size:.9rem;color:#94a3b8;line-height:1.65;margin-bottom:1.4rem;}
+.dl-about-body a{color:#c4b5fd;font-weight:600;}
+.dl-steps{margin:0;padding-left:1.2rem;display:flex;flex-direction:column;gap:.45rem;font-size:.9rem;color:#94a3b8;line-height:1.6;}
 `;
 
 type Props = {
@@ -162,6 +168,23 @@ export function DownloadContent({
                   <strong>{t.downloadPage.stop}</strong>
                   {t.downloadPage.sourceEnd}
                 </p>
+
+                <div className="dl-about" data-aos="fade-up">
+                  <h2>{t.downloadPage.aboutTitle}</h2>
+                  <p className="dl-about-body">
+                    {t.downloadPage.aboutBody}{" "}
+                    <Link href="/changelogs">
+                      {t.downloadPage.aboutChangelog}
+                    </Link>
+                    .
+                  </p>
+                  <h2>{t.downloadPage.howTitle}</h2>
+                  <ol className="dl-steps">
+                    <li>{t.downloadPage.step1}</li>
+                    <li>{t.downloadPage.step2}</li>
+                    <li>{t.downloadPage.step3}</li>
+                  </ol>
+                </div>
               </div>
             </div>
           </div>

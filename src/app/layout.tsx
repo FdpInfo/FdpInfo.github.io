@@ -24,7 +24,7 @@ const JSON_LD = {
       "@type": "SoftwareApplication",
       name: "FDP Client",
       url: "https://fdpinfo.github.io/",
-      downloadUrl: "https://fdpinfo.github.io/download",
+      downloadUrl: "https://fdpinfo.github.io/download/",
       applicationCategory: "GameApplication",
       operatingSystem: "Windows, macOS, Linux",
       image: `https://fdpinfo.github.io${BASE_PATH}/src/resources/png/fdp_gui.png`,
@@ -52,7 +52,6 @@ export const metadata: Metadata = {
     title: "FDPCLIENT",
     description:
       "Unbeatable Minecraft cheat! Dominate 1.8.9, 1.12.2 or 1.19.4 with unmatched features surpassing all competitors.",
-    url: "https://fdpinfo.github.io",
     siteName: "FDP Client",
     type: "website",
     images: [

@@ -267,6 +267,15 @@ export const es: DeepPartial<Dict> = {
       ". Serás redirigido a las descargas oficiales automáticamente — pulsa ",
     stop: "Detener",
     sourceEnd: " para quedarte aquí.",
+    aboutTitle: "¿Qué es FDP Client?",
+    aboutBody:
+      "FDP Client es un client de inyección de Forge para Minecraft, gratuito y de código abierto, para las versiones 1.8 – 1.20.1, nacido como reemplazo de LiquidBounce tras el abandono de la 1.8.9. Incluye su propio inyector, funciona en Windows, macOS y Linux, y cada beta trae nuevos módulos, bypasses, correcciones y mejoras de rendimiento —",
+    aboutChangelog: "mira todo lo que cambió en los changelogs",
+    howTitle: "Cómo instalar",
+    step1: "Descarga la última build con el botón de arriba.",
+    step2: "Abre Minecraft (1.8 – 1.20.1) y ejecuta el inyector de FDP.",
+    step3:
+      "Elige la instancia del juego e inyecta — FDP Client se carga directamente en la partida.",
   },
   communityPage: {
     badge: "Comunidad",

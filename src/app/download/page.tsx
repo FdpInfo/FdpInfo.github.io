@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "FDP Client – Downloads",
   description: "Download FDP Client – the best free Minecraft cheat client.",
   authors: [{ name: "fdpclient" }],
+  alternates: { canonical: "https://fdpinfo.github.io/download/" },
 };
 
 const OFFICIAL = "https://lucas-lima.xyz/archives/fdpclient";

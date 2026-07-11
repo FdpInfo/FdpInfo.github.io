@@ -3,7 +3,7 @@ import { PrivacyContent } from "./PrivacyContent";
 
 export const metadata: Metadata = {
   title: "FDP Client Privacy Policy",
-  alternates: { canonical: "https://fdpinfo.github.io/privacy" },
+  alternates: { canonical: "https://fdpinfo.github.io/privacy/" },
 };
 
 export default function PrivacyPage() {

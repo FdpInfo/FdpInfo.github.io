@@ -27,20 +27,39 @@ export function RedirectToast({
   const { t } = useI18n();
   const [seconds, setSeconds] = useState(3);
   const [stopped, setStopped] = useState(false);
+  const [armed, setArmed] = useState(false);
   const intervalRef = useRef(0);
 
   useEffect(() => {
-    intervalRef.current = window.setInterval(() => {
-      setSeconds((s) => {
-        const next = s - 1;
-        if (next <= 0) {
-          window.clearInterval(intervalRef.current);
-          window.location.href = target;
-        }
-        return next;
-      });
-    }, 1000);
-    return () => window.clearInterval(intervalRef.current);
+    const events: (keyof WindowEventMap)[] = [
+      "pointerdown",
+      "pointermove",
+      "wheel",
+      "keydown",
+      "scroll",
+      "touchstart",
+    ];
+    const begin = () => {
+      events.forEach((e) => window.removeEventListener(e, begin));
+      setArmed(true);
+      intervalRef.current = window.setInterval(() => {
+        setSeconds((s) => {
+          const next = s - 1;
+          if (next <= 0) {
+            window.clearInterval(intervalRef.current);
+            window.location.href = target;
+          }
+          return next;
+        });
+      }, 1000);
+    };
+    events.forEach((e) =>
+      window.addEventListener(e, begin, { passive: true })
+    );
+    return () => {
+      events.forEach((e) => window.removeEventListener(e, begin));
+      window.clearInterval(intervalRef.current);
+    };
   }, [target]);
 
   const stop = () => {
@@ -85,7 +104,10 @@ export function RedirectToast({
             <button type="button" className="toast-stop" onClick={stop}>
               {t.redirectToast.stop}
             </button>
-            <div className="toast-progress"></div>
+            <div
+              className="toast-progress"
+              style={{ animationPlayState: armed ? "running" : "paused" }}
+            ></div>
           </>
         )}
       </div>

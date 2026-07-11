@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: "FDP Client – Changelog & Release Notes",
   description:
     "The full FDP Client changelog and known issues for every release, newest first.",
+  alternates: { canonical: "https://fdpinfo.github.io/changelogs/" },
 };
 
 export default function ChangelogsPage() {

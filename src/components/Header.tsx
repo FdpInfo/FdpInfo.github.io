@@ -13,14 +13,14 @@ export function Header() {
       <div className="mx-auto largura-maxima-72rem padding-left-right-1rem media-padding-horizontal-1-5rem">
         <div className="display-flex altura-4rem alinhar-itens-centro justificar-conteudo-espaco-entre media-altura-5-rem">
           <div className="margem-direita-1rem flex-encolher-0">
-            <a className="exibir-bloco" href="#0" aria-label="fdp">
+            <Link className="exibir-bloco" href="/" aria-label="fdp">
               <img
                 src={asset("/src/resources/png/fdp.png")}
                 width="80"
                 height="80"
                 alt="minecraft hacked client fdp"
               />
-            </a>
+            </Link>
           </div>
           <nav className="display-flex flex-crescer-1">
             <ul className="display-flex flex-crescer-1 flex-enrolar alinhar-itens-centro justificar-conteudo-fim">

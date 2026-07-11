@@ -266,6 +266,14 @@ export const cn: DeepPartial<Dict> = {
       "。你将被自动跳转到官方下载页 —— 点击 ",
     stop: "停止",
     sourceEnd: " 即可留在本页。",
+    aboutTitle: "什么是 FDP Client？",
+    aboutBody:
+      "FDP Client 是一款免费开源的 Minecraft Forge 注入客户端，支持 1.8 – 1.20.1 版本，诞生于 LiquidBounce 放弃 1.8.9 支持之后。它自带注入器，可在 Windows、macOS 和 Linux 上运行，每个 Beta 都会带来新模块、绕过、修复与性能优化 ——",
+    aboutChangelog: "在更新日志中查看所有变化",
+    howTitle: "安装方法",
+    step1: "点击上方按钮下载最新构建版本。",
+    step2: "启动 Minecraft（1.8 – 1.20.1）并运行 FDP 注入器。",
+    step3: "选择游戏实例并注入 —— FDP Client 会直接加载到运行中的游戏里。",
   },
   communityPage: {
     badge: "社区",

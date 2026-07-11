@@ -57,12 +57,12 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <a
+                <Link
                   className="text-color-gray-300 transition-all transition-duration-150ms transition-ease-in-out hover-text-gray"
-                  href="/next/changelogs/"
+                  href="/changelogs"
                 >
                   {t.footer.changelog}
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

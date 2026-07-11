@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "FDP Client – Community",
   description:
     "Join the FDP Client community on Discord, follow the changelog and support the project.",
+  alternates: { canonical: "https://fdpinfo.github.io/community/" },
 };
 
 export default function CommunityPage() {

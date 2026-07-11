@@ -6,7 +6,7 @@ shipped as a fully static export, so it runs on GitHub Pages with no server whil
 keeping React, TypeScript, Swiper, AOS, the particle canvas and Google Analytics all
 working client-side.
 
-Live site: **https://fdpinfo.github.io/next/**
+Live site: **https://fdpinfo.github.io/**
 
 ## Pages
 

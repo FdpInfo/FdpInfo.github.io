@@ -24,6 +24,7 @@ const ROUTES: { path: string; priority: number }[] = [
 export default function sitemap(): MetadataRoute.Sitemap {
   return ROUTES.map(({ path, priority }) => ({
     url: path ? `${SITE}/${path}/` : `${SITE}/`,
+    lastModified: new Date(),
     changeFrequency: "weekly",
     priority,
   }));
