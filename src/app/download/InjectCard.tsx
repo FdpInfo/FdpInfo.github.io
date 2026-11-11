@@ -1,13 +1,8 @@
 import { asset } from "@/lib/asset";
-import {
-  FDP_BUILDS_ENDPOINT,
-  FDP_LUNAR_GUIDE,
-} from "@/lib/community-constants";
+import { FDP_LUNAR_GUIDE } from "@/lib/community-constants";
 import { useI18n } from "@/lib/i18n";
 import { BuildChecksum } from "./BuildChecksum";
 import type { FdpBuildState } from "./useFdpBuilds";
-
-const FALLBACK_DOWNLOAD = `${FDP_BUILDS_ENDPOINT}?kind=inject`;
 
 type Props = {
   build: string;
@@ -35,6 +30,11 @@ export function InjectCard({ build, state, official }: Props) {
   const info = state.status === "ready" ? state.build : null;
   const soon = info?.channel === "unavailable";
   const available = info?.channel === "actions" || info?.channel === "release";
+  const href = available
+    ? info.download
+    : state.status === "error"
+      ? official
+      : null;
 
   return (
     <div className="dl-card" data-aos="fade-up">
@@ -65,24 +65,24 @@ export function InjectCard({ build, state, official }: Props) {
         {soon ? <span className="dl-chip soon">{d.chipSoon}</span> : null}
       </div>
       <div className="dl-actions">
-        {soon ? (
+        {href ? (
+          <a
+            className="button-primary largura-100porcento bg-linear-gradient gradient-from-white gradient-to-white gradient-to-white-0-8 text-color-gray-900 transition-all transition-duration-150ms transition-ease-in-out hover-bg-white paredes dl-btn"
+            href={href}
+            rel="nofollow"
+          >
+            <DownloadIcon />
+            {d.injectBtn}
+          </a>
+        ) : (
           <button
             type="button"
             className="button-primary largura-100porcento dl-btn dl-btn-off"
             disabled
           >
             <DownloadIcon />
-            {d.injectSoonBtn}
+            {soon ? d.injectSoonBtn : d.injectBtn}
           </button>
-        ) : (
-          <a
-            className="button-primary largura-100porcento bg-linear-gradient gradient-from-white gradient-to-white gradient-to-white-0-8 text-color-gray-900 transition-all transition-duration-150ms transition-ease-in-out hover-bg-white paredes dl-btn"
-            href={info?.download ?? FALLBACK_DOWNLOAD}
-            rel="nofollow"
-          >
-            <DownloadIcon />
-            {d.injectBtn}
-          </a>
         )}
         {available ? (
           <a
