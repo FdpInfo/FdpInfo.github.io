@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { DownloadContent } from "./DownloadContent";
-import { getMeta, getInjector, getDownloadCount } from "@/lib/community-data";
+import {
+  getMeta,
+  getInjector,
+  getDownloadCount,
+  OFFICIAL_SITE,
+} from "@/lib/community-data";
 
 export const metadata: Metadata = {
   title: "FDP Client – Downloads",
@@ -8,8 +13,6 @@ export const metadata: Metadata = {
   authors: [{ name: "fdpclient" }],
   alternates: { canonical: "https://fdpinfo.github.io/download/" },
 };
-
-const OFFICIAL = "https://lucas-lima.xyz/archives/fdpclient";
 
 export default async function DownloadPage() {
   const meta = getMeta();
@@ -23,7 +26,7 @@ export default async function DownloadPage() {
       injectorVersion={injector.version}
       injectorEnabled={injector.enabled}
       downloads={downloads}
-      official={OFFICIAL}
+      official={OFFICIAL_SITE}
     />
   );
 }

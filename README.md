@@ -11,7 +11,7 @@ Live site: **https://fdpinfo.github.io/**
 ## Pages
 
 - `/` — home (hero, logo marquee, feature tabs, "What is FDP?", showcase, statistics, pricing, reviews)
-- `/download` — download page with live download count and an auto-redirect toast (with a Stop button)
+- `/download` — download page with live download count, an Inject card (Lunar Client 1.8.9 via ZAVZ) below the Forge beta, SHA-256 checksums for both builds loaded live from the lucas-lima.xyz builds API, and an auto-redirect toast (with a Stop button)
 - `/community` — community hub (Discord, releases, report a bug)
 - `/changelogs` — full changelog and known-issues hub; also opens the GitHub releases page
 - `/donate` — donations & plans
