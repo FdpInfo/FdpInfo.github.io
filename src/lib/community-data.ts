@@ -94,7 +94,7 @@ export function getMeta(): { discord: string; donate: string; version: string } 
   return {
     donate: parts[3] || "",
     discord: parts[4] || "https://discord.gg/3XRFGeqEYD",
-    version: parts[5] || "b16",
+    version: parts[5] || "b18",
   };
 }
 

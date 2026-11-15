@@ -1,4 +1,10 @@
-~ B18 (#9bfe57d)
+~ B18 (#978639589)
+> Lunar Client
++ Official Lunar Client 1.8.9 support alongside Forge
++ Attach FDPClient to a running Lunar Client via the native ZAVZ loader, a Java agent and runtime class redefinition
++ Lunar bootstrap — access transformers, MCEF compat, mixin engine and late runtime so the client loads without a Forge install
+* Scripts skip creative tabs after runtime attachment so Lunar attach does not break the script API
+* Browser natives download skipped on platforms without CEF support
 > NextGen ClickGUI
 + Collapsible, nested value groups — module settings grouped into collapsible configurables across the whole module list, rendered in every native style and the NextGen theme
 + MCEF mirror pool with SHA-256 integrity verification for browser assets
@@ -6,29 +12,48 @@
 + Web HUD bridge and a web main-menu bridge with a virtual-screen router (native menu kept, virtual screens gated off by default)
 + Persistent menu shell with portal tooltips and modals, no-cache UI serving and a chunked bundle
 + Shared module search with alias and keyword matching, in the ClickGUI and the in-game menu list
-+ Search bar moved to the top, draggable search, collapsible categories in the dropdown style, and clearer group headers and color picker
-~ Browser asset download reworked — progressive step list with precise progress, fast-resume retry, a separate clean reinstall, and an HTTP mirror fetch so it installs on Java 8
++ Search bar moved to the top, draggable search, collapsible categories in the dropdown style, and clearer group headers, mode dropdown and color picker
+~ Browser asset download reworked — progressive step list with precise progress, fast-resume retry, a separate clean reinstall, an HTTP mirror fetch so it installs on Java 8, and a fixed redownload retry flow
 ~ In-game bind and value changes sync live to the NextGen ClickGUI, matching nested values by key
 * Bundled browser demo mod no longer opens its broken screen and crashes
 * MCEF mixin no longer nulls assets mid-download, so the browser installs fully
 * Six audited defects in nested-group rendering
+> HUD, TabGUI & visuals
++ In-game HUD editor driven from the NextGen theme, with a web HUD component manager isolated from the native HUD config
++ TabGUI player list can hide names by regex and shows game mode
++ ComboCounter overlay shows the current hit streak
++ Keystrokes LMB/RMB buttons with a live CPS counter, and Effects Modern per-effect duration bar
++ Chams configurable first-person hand color with isolated GL attributes
++ Trajectories color each line by projectile type, with a Custom override, plus DetailedInfo labels for landing distance and flight time
++ EasyPearl shows distance to the pearl target
++ XRay renders ordinary blocks with a configurable translucent background
++ ESP ColorMode adds Health- and Distance-based entity coloring
+~ SkinChanger fetches skins from Mojang so the chosen skin actually applies
+* NameTags no longer draws health text twice
+* Shader and stencil effects disable when the GL stack cannot support them
+* Font cloud endpoints pointed at the moved site root, with hardened downloads
 > Config & value system
 + Value system extended with registries, value migration and group plumbing
 + Shared move/group helper hoisted to Configurable, dropping 62 per-module duplicates
 + Input validation rejects NaN, infinity and inverted ranges and validates toggles, binds and values in AutoSettings
++ Per-module keybinds with toggle, hold and smart actions plus modifiers
 ~ Registry maps cached with lazy initialization
+~ Value updates made observable and thread-safe
 * Grouped values no longer lost when migrating flat legacy profiles, and newly-grouped children migrate into already-nested profiles
 * Cross-module shared values can no longer be stolen or duplicated, and duplicate value names that corrupted config round-trips were renamed
 * Leaf-first configurable lookup for duplicate names
+* Settings-script group recursion no longer leaks movement state
 > Rotation & anticheat
 + Continuous anticheat detection with hardened server fingerprinting, ServerObserver telemetry and plugin-scan detection
 + Anticheat-aware mode advisor for velocity and criticals
-~ Modern rotation engine and settings refined, restoring self-motion prediction and legit speed jitter
+~ Modern rotation engine and settings refined — unified aiming engine, restored self-motion prediction and legit speed jitter, inertia overshoot and arm-pitch sync
 ~ Placement, digging and Extinguish gate on the server rotation reaching the target
-~ Silent yaw sent as a continuous offset and unwrapped at the packet choke point to close the seam on strict anticheats
+~ Silent yaw sent as a continuous offset and unwrapped at the packet choke point to close the AimModulo360 / AimDuplicateLook seam on strict anticheats, including Telly Modern
 ~ Sprint-jump boost follows the sent yaw when movement is corrected, and sprint drops when a silent rotation diverges from movement
 ~ Legacy Strafe correction defaults on so the legacy engine stays anticheat-safe
-* Silent rotation resets atomically on disable and input/rotation history clears on teardown to stop toggle-time flags
+* Silent rotation resets atomically on disable, the rotation lease is released, and input/rotation history clears on teardown to stop toggle-time flags
+* Aimbot's dead settings tree revived with engine-aware value gates
+* Linear angle smoothing no longer splits straight diagonals
 > Combat
 + Target tracker, weapon scoring and KillAura value grouping
 + Shared humanized click-pattern engine for KillAura, AutoClicker and TpAura
@@ -37,9 +62,15 @@
 + KillAura SoundOnSwingFail gives audible feedback when a swing misses
 + Criticals WhenSprinting drops sprint on attack so sprint-crits register
 + AutoShoot RequiresKillAura and NotDuringCombat gates, AutoWeapon SwitchBack, and KeepSprint chance with hurt-time motion variance
++ Target Friends option independent of the Player toggle
 ~ Anticheat-aware velocity, killaura and criticals refinements
+~ HitSelect uses entity snapshots with click-prediction modes
+~ AutoBlock reworked with ping compensation
+* KillAura autoblock keeps attack/place inline to pass Grim PacketOrderI, and always swings before the attack to pass Grim PacketOrderB
 * Five adversarially-verified defects in Velocity and KillAura, plus null-safe regen amplifier and enchantment lookup
+* AutoClicker canClick is null-safe so Render3D no longer NPEs
 > New modules
++ Clip module — Fancy searches a safe opening behind a wall; Old applies a configured offset once
 + EntityControl module
 + CrystalView module
 + ItemChams module
@@ -50,31 +81,48 @@
 + NoSlowBreak module
 + BetterChat module
 + JumpReset that hops or drops sprint on hit to cut knockback
-+ GrimDebug diagnostic module for outgoing movement-packet patterns
-+ Per-module keybinds with toggle, hold and smart actions plus modifiers
-> Module improvements & options
++ ComboCounter module
+> Movement & world
++ Speed helpers — anti-corner-bump jump delay, reject jumps that land over a lethal drop, and a reusable yaw-offset strategy
 ~ Timer NormalizeDuringCombat resets game speed while fighting
 ~ Scaffold shares vanilla jump physics to skip two-block jump-boost hops
 ~ Nuker FloorMode clears a single flat block layer at a configurable offset
 ~ AutoFarm UseFortune swaps to a Fortune tool before harvesting
 ~ AutoQueue keyword triggers on chat, title or subtitle run a command or use-item action
 ~ Phase Intave downward mining-phase mode, and Disabler intaveFly latch and buffers reset on disable
-~ GrimAnalysis mode in PacketDebugger with movement-packet diagnostics and incoming GrimAC alert capture
-~ ESP ColorMode adds Health- and Distance-based entity coloring
-~ Trajectories DetailedInfo labels landing distance and flight time
-~ ComboCounter overlay shows the current hit streak
-~ Keystrokes LMB/RMB buttons with a live CPS counter, and Effects Modern per-effect duration bar
-~ vclip command, and command tab-completion lists values nested in setting groups
+~ PacketDebugger GrimAnalysis mode with movement-packet diagnostics and incoming GrimAC alert capture (replaces the short-lived GrimDebug module)
+~ GUICloser Matches/Contains title filter to close only chosen screens
+~ BetterInventory move-while-open, with a visible slot highlight
+~ English descriptions for every module
++ vclip command
+* Scaffold Telly places again and no longer fights Tower; Telly on-tick raw sends no longer trip AimModulo360 / DuplicateRotPlace or a duplicate look
+* Scaffold raycasts placement from the server rotation so strict anticheat accepts the block
+* Intave InvMove unsneaks when the inventory closes
+* SnapTap respects InvMove key overrides instead of freezing movement in GUIs
+* FastBreak restores the vanilla block-hit delay when disabled
+* MLG treats hay and slime as safe landings
+* Blink flushes correction/lifecycle packets, caps the queue and cleans up the fake player
+* InfiniteAura, AntiFireball and Tower adjustments
 > Render
 ~ RenderUtils modularized into focused helpers, with every call site migrated off the deprecated APIs
 ~ Batched primitives and allocation-free world-to-screen, with ESP and ESP2D fixes
 ~ ESP2D projection matrices cached once per entity and the rainbow color cache bounded
+* Windows CPU counters sampled off the render thread
+> Accounts, commands & startup
+* Alt Manager signs in with the official Minecraft title
+~ Font style variants baked lazily and SRG mappings loaded on demand
+~ Fat jar fails the build on classes newer than Java 8
+* Command tab-completion lists values nested in setting groups
 > Fixes & stability
 * Every command routed through a unified builder runtime adapter, with numeric argument parsing hardened against non-finite input
 * Module registry validation fails fast with safe enable/disable rollback, and disabled modules no longer affect the game
-* Null-safe player spawn with a fallback profile when the tab-list entry is missing
-* Scaffold raycasts placement from the server rotation so strict anticheat accepts the block
+* Submode lifecycle runs when the mode changes while the module is enabled
+* Null-safe player spawn with a fallback profile when the tab-list entry is missing, including during tab-list churn
+* ChunkScanner clears stale subscriber state when a chunk is replaced
 * Suspend-handler behaviors and a module enable-effect hook in the core, with a re-entrant config-loading scope
+* Tick-scheduler cancellation, capacity and wait semantics hardened
+* Chat tab-complete no longer NPEs on a stray null line
+- Local launcher removed from the client repository
 ~ B17 (#4f4d0ea)
 > NextGen ClickGUI
 + In-game web ClickGUI rendered via an embedded browser
