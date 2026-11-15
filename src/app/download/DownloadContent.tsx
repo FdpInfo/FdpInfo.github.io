@@ -9,6 +9,9 @@ import { CountUp } from "@/components/CountUp";
 import { ParticleField } from "@/components/effects/ParticleField";
 import { GITHUB_RELEASES, GITHUB_REPO } from "@/lib/community-constants";
 import { useI18n } from "@/lib/i18n";
+import { BuildChecksum } from "./BuildChecksum";
+import { InjectCard } from "./InjectCard";
+import { useFdpBuilds } from "./useFdpBuilds";
 
 const DL_CSS = `
 .dl-card{max-width:42rem;margin:0 auto;border:1px solid rgba(51,65,85,.7);border-radius:1.5rem;background:rgba(30,41,59,.32);padding:1.75rem;text-align:left;}
@@ -32,6 +35,29 @@ const DL_CSS = `
 .dl-about-body{font-size:.9rem;color:#94a3b8;line-height:1.65;margin-bottom:1.4rem;}
 .dl-about-body a{color:#c4b5fd;font-weight:600;}
 .dl-steps{margin:0;padding-left:1.2rem;display:flex;flex-direction:column;gap:.45rem;font-size:.9rem;color:#94a3b8;line-height:1.6;}
+.dl-card+.dl-card{margin-top:1.25rem;}
+.dl-chip.soon{color:#fcd34d;background:rgba(245,158,11,.12);border-color:rgba(245,158,11,.3);}
+.dl-btn-off{background:rgba(51,65,85,.35);color:#94a3b8;border:1px dashed rgba(148,163,184,.4);cursor:not-allowed;}
+.dl-sum{margin-top:1.25rem;border:1px solid rgba(51,65,85,.6);border-radius:1rem;background:rgba(15,23,42,.45);padding:.9rem 1rem;}
+.dl-sum-head{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;margin-bottom:.6rem;}
+.dl-sum-label{font-size:.72rem;font-weight:700;letter-spacing:.06em;color:#e2e8f0;}
+.dl-sum-scope{font-size:.66rem;font-weight:600;color:#cbd5e1;background:rgba(148,163,184,.1);border:1px solid rgba(148,163,184,.22);border-radius:999px;padding:.12rem .55rem;}
+.dl-sum-body{min-height:3.95rem;display:flex;flex-direction:column;justify-content:center;gap:.55rem;}
+.dl-sum-meta,.dl-sum-msg{font-size:.78rem;color:#94a3b8;line-height:1.5;overflow-wrap:anywhere;}
+.dl-sum-meta a,.dl-sum-msg a{color:#c4b5fd;font-weight:600;}
+.dl-sum-file{color:#cbd5e1;}
+.dl-sum-row{display:flex;flex-direction:column;gap:.5rem;}
+.dl-hash{flex:1;min-width:0;font-size:.74rem;line-height:1.55;color:#e9d5ff;background:rgba(2,6,23,.55);border:1px solid rgba(51,65,85,.7);border-radius:.6rem;padding:.45rem .65rem;word-break:break-all;-webkit-user-select:all;user-select:all;}
+.dl-copy{align-self:flex-start;flex-shrink:0;min-width:6rem;font-size:.75rem;font-weight:600;color:#e9d5ff;background:rgba(168,85,247,.16);border:1px solid rgba(168,85,247,.38);border-radius:.6rem;padding:.45rem .8rem;white-space:nowrap;transition:background .15s,color .15s,border-color .15s;}
+.dl-copy:hover{background:rgba(168,85,247,.3);color:#fff;}
+.dl-copy:focus-visible{outline:2px solid #c4b5fd;outline-offset:2px;}
+.dl-copy.done{color:#6ee7b7;background:rgba(16,185,129,.12);border-color:rgba(16,185,129,.35);}
+.dl-copy.failed{color:#fca5a5;background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.35);}
+@media(min-width:560px){.dl-sum-row{flex-direction:row;align-items:center;}.dl-copy{align-self:auto;}}
+.dl-skel{height:2.2rem;border-radius:.6rem;background:linear-gradient(90deg,rgba(51,65,85,.3) 25%,rgba(71,85,105,.5) 50%,rgba(51,65,85,.3) 75%);background-size:200% 100%;animation:dl-shimmer 1.4s linear infinite;}
+@keyframes dl-shimmer{from{background-position:100% 0;}to{background-position:-100% 0;}}
+@media(prefers-reduced-motion:reduce){.dl-skel{animation:none;}}
+.dl-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
 `;
 
 type Props = {
@@ -50,6 +76,7 @@ export function DownloadContent({
   official,
 }: Props) {
   const { t } = useI18n();
+  const builds = useFdpBuilds();
 
   return (
     <>
@@ -154,7 +181,18 @@ export function DownloadContent({
                       {t.downloadPage.githubBtn}
                     </a>
                   </div>
+                  <BuildChecksum
+                    state={builds.forge}
+                    copyLabel={t.downloadPage.copyAriaForge}
+                    official={official}
+                  />
                 </div>
+
+                <InjectCard
+                  build={build}
+                  state={builds.inject}
+                  official={official}
+                />
 
                 <p className="dl-note">
                   {t.downloadPage.sourceBefore}{" "}

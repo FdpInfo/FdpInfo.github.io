@@ -22,7 +22,7 @@ const DISCORD = "https://discord.gg/3XRFGeqEYD";
 export const SEARCH_TARGETS: SearchTarget[] = [
   // Pages
   { key: "home", group: "Pages", label: "Home", href: "/", hint: "Page", keywords: "start landing main inicio principal" },
-  { key: "download", group: "Pages", label: "Download", href: "/download/", hint: "Page", keywords: "get install baixar beta build latest setup injector" },
+  { key: "download", group: "Pages", label: "Download", href: "/download/", hint: "Page", keywords: "get install baixar beta build latest setup injector inject lunar sha256 checksum" },
   { key: "community", group: "Pages", label: "Community", href: "/community/", hint: "Page", keywords: "discord members hub social join" },
   { key: "changelogs", group: "Pages", label: "Changelogs", href: "/changelogs/", hint: "Page", keywords: "updates versions notes releases history known issues bugs" },
   { key: "donate", group: "Pages", label: "Donate & Plans", href: "/donate/", hint: "Page", keywords: "support pricing plans buy money pay" },
