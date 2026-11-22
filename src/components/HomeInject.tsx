@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { asset } from "@/lib/asset";
-import { ZAVZ_RELEASE, ZAVZ_REPO } from "@/lib/community-constants";
+import { FDP_LUNAR_GUIDE, ZAVZ_RELEASE, ZAVZ_REPO } from "@/lib/community-constants";
 import { useI18n } from "@/lib/i18n";
 import styles from "./HomeInject.module.css";
 
@@ -17,7 +17,7 @@ export function InjectAnnouncement() {
           <span className={styles.newLabel}>{t.homeInject.newLabel}</span>
           FDP Client Inject
         </span>
-        <span className={styles.compatibility}>Lunar Client 1.8.9 · Windows</span>
+        <span className={styles.announcementHint}>{t.homeInject.announcementHint}</span>
       </span>
       <span className={styles.tryButton}>
         {t.homeInject.tryNow} <span aria-hidden="true">↓</span>
@@ -39,7 +39,8 @@ export function ZavzGuide() {
       <div className={styles.panel}>
         <div className={styles.intro}>
           <div className={styles.copy}>
-            <h2 id="zavz-title" className={styles.title}>{guide.title}</h2>
+            <h2 id="zavz-title" className={styles.title}>ZAVZ</h2>
+            <p className={styles.tagline}>{guide.tagline}</p>
             <p className={styles.description}>{guide.description}</p>
             <div className={styles.actions}>
               <a href={ZAVZ_RELEASE} className={`button-primary ${styles.primary}`}>
@@ -82,6 +83,9 @@ export function ZavzGuide() {
               </li>
             ))}
           </ol>
+          <a href={FDP_LUNAR_GUIDE} className={`${styles.source} ${styles.buildGuide}`}>
+            {guide.buildGuide}
+          </a>
         </div>
       </div>
     </section>

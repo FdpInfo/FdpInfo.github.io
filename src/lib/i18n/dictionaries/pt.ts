@@ -40,9 +40,10 @@ export const pt: DeepPartial<Dict> = {
   homeInject: {
     newLabel: "Novo",
     tryNow: "Testar agora",
-    title: "Conheça o ZAVZ",
-    description:
-      "O ZAVZ é um aplicativo de código aberto para Windows que carrega o FDP Client Inject no Lunar Client 1.8.9.",
+    announcementHint: "Guia e downloads",
+    tagline: "O executor de código aberto dos projetos Inject.",
+    description: "Escolha seu projeto, carregue a build e entre no jogo.",
+    buildGuide: "Guia da build atual",
     downloadZavz: "Baixar ZAVZ",
     downloadInject: "Baixar FDP Client Inject",
     sourceCode: "ZAVZ no GitHub",
@@ -51,7 +52,7 @@ export const pt: DeepPartial<Dict> = {
       {
         title: "Prepare os arquivos",
         description:
-          "Instale o ZAVZ, baixe o JAR do FDP Client Inject e abra o Lunar Client 1.8.9.",
+          "Instale o ZAVZ, baixe o JAR e abra a versão do jogo indicada no guia da build.",
       },
       {
         title: "Selecione o JAR",
@@ -59,9 +60,9 @@ export const pt: DeepPartial<Dict> = {
           "No ZAVZ, abra JAR, escolha o arquivo do FDP Client Inject e clique em Save selection.",
       },
       {
-        title: "Carregue o FDP no Lunar",
+        title: "Carregue o projeto",
         description:
-          "No ZAVZ, vá em Inject → Inject into running Lunar, selecione o jogo e clique em Inject. Quando carregar, pressione Ctrl direito para abrir o menu do FDP com a configuração padrão.",
+          "Clique em Inject, escolha a opção indicada no guia e confirme. Aguarde o ZAVZ informar que o projeto foi carregado.",
       },
     ],
   },

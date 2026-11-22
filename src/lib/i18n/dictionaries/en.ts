@@ -13,8 +13,10 @@ export const en = {
   homeInject: {
     newLabel: "New",
     tryNow: "Try it now",
-    title: "Meet ZAVZ",
-    description: "ZAVZ is an open-source Windows app that loads FDP Client Inject into Lunar Client 1.8.9.",
+    announcementHint: "Guide and downloads",
+    tagline: "The open-source executor for Inject projects.",
+    description: "Choose a project, load the build and get in the game.",
+    buildGuide: "Current build guide",
     downloadZavz: "Download ZAVZ",
     downloadInject: "Download FDP Client Inject",
     sourceCode: "ZAVZ on GitHub",
@@ -23,7 +25,7 @@ export const en = {
       {
         title: "Get the files",
         description:
-          "Install ZAVZ, download the FDP Client Inject JAR and open Lunar Client 1.8.9.",
+          "Install ZAVZ, download the JAR and open the game version listed in the build guide.",
       },
       {
         title: "Select the JAR",
@@ -31,9 +33,9 @@ export const en = {
           "In ZAVZ, open JAR, choose the FDP Client Inject file and click Save selection.",
       },
       {
-        title: "Load FDP in Lunar",
+        title: "Load the project",
         description:
-          "In ZAVZ, go to Inject → Inject into running Lunar, select your Lunar game and click Inject. Once it loads, press Right Ctrl to open the FDP menu with the default configuration.",
+          "Click Inject, select the option shown in the guide and confirm. Wait for ZAVZ to report that the project has loaded.",
       },
     ],
   },
