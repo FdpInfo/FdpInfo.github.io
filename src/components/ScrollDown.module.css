@@ -1,0 +1,46 @@
+.button {
+  position: fixed;
+  z-index: 20;
+  right: max(1rem, calc((100% - 86rem) / 2), calc(env(safe-area-inset-right) + .75rem));
+  bottom: max(1.5rem, calc(env(safe-area-inset-bottom) + .75rem));
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 1px solid #b789ed;
+  border-radius: 50%;
+  background: #221632;
+  box-shadow: 0 4px 18px #08061480, 0 0 18px #a855f73d;
+  color: #f3e5ff;
+  cursor: pointer;
+  transition: background-color .2s, border-color .2s, box-shadow .2s;
+}
+
+.button:hover {
+  border-color: #efdaff;
+  background: #3b2355;
+  box-shadow: 0 4px 18px #08061480, 0 0 22px #c084fc80;
+}
+
+.button:focus-visible {
+  outline: 2px solid #f3e5ff;
+  outline-offset: 3px;
+}
+
+.button svg {
+  animation: nudge 1.8s ease-in-out 3;
+}
+
+@keyframes nudge {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(3px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button,
+  .button svg {
+    animation: none;
+    transition: none;
+  }
+}

@@ -67,6 +67,7 @@ export const pt: DeepPartial<Dict> = {
     ],
   },
   hero: {
+    scrollDown: "Rolar para baixo",
     badge: "Baixe a Última Beta Agora",
     title: "FDP Client. A melhor solução de cheating para Minecraft.",
     subtitle: "UM CLIENT DE INJEÇÃO FORGE GRATUITO E OPEN-SOURCE.",

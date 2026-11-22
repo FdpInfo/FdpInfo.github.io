@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
+import { ScrollDown } from "@/components/ScrollDown";
 import { ZavzGuide } from "@/components/HomeInject";
 import { ClientsMarquee } from "@/components/ClientsMarquee";
 import { FeatureTabs } from "@/components/FeatureTabs";
@@ -22,6 +23,7 @@ export default function Home() {
       <div className="display-flex min-height-100vh flex-direction-column overflow-hidden">
         <Header />
         <Hero />
+        <ScrollDown />
         <ClientsMarquee />
         <ZavzGuide />
         <FeatureTabs />

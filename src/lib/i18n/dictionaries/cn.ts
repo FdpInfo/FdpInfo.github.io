@@ -68,6 +68,7 @@ export const cn: DeepPartial<Dict> = {
     ],
   },
   hero: {
+    scrollDown: "向下滚动",
     badge: "立即下载最新 Beta",
     title: "FDP Client。最好的 Minecraft 作弊解决方案。",
     subtitle: "一款免费开源的 Forge 注入式客户端。",

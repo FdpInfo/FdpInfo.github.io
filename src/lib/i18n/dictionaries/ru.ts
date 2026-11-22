@@ -41,6 +41,7 @@ export const ru: DeepPartial<Dict> = {
     ],
   },
   hero: {
+    scrollDown: "Прокрутить вниз",
     badge: "Скачать последнюю бета-версию",
     title: "FDP Client. Лучшее решение для читов в Minecraft.",
     subtitle: "БЕСПЛАТНЫЙ ЧИТ-КЛИЕНТ С ОТКРЫТЫМ ИСХОДНЫМ КОДОМ НА ОСНОВЕ FORGE.",

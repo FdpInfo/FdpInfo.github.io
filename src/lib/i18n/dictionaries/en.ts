@@ -40,6 +40,7 @@ export const en = {
     ],
   },
   hero: {
+    scrollDown: "Scroll down",
     badge: "Download Latest Beta Now",
     title: "FDP Client.The best Minecraft cheating solution.",
     subtitle: "A FREE & OPEN-SOURCE FORGE INJECTION CLIENT.",
