@@ -7,11 +7,18 @@ import { Footer } from "@/components/Footer";
 import { RedirectToast } from "@/components/RedirectToast";
 import { CountUp } from "@/components/CountUp";
 import { ParticleField } from "@/components/effects/ParticleField";
-import { GITHUB_RELEASES, GITHUB_REPO } from "@/lib/community-constants";
+import {
+  FDP_LUNAR_GUIDE,
+  GITHUB_RELEASES,
+  GITHUB_REPO,
+  ZAVZ_OFFICIAL_SITE,
+} from "@/lib/community-constants";
 import { useI18n } from "@/lib/i18n";
 import { BuildChecksum } from "./BuildChecksum";
 import { InjectCard } from "./InjectCard";
 import { useFdpBuilds } from "./useFdpBuilds";
+
+const INSTALL_GUIDE_HASHES = ["#inject", "#install-inject"];
 
 const DL_CSS = `
 .dl-card{max-width:42rem;margin:0 auto;border:1px solid rgba(51,65,85,.7);border-radius:1.5rem;background:rgba(30,41,59,.32);padding:1.75rem;text-align:left;}
@@ -34,7 +41,13 @@ const DL_CSS = `
 .dl-about h2{font-size:1rem;font-weight:700;color:#f1f5f9;margin-bottom:.5rem;}
 .dl-about-body{font-size:.9rem;color:#94a3b8;line-height:1.65;margin-bottom:1.4rem;}
 .dl-about-body a{color:#c4b5fd;font-weight:600;}
-.dl-steps{margin:0;padding-left:1.2rem;display:flex;flex-direction:column;gap:.45rem;font-size:.9rem;color:#94a3b8;line-height:1.6;}
+.dl-about h3{font-size:.92rem;font-weight:700;color:#e2e8f0;margin-bottom:.55rem;}
+.dl-steps{margin:0;padding-left:1.2rem;list-style:decimal;display:flex;flex-direction:column;gap:.45rem;font-size:.9rem;color:#94a3b8;line-height:1.6;}
+.dl-steps li::marker{color:#c4b5fd;font-weight:700;}
+.dl-install-inject{margin-top:1.25rem;padding-top:1.15rem;border-top:1px solid rgba(148,163,184,.22);scroll-margin-top:1rem;}
+.dl-install-links{display:flex;flex-wrap:wrap;gap:.45rem 1rem;margin-top:1rem;font-size:.85rem;}
+.dl-install-links a{color:#ddd6fe;font-weight:600;text-decoration:underline;text-underline-offset:.2em;}
+.dl-install-links a:hover{color:#fff;}
 .dl-card+.dl-card{margin-top:1.25rem;}
 #inject{scroll-margin-top:1rem;}
 .dl-chip.soon{color:#fcd34d;background:rgba(245,158,11,.12);border-color:rgba(245,158,11,.3);}
@@ -77,6 +90,7 @@ export function DownloadContent({
   official,
 }: Props) {
   const { t } = useI18n();
+  const guide = t.homeInject;
   const builds = useFdpBuilds();
 
   return (
@@ -218,11 +232,30 @@ export function DownloadContent({
                     .
                   </p>
                   <h2>{t.downloadPage.howTitle}</h2>
+                  <h3>Forge</h3>
                   <ol className="dl-steps">
                     <li>{t.downloadPage.step1}</li>
                     <li>{t.downloadPage.step2}</li>
                     <li>{t.downloadPage.step3}</li>
                   </ol>
+                  <section
+                    id="install-inject"
+                    className="dl-install-inject"
+                    aria-labelledby="install-inject-title"
+                    tabIndex={-1}
+                  >
+                    <h3 id="install-inject-title">{t.downloadPage.injectInstallTitle}</h3>
+                    <ol className="dl-steps">
+                      {guide.steps.map((step) => (
+                        <li key={step.title}>{step.description}</li>
+                      ))}
+                    </ol>
+                    <div className="dl-install-links">
+                      <a href={ZAVZ_OFFICIAL_SITE}>{guide.downloadZavz}</a>
+                      <a href="#inject">{guide.downloadInject}</a>
+                      <a href={FDP_LUNAR_GUIDE}>{guide.buildGuide}</a>
+                    </div>
+                  </section>
                 </div>
               </div>
             </div>
@@ -232,7 +265,7 @@ export function DownloadContent({
         <Footer />
       </div>
 
-      <RedirectToast target={official} skipHash="#inject" />
+      <RedirectToast target={official} skipHashes={INSTALL_GUIDE_HASHES} />
     </>
   );
 }

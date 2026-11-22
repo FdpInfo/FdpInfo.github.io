@@ -21,10 +21,10 @@ const TOAST_CSS = `
 
 export function RedirectToast({
   target = "https://lucas-lima.xyz/archives/fdpclient",
-  skipHash,
+  skipHashes,
 }: {
   target?: string;
-  skipHash?: string;
+  skipHashes?: readonly string[];
 }) {
   const { t } = useI18n();
   const [seconds, setSeconds] = useState(3);
@@ -34,7 +34,8 @@ export function RedirectToast({
   const intervalRef = useRef(0);
 
   useEffect(() => {
-    if (window.location.hash === skipHash) return;
+    const shouldSkip = () => skipHashes?.includes(window.location.hash);
+    if (shouldSkip()) return;
     setVisible(true);
     const events: (keyof WindowEventMap)[] = [
       "pointerdown",
@@ -52,7 +53,7 @@ export function RedirectToast({
           const next = s - 1;
           if (next <= 0) {
             window.clearInterval(intervalRef.current);
-            window.location.href = target;
+            if (!shouldSkip()) window.location.href = target;
           }
           return next;
         });
@@ -61,11 +62,22 @@ export function RedirectToast({
     events.forEach((e) =>
       window.addEventListener(e, begin, { passive: true })
     );
-    return () => {
+    const clearCountdown = () => {
       events.forEach((e) => window.removeEventListener(e, begin));
       window.clearInterval(intervalRef.current);
     };
-  }, [skipHash, target]);
+    const onHashChange = () => {
+      if (shouldSkip()) {
+        clearCountdown();
+        setVisible(false);
+      }
+    };
+    window.addEventListener("hashchange", onHashChange);
+    return () => {
+      clearCountdown();
+      window.removeEventListener("hashchange", onHashChange);
+    };
+  }, [skipHashes, target]);
 
   const stop = () => {
     window.clearInterval(intervalRef.current);
