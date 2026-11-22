@@ -11,5 +11,7 @@ export const FDP_BUILDS_ENDPOINT =
   "https://lucas-lima.xyz/api/mods/fdpclient/latest-build";
 export const FDP_LUNAR_GUIDE =
   "https://github.com/SkidderMC/FDPClient/blob/main/docs/LUNAR.md";
+export const ZAVZ_REPO = "https://github.com/opZywl/Zavz";
+export const ZAVZ_RELEASE = `${ZAVZ_REPO}/releases/latest`;
 
 export const FALLBACK_DOWNLOADS = 100000;

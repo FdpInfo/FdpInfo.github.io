@@ -36,6 +36,7 @@ const DL_CSS = `
 .dl-about-body a{color:#c4b5fd;font-weight:600;}
 .dl-steps{margin:0;padding-left:1.2rem;display:flex;flex-direction:column;gap:.45rem;font-size:.9rem;color:#94a3b8;line-height:1.6;}
 .dl-card+.dl-card{margin-top:1.25rem;}
+#inject{scroll-margin-top:1rem;}
 .dl-chip.soon{color:#fcd34d;background:rgba(245,158,11,.12);border-color:rgba(245,158,11,.3);}
 .dl-btn-off{background:rgba(51,65,85,.35);color:#94a3b8;border:1px dashed rgba(148,163,184,.4);cursor:not-allowed;}
 .dl-sum{margin-top:1.25rem;border:1px solid rgba(51,65,85,.6);border-radius:1rem;background:rgba(15,23,42,.45);padding:.9rem 1rem;}
@@ -231,7 +232,7 @@ export function DownloadContent({
         <Footer />
       </div>
 
-      <RedirectToast target={official} />
+      <RedirectToast target={official} skipHash="#inject" />
     </>
   );
 }

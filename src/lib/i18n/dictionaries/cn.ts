@@ -25,6 +25,7 @@ export const cn: DeepPartial<Dict> = {
       tos: { label: "服务条款", hint: "法律" },
       terms: { label: "条款与条件", hint: "法律" },
       refund: { label: "退款政策", hint: "法律" },
+      secZavz: { label: "ZAVZ · FDP Client Inject", hint: "首页板块" },
       secFeatures: { label: "功能", hint: "首页板块" },
       secWhatIs: { label: "什么是 FDP？", hint: "首页板块" },
       secShowcase: { label: "展示", hint: "首页板块" },
@@ -36,6 +37,33 @@ export const cn: DeepPartial<Dict> = {
       linkBug: { label: "报告问题", hint: "GitHub" },
       linkDiscord: { label: "Discord 服务器", hint: "外部" },
     },
+  },
+  homeInject: {
+    newLabel: "全新",
+    tryNow: "立即体验",
+    title: "认识 ZAVZ",
+    description: "ZAVZ 是一款开源 Windows 应用，可将 FDP Client Inject 加载到 Lunar Client 1.8.9。",
+    downloadZavz: "下载 ZAVZ",
+    downloadInject: "下载 FDP Client Inject",
+    sourceCode: "在 GitHub 上查看 ZAVZ",
+    stepsTitle: "如何使用 FDP Client Inject",
+    steps: [
+      {
+        title: "准备文件",
+        description:
+          "安装 ZAVZ，下载 FDP Client Inject 的 JAR 文件，然后打开 Lunar Client 1.8.9。",
+      },
+      {
+        title: "选择 JAR",
+        description:
+          "在 ZAVZ 中打开 JAR，选择 FDP Client Inject 文件，然后点击 Save selection。",
+      },
+      {
+        title: "在 Lunar 中加载 FDP",
+        description:
+          "在 ZAVZ 中选择 Inject → Inject into running Lunar，选中游戏并点击 Inject。加载成功后，默认配置下按右 Ctrl 键打开 FDP 菜单。",
+      },
+    ],
   },
   hero: {
     badge: "立即下载最新 Beta",

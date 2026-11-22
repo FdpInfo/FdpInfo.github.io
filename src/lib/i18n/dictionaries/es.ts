@@ -11,6 +11,34 @@ export const es: DeepPartial<Dict> = {
     searchAria: "Buscar en el sitio (abrir con Ctrl o Command + K)",
     language: "Idioma",
   },
+  homeInject: {
+    newLabel: "Nuevo",
+    tryNow: "Probar ahora",
+    title: "Conoce ZAVZ",
+    description:
+      "ZAVZ es una aplicación de código abierto para Windows que carga FDP Client Inject en Lunar Client 1.8.9.",
+    downloadZavz: "Descargar ZAVZ",
+    downloadInject: "Descargar FDP Client Inject",
+    sourceCode: "ZAVZ en GitHub",
+    stepsTitle: "Cómo usar FDP Client Inject",
+    steps: [
+      {
+        title: "Prepara los archivos",
+        description:
+          "Instala ZAVZ, descarga el JAR de FDP Client Inject y abre Lunar Client 1.8.9.",
+      },
+      {
+        title: "Selecciona el JAR",
+        description:
+          "En ZAVZ, abre JAR, selecciona el archivo de FDP Client Inject y pulsa Save selection.",
+      },
+      {
+        title: "Carga FDP en Lunar",
+        description:
+          "En ZAVZ, ve a Inject → Inject into running Lunar, selecciona el juego y pulsa Inject. Una vez cargado, pulsa Ctrl derecho para abrir el menú de FDP con la configuración predeterminada.",
+      },
+    ],
+  },
   hero: {
     badge: "Descarga la última beta ahora",
     title: "FDP Client. La mejor solución de cheating para Minecraft.",
@@ -228,6 +256,7 @@ export const es: DeepPartial<Dict> = {
       tos: { label: "Términos del Servicio", hint: "Legal" },
       terms: { label: "Términos y Condiciones", hint: "Legal" },
       refund: { label: "Política de reembolsos", hint: "Legal" },
+      secZavz: { label: "ZAVZ · FDP Client Inject", hint: "Sección de inicio" },
       secFeatures: { label: "Características", hint: "Sección de inicio" },
       secWhatIs: { label: "¿Qué es FDP?", hint: "Sección de inicio" },
       secShowcase: { label: "Galería", hint: "Sección de inicio" },

@@ -10,6 +10,33 @@ export const en = {
     searchAria: "Search the site (open with Ctrl or Command + K)",
     language: "Language",
   },
+  homeInject: {
+    newLabel: "New",
+    tryNow: "Try it now",
+    title: "Meet ZAVZ",
+    description: "ZAVZ is an open-source Windows app that loads FDP Client Inject into Lunar Client 1.8.9.",
+    downloadZavz: "Download ZAVZ",
+    downloadInject: "Download FDP Client Inject",
+    sourceCode: "ZAVZ on GitHub",
+    stepsTitle: "How to use FDP Client Inject",
+    steps: [
+      {
+        title: "Get the files",
+        description:
+          "Install ZAVZ, download the FDP Client Inject JAR and open Lunar Client 1.8.9.",
+      },
+      {
+        title: "Select the JAR",
+        description:
+          "In ZAVZ, open JAR, choose the FDP Client Inject file and click Save selection.",
+      },
+      {
+        title: "Load FDP in Lunar",
+        description:
+          "In ZAVZ, go to Inject → Inject into running Lunar, select your Lunar game and click Inject. Once it loads, press Right Ctrl to open the FDP menu with the default configuration.",
+      },
+    ],
+  },
   hero: {
     badge: "Download Latest Beta Now",
     title: "FDP Client.The best Minecraft cheating solution.",
@@ -456,6 +483,7 @@ export const en = {
       tos: { label: "Terms of Service", hint: "Legal" },
       terms: { label: "Terms & Conditions", hint: "Legal" },
       refund: { label: "Refund policy", hint: "Legal" },
+      secZavz: { label: "ZAVZ · FDP Client Inject", hint: "Home section" },
       secFeatures: { label: "Features", hint: "Home section" },
       secWhatIs: { label: "What is FDP?", hint: "Home section" },
       secShowcase: { label: "Showcase", hint: "Home section" },

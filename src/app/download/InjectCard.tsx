@@ -37,7 +37,7 @@ export function InjectCard({ build, state, official }: Props) {
       : null;
 
   return (
-    <div className="dl-card" data-aos="fade-up">
+    <div id="inject" className="dl-card" data-aos="fade-up">
       <div className="dl-head">
         <img
           className="dl-logo"

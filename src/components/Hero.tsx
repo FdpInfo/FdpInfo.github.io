@@ -2,6 +2,7 @@
 
 import { ParticleField } from "@/components/effects/ParticleField";
 import { DownloadLink } from "@/components/DownloadLink";
+import { InjectAnnouncement } from "@/components/HomeInject";
 import { asset } from "@/lib/asset";
 import { useI18n } from "@/lib/i18n";
 
@@ -90,6 +91,7 @@ export function Hero() {
                 </a>
               </div>
             </div>
+            <InjectAnnouncement />
           </div>
         </div>
       </div>

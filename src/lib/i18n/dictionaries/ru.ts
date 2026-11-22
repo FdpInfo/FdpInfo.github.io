@@ -11,6 +11,34 @@ export const ru: DeepPartial<Dict> = {
     searchAria: "Поиск по сайту (открыть через Ctrl или Command + K)",
     language: "Язык",
   },
+  homeInject: {
+    newLabel: "Новинка",
+    tryNow: "Попробовать",
+    title: "Знакомьтесь с ZAVZ",
+    description:
+      "ZAVZ — приложение с открытым исходным кодом для Windows, которое загружает FDP Client Inject в Lunar Client 1.8.9.",
+    downloadZavz: "Скачать ZAVZ",
+    downloadInject: "Скачать FDP Client Inject",
+    sourceCode: "ZAVZ на GitHub",
+    stepsTitle: "Как пользоваться FDP Client Inject",
+    steps: [
+      {
+        title: "Подготовьте файлы",
+        description:
+          "Установите ZAVZ, скачайте JAR-файл FDP Client Inject и откройте Lunar Client 1.8.9.",
+      },
+      {
+        title: "Выберите JAR",
+        description:
+          "Откройте JAR в ZAVZ, выберите файл FDP Client Inject и нажмите Save selection.",
+      },
+      {
+        title: "Загрузите FDP в Lunar",
+        description:
+          "В ZAVZ выберите Inject → Inject into running Lunar, укажите игру и нажмите Inject. После загрузки правый Ctrl откроет меню FDP при настройках по умолчанию.",
+      },
+    ],
+  },
   hero: {
     badge: "Скачать последнюю бета-версию",
     title: "FDP Client. Лучшее решение для читов в Minecraft.",
@@ -228,6 +256,7 @@ export const ru: DeepPartial<Dict> = {
       tos: { label: "Условия использования", hint: "Юридическое" },
       terms: { label: "Правила и условия", hint: "Юридическое" },
       refund: { label: "Политика возврата средств", hint: "Юридическое" },
+      secZavz: { label: "ZAVZ · FDP Client Inject", hint: "Раздел главной" },
       secFeatures: { label: "Возможности", hint: "Раздел главной" },
       secWhatIs: { label: "Что такое FDP?", hint: "Раздел главной" },
       secShowcase: { label: "Витрина", hint: "Раздел главной" },

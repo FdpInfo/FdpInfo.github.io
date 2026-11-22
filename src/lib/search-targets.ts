@@ -32,6 +32,7 @@ export const SEARCH_TARGETS: SearchTarget[] = [
   { key: "refund", group: "Pages", label: "Refund policy", href: "/refund/", hint: "Legal", keywords: "money back chargeback legal refund" },
 
   // Homepage sections
+  { key: "secZavz", group: "Sections", label: "ZAVZ & FDP Client Inject", href: "/#zavz", hint: "Home section", keywords: "lunar setup jar windows install configurar injetar" },
   { key: "secFeatures", group: "Sections", label: "Features", href: "/#features", hint: "Home section", keywords: "tabs capabilities personalisable configurable" },
   { key: "secWhatIs", group: "Sections", label: "What is FDP?", href: "/#what-is-fdp", hint: "Home section", keywords: "about info intro explanation" },
   { key: "secShowcase", group: "Sections", label: "Showcase", href: "/#showcase", hint: "Home section", keywords: "video preview demo gallery" },

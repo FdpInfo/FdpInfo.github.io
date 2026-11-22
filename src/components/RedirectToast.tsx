@@ -21,16 +21,21 @@ const TOAST_CSS = `
 
 export function RedirectToast({
   target = "https://lucas-lima.xyz/archives/fdpclient",
+  skipHash,
 }: {
   target?: string;
+  skipHash?: string;
 }) {
   const { t } = useI18n();
   const [seconds, setSeconds] = useState(3);
   const [stopped, setStopped] = useState(false);
   const [armed, setArmed] = useState(false);
+  const [visible, setVisible] = useState(false);
   const intervalRef = useRef(0);
 
   useEffect(() => {
+    if (window.location.hash === skipHash) return;
+    setVisible(true);
     const events: (keyof WindowEventMap)[] = [
       "pointerdown",
       "pointermove",
@@ -60,12 +65,14 @@ export function RedirectToast({
       events.forEach((e) => window.removeEventListener(e, begin));
       window.clearInterval(intervalRef.current);
     };
-  }, [target]);
+  }, [skipHash, target]);
 
   const stop = () => {
     window.clearInterval(intervalRef.current);
     setStopped(true);
   };
+
+  if (!visible) return null;
 
   return (
     <>

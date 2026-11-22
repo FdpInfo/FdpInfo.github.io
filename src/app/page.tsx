@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
+import { ZavzGuide } from "@/components/HomeInject";
 import { ClientsMarquee } from "@/components/ClientsMarquee";
 import { FeatureTabs } from "@/components/FeatureTabs";
 import { WhatIsFdp } from "@/components/WhatIsFdp";
@@ -22,6 +23,7 @@ export default function Home() {
         <Header />
         <Hero />
         <ClientsMarquee />
+        <ZavzGuide />
         <FeatureTabs />
         <WhatIsFdp />
         <ShowcaseVideo />
