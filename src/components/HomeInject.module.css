@@ -20,10 +20,23 @@
   box-shadow: 0 8px 36px #140c2a75, 0 0 28px #c084fc88;
 }
 
-.announcement > img {
-  width: 3rem;
-  height: 3rem;
+.announcementLogos {
+  display: flex;
   flex: none;
+  align-items: center;
+  gap: .2rem;
+  color: #d5bff2;
+  font-size: .8rem;
+  font-weight: 650;
+}
+
+.announcementLogos img {
+  width: clamp(2.125rem, 6vw, 2.75rem);
+  height: auto;
+}
+
+.announcementLogos img:first-child {
+  transform: scale(1.15);
 }
 
 .announcementCopy {

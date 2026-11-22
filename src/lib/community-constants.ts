@@ -12,6 +12,6 @@ export const FDP_BUILDS_ENDPOINT =
 export const FDP_LUNAR_GUIDE =
   "https://github.com/SkidderMC/FDPClient/blob/main/docs/LUNAR.md";
 export const ZAVZ_REPO = "https://github.com/opZywl/Zavz";
-export const ZAVZ_RELEASE = `${ZAVZ_REPO}/releases/latest`;
+export const ZAVZ_OFFICIAL_SITE = "https://lucas-lima.xyz/archives/zavz-inject";
 
 export const FALLBACK_DOWNLOADS = 100000;

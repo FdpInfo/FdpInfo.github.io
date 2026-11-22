@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { asset } from "@/lib/asset";
-import { FDP_LUNAR_GUIDE, ZAVZ_RELEASE, ZAVZ_REPO } from "@/lib/community-constants";
+import { FDP_LUNAR_GUIDE, ZAVZ_OFFICIAL_SITE, ZAVZ_REPO } from "@/lib/community-constants";
 import { useI18n } from "@/lib/i18n";
 import styles from "./HomeInject.module.css";
 
@@ -11,7 +11,11 @@ export function InjectAnnouncement() {
 
   return (
     <a className={styles.announcement} href="#zavz">
-      <img src={asset("/src/resources/png/fdp.png")} width="48" height="48" alt="" />
+      <span className={styles.announcementLogos} role="img" aria-label="ZAVZ × FDP Client">
+        <img src={asset("/src/resources/svg/zavz-logo.svg")} width="44" height="44" alt="" />
+        <span aria-hidden="true">×</span>
+        <img src={asset("/src/resources/png/fdp.png")} width="44" height="44" alt="" />
+      </span>
       <span className={styles.announcementCopy}>
         <span className={styles.announcementTitle}>
           <span className={styles.newLabel}>{t.homeInject.newLabel}</span>
@@ -43,7 +47,7 @@ export function ZavzGuide() {
             <p className={styles.tagline}>{guide.tagline}</p>
             <p className={styles.description}>{guide.description}</p>
             <div className={styles.actions}>
-              <a href={ZAVZ_RELEASE} className={`button-primary ${styles.primary}`}>
+              <a href={ZAVZ_OFFICIAL_SITE} className={`button-primary ${styles.primary}`}>
                 {guide.downloadZavz}
                 <span aria-hidden="true">↗︎</span>
               </a>
