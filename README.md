@@ -1,57 +1,51 @@
-# FDP Client — Official Website
+<div align="center">
+<h1><a href="https://fdpinfo.github.io/"><img src="docs/assets/fdpinfo-banner.svg" alt="FdpInfo — official FDP Client website" width="100%"></a></h1>
 
-The official website for **FDP Client**, the free and open-source Minecraft Forge
-injection client. Built with **Next.js 15 + React 19 + TypeScript** (App Router) and
-shipped as a fully static export, so it runs on GitHub Pages with no server while
-keeping React, TypeScript, Swiper, AOS, the particle canvas and Google Analytics all
-working client-side.
+<p><strong>The official site for FDP Client builds, installation guides, and changelogs.</strong></p>
 
-Live site: **https://fdpinfo.github.io/**
+<a href="https://github.com/FdpInfo/FdpInfo.github.io/actions/workflows/deploy.yml"><img src="https://github.com/FdpInfo/FdpInfo.github.io/actions/workflows/deploy.yml/badge.svg?branch=main" alt="Website build and deploy status"></a>
+<a href="https://nextjs.org/"><img src="https://img.shields.io/badge/Next.js-15-a855f7?style=flat-square&labelColor=111827" alt="Next.js 15"></a>
+<a href="https://pages.github.com/"><img src="https://img.shields.io/badge/hosting-GitHub%20Pages-a855f7?style=flat-square&labelColor=111827" alt="Hosted on GitHub Pages"></a>
+<a href="LICENSE"><img src="https://img.shields.io/badge/website%20license-Proprietary-a855f7?style=flat-square&labelColor=111827" alt="Proprietary website license"></a>
 
-## Pages
+Website · <a href="https://fdpinfo.github.io/">fdpinfo.github.io</a><br>
+Latest builds · <a href="https://fdpinfo.github.io/download/">Forge</a> · <a href="https://fdpinfo.github.io/download/#inject">Inject</a><br>
+Discord · <a href="https://discord.gg/3XRFGeqEYD">Join the FDP Client community</a><br>
+</div>
 
-- `/` — home (hero, logo marquee, feature tabs, "What is FDP?", showcase, statistics, pricing, reviews)
-- `/download` — download page with live download count, an Inject card (Lunar Client 1.8.9 via ZAVZ) below the Forge beta, SHA-256 checksums for both builds loaded live from the lucas-lima.xyz builds API, and an auto-redirect toast (with a Stop button)
-- `/community` — community hub (Discord, releases, report a bug)
-- `/changelogs` — full changelog and known-issues hub; also opens the GitHub releases page
-- `/donate` — donations & plans
-- `/privacy` — privacy policy
-- `/tos` — terms of service
-- `/terms` — terms & conditions
-- `/refund` — refund policy
+## Installing FDP Client
 
-A centered **command palette** (open with `Ctrl`/`Cmd + K`, `/`, or the header search
-button) lets visitors jump to any page or home section instantly. Every secondary page
-has a **Back to home** button, and the whole site is responsive and mobile-friendly.
+Choose the Forge build or FDP Client Inject with ZAVZ. [Installation and download guide](docs/INSTALLING.md).
 
-## Development
+## Features
 
-```bash
-npm install
-npm run dev      # dev server at http://localhost:3000
-npm run build    # static export into out/
-```
+- **Build downloads** for Forge and FDP Client Inject, with SHA-256 checksums when available. [Downloads](https://fdpinfo.github.io/download/).
+- **Guided setup** for each build, including a ZAVZ walkthrough for Inject. [Inject guide](https://fdpinfo.github.io/download/#install-inject).
+- **Release notes** with build history and known issues. [Changelogs](https://fdpinfo.github.io/changelogs/).
+- **Search and localization** with Ctrl/Cmd + K search and text in English, Portuguese, Spanish, Simplified Chinese, and Russian.
+- **Related projects** maintained in their own repositories. [FDPClient source and releases](https://github.com/SkidderMC/FDPClient) · [ZAVZ source](https://github.com/opZywl/Zavz) · [ZAVZ downloads](https://lucas-lima.xyz/archives/zavz-inject).
 
-## Deployment (GitHub Pages)
+## The staff team
 
-The site is exported as a 100% static bundle (`output: 'export'` → `out/`). Pushing to
-`main` triggers [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), which
-builds and publishes automatically.
+[Website maintainer and project contacts](docs/TEAM.md).
 
-1. In **Settings → Pages**, set **Source: GitHub Actions**.
-2. Push to `main` — the workflow builds and deploys.
+## Issues
 
-The `basePath` is detected automatically: a `<user>.github.io` repo (or a custom domain
-via `public/CNAME`) is served from the root, while a project repo is served from
-`/<repo>` and every asset is prefixed accordingly through the `asset()` helper.
-
-## Credits
-
-Designed & developed by **lucsp.lima (aka Zywl)** — https://lucas-lima.xyz
+Describe the page or build, what happened, and how to reproduce it. For download or website help, start in the community. Report client or executor bugs in the corresponding repository. [Community](https://fdpinfo.github.io/community/) · [FDPClient issues](https://github.com/SkidderMC/FDPClient/issues) · [ZAVZ issues](https://github.com/opZywl/Zavz/issues).
 
 ## License
 
-Proprietary — © 2026 lucas-lima.xyz (Lucas Lima / Zywl). All rights reserved. This repository is
-publicly viewable for reference only; no permission is granted to copy, reuse,
-redistribute, or deploy it without written permission. See [LICENSE](LICENSE) for the
-full terms. For requests, contact https://lucas-lima.xyz.
+The website code and original assets are proprietary under the [website license](LICENSE). FDPClient and ZAVZ are distributed under their respective GPL-3.0 licenses. [FDPClient license](https://github.com/SkidderMC/FDPClient/blob/main/LICENSE) · [ZAVZ license](https://github.com/opZywl/Zavz/blob/main/LICENSE).
+
+## Setting up a workspace
+
+Use Node.js 22 and npm to run the site locally. [Workspace setup](docs/WORKSPACE.md).
+
+## Contributing
+
+Check the site in development, run the static build, and include screenshots for visual changes. [Contribution notes](docs/CONTRIBUTING.md) · [Build and deployment](BUILD.md) · [Architecture](docs/ARCHITECTURE.md).
+
+<p align="center">
+<img src="docs/assets/fdp-logo-animated.svg" alt="FDP Client" width="112"><br>
+<sub>Website designed and maintained by <a href="https://lucas-lima.xyz">Lucas Lima (Zywl)</a> · <a href="https://github.com/FdpInfo">FdpInfo on GitHub</a></sub>
+</p>

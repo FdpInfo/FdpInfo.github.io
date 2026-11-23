@@ -7,12 +7,11 @@
     "name": "Lucas Lima (Zywl)",
     "url": "https://lucas-lima.xyz"
   },
-  "description": "FDP Client landing page rebuilt with Next.js + React + TypeScript (pixel-perfect port).",
+  "description": "Official FDP Client website, downloads, and installation guides.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "check:assets": "node scripts/check-assets.mjs"
   },
   "dependencies": {
     "aos": "^2.3.4",

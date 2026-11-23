@@ -1,49 +1,45 @@
-name: Deploy to GitHub Pages
+name: Build and deploy website
 
 on:
+  pull_request:
+    branches: [main]
   push:
     branches: [main]
   workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
-# Allow one concurrent deployment, don't cancel in-progress runs.
 concurrency:
-  group: pages
-  cancel-in-progress: false
+  group: website-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
-      - name: Checkout
-        uses: actions/checkout@v5
-
-      - name: Setup Node
-        uses: actions/setup-node@v5
+      - name: Check out source
+        uses: actions/checkout@v7
         with:
-          node-version: 20
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
           cache: npm
 
-      - name: Compute base path
-        id: bp
+      - name: Set Pages base path
         shell: bash
         run: |
-          REPO="${{ github.event.repository.name }}"
-          OWNER_LC=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
-          REPO_LC=$(echo "$REPO" | tr '[:upper:]' '[:lower:]')
-          # Custom domain (CNAME) or a <owner>.github.io user/org page -> served
-          # from the domain root, so no base path. Otherwise it's a project page
-          # served at /<repo>, so prefix everything with /<repo>.
-          if [ -f public/CNAME ] || [ "$REPO_LC" = "$OWNER_LC.github.io" ]; then
-            echo "base=" >> "$GITHUB_OUTPUT"
+          repo="${GITHUB_REPOSITORY#*/}"
+          if [[ -f public/CNAME || "${repo,,}" == "${GITHUB_REPOSITORY_OWNER,,}.github.io" ]]; then
+            base_path=""
           else
-            echo "base=/$REPO" >> "$GITHUB_OUTPUT"
+            base_path="/$repo"
           fi
-          echo "Resolved base path: '$(grep base= "$GITHUB_OUTPUT" | tail -1)'"
+          echo "NEXT_PUBLIC_BASE_PATH=$base_path" >> "$GITHUB_ENV"
 
       - name: Install dependencies
         run: npm ci
@@ -51,30 +47,42 @@ jobs:
       - name: Build static export
         run: npm run build
         env:
-          NEXT_PUBLIC_BASE_PATH: ${{ steps.bp.outputs.base }}
-          # Used by the download-count fetch to avoid GitHub API rate limits.
           GITHUB_TOKEN: ${{ github.token }}
 
-      - name: Check built assets (no broken/unprefixed references)
-        run: node scripts/check-assets.mjs
-        env:
-          NEXT_PUBLIC_BASE_PATH: ${{ steps.bp.outputs.base }}
+      - name: Verify exported asset paths
+        run: npm run check:assets
 
-      - name: Disable Jekyll (keep _next folder)
+      - name: Upload branch preview
+        if: github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/main'
+        uses: actions/upload-artifact@v7
+        with:
+          name: fdpinfo-preview
+          path: out/
+          retention-days: 7
+
+      - name: Prepare Pages output
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         run: touch out/.nojekyll
 
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Upload Pages output
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v5
         with:
-          path: ./out
+          path: out/
+          include-hidden-files: true
 
   deploy:
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     needs: build
     runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
