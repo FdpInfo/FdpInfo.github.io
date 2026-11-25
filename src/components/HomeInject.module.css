@@ -283,7 +283,8 @@
 
 .announcement:focus-visible,
 .actions a:focus-visible,
-.source:focus-visible {
+.source:focus-visible,
+.troubleshooting summary:focus-visible {
   outline: 2px solid #ead2ff;
   outline-offset: 3px;
 }
@@ -306,10 +307,6 @@
   inset: 0;
   border: 1px solid #e9d5ff25;
   border-radius: 50%;
-}
-
-.buildGuide {
-  margin-top: 1rem;
 }
 
 .brand::after {
@@ -396,18 +393,38 @@
   padding-block: 1.7rem clamp(1.5rem, 4vw, 3rem);
   border-top: 1px solid #a78bfa2c;
   background: #10132185;
+  scroll-margin-top: 1rem;
+}
+
+.guide:focus-visible {
+  outline: 2px solid #ead2ff;
+  outline-offset: -3px;
 }
 
 .guide h3 {
-  margin-bottom: 1rem;
+  margin-bottom: .4rem;
   color: #f5f3ff;
   font-size: clamp(1.35rem, 3vw, 1.65rem);
   font-weight: 750;
 }
 
+.requirements {
+  max-width: 65ch;
+  color: #d4c7ea;
+  font-size: .95rem;
+  line-height: 1.6;
+}
+
+.guideLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .3rem 1rem;
+  margin: .65rem 0 1.15rem;
+}
+
 .steps {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: .8rem;
 }
 
@@ -442,10 +459,45 @@
   font-weight: 700;
 }
 
-.steps p {
+.steps p,
+.troubleshooting p {
   color: #c8bdd9;
   font-size: .88rem;
   line-height: 1.55;
+}
+
+.troubleshooting {
+  display: grid;
+  gap: .6rem;
+  margin-top: 1.5rem;
+}
+
+.troubleshooting h4 {
+  color: #f5f3ff;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.troubleshooting details {
+  border: 1px solid #a78bfa2e;
+  border-radius: .7rem;
+  background: #211a35a6;
+}
+
+.troubleshooting summary {
+  cursor: pointer;
+  padding: .65rem .9rem;
+  color: #f5f3ff;
+  font-size: .9rem;
+  font-weight: 650;
+}
+
+.troubleshooting p {
+  padding: 0 .9rem .8rem;
+}
+
+.troubleshooting > a {
+  justify-self: start;
 }
 
 @media (max-width: 950px) {

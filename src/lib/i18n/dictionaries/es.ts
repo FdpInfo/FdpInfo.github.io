@@ -22,24 +22,56 @@ export const es: DeepPartial<Dict> = {
     downloadInject: "Descargar FDP Client Inject",
     sourceCode: "ZAVZ en GitHub",
     compatibilityTitle: "Clientes compatibles con ZAVZ",
+    instructions: "Instrucciones",
     stepsTitle: "Cómo usar FDP Client Inject",
+    requirements:
+      "ZAVZ funciona en Windows. Consulta la guía de la build actual para saber qué cliente y versión de Minecraft son compatibles con FDP Client Inject.",
     steps: [
       {
-        title: "Prepara los archivos",
+        title: "Descarga los archivos",
         description:
-          "Instala ZAVZ, descarga el JAR y abre la versión del juego indicada en la guía de la build.",
+          "Ejecuta el instalador de ZAVZ. Descarga FDP Client Inject y guarda el .jar en una carpeta fácil de encontrar. Si descargaste un ZIP, extrae primero el .jar.",
       },
       {
-        title: "Selecciona el JAR",
+        title: "Abre el juego y selecciona el JAR",
         description:
-          "En ZAVZ, abre JAR, selecciona el archivo de FDP Client Inject y pulsa Save selection.",
+          "Abre el juego indicado en la guía de la build y espera a que aparezca el menú principal. En ZAVZ, abre JAR, elige FDP Client Inject, selecciona el archivo descargado y pulsa Save selection.",
       },
       {
-        title: "Carga el proyecto",
+        title: "Carga FDP Client",
         description:
-          "Pulsa Inject, selecciona la opción que indica la guía y confirma. Espera a que ZAVZ indique que el proyecto se ha cargado.",
+          "Abre Inject y elige la opción indicada en la guía de la build. Si tu versión muestra Start, pulsa Start y luego Detect. Selecciona el juego abierto y confirma con Inject.",
+      },
+      {
+        title: "Comprueba que se ha cargado",
+        description:
+          "Espera a que ZAVZ confirme que FDP Client se ha cargado. En Minecraft, pulsa Ctrl derecho para abrir ClickGUI o usa la tecla que guardaste si cambiaste el atajo.",
       },
     ],
+    troubleshootingTitle: "Solución de problemas",
+    troubleshooting: [
+      {
+        question: "El juego no aparece en la lista",
+        answer:
+          "Comprueba que Minecraft está abierto y que ha llegado al menú principal. Revisa el cliente y la versión en la guía de la build actual y actualiza la lista de juegos en ZAVZ.",
+      },
+      {
+        question: "Moví el JAR o descargué otra build",
+        answer:
+          "Vuelve a seleccionar el .jar actual en ZAVZ y guarda la selección. Si FDP Client ya está cargado, reinicia Minecraft antes de cargar otra build.",
+      },
+      {
+        question: "La descarga indica Próximamente",
+        answer:
+          "La página de descargas indica cuándo hay una build disponible. Vuelve a consultarla después del próximo lanzamiento de Inject.",
+      },
+      {
+        question: "ZAVZ sigue mostrando un error",
+        answer:
+          "Copia el mensaje exacto del error y anota las versiones de Minecraft, ZAVZ y FDP Client Inject. Incluye esos datos al pedir ayuda en la comunidad.",
+      },
+    ],
+    supportLink: "Pedir ayuda en la comunidad de FDP",
   },
   hero: {
     scrollDown: "Desplazar hacia abajo",

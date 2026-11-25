@@ -76,6 +76,10 @@ export function ZavzGuide() {
                 {guide.downloadInject}
                 <span aria-hidden="true">→</span>
               </Link>
+              <a href="#zavz-instructions" className={`button-primary ${styles.secondary}`}>
+                {guide.instructions}
+                <span aria-hidden="true">↓</span>
+              </a>
             </div>
             <a href={ZAVZ_REPO} className={styles.source}>{guide.sourceCode}</a>
           </div>
@@ -122,8 +126,19 @@ export function ZavzGuide() {
             </ul>
           </div>
         </div>
-        <div className={styles.guide}>
-          <h3>{guide.stepsTitle}</h3>
+        <section
+          id="zavz-instructions"
+          className={styles.guide}
+          aria-labelledby="zavz-instructions-title"
+          tabIndex={-1}
+        >
+          <h3 id="zavz-instructions-title">{guide.stepsTitle}</h3>
+          <p className={styles.requirements}>{guide.requirements}</p>
+          <div className={styles.guideLinks}>
+            <a href={ZAVZ_OFFICIAL_SITE} className={styles.source}>{guide.downloadZavz}</a>
+            <Link href="/download/#inject" className={styles.source}>{guide.downloadInject}</Link>
+            <a href={FDP_LUNAR_GUIDE} className={styles.source}>{guide.buildGuide}</a>
+          </div>
           <ol className={styles.steps} role="list">
             {guide.steps.map((step, i) => (
               <li key={step.title}>
@@ -135,10 +150,17 @@ export function ZavzGuide() {
               </li>
             ))}
           </ol>
-          <a href={FDP_LUNAR_GUIDE} className={`${styles.source} ${styles.buildGuide}`}>
-            {guide.buildGuide}
-          </a>
-        </div>
+          <div className={styles.troubleshooting}>
+            <h4>{guide.troubleshootingTitle}</h4>
+            {guide.troubleshooting.map(({ question, answer }) => (
+              <details key={question}>
+                <summary>{question}</summary>
+                <p>{answer}</p>
+              </details>
+            ))}
+            <Link href="/community/" className={styles.source}>{guide.supportLink}</Link>
+          </div>
+        </section>
       </div>
     </section>
   );

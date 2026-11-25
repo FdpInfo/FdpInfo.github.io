@@ -49,24 +49,56 @@ export const cn: DeepPartial<Dict> = {
     downloadInject: "下载 FDP Client Inject",
     sourceCode: "在 GitHub 上查看 ZAVZ",
     compatibilityTitle: "ZAVZ 支持的客户端",
+    instructions: "使用说明",
     stepsTitle: "如何使用 FDP Client Inject",
+    requirements:
+      "ZAVZ 在 Windows 上运行。请查看当前构建指南，确认 FDP Client Inject 支持的 Minecraft 客户端和游戏版本。",
     steps: [
       {
-        title: "准备文件",
+        title: "下载安装文件",
         description:
-          "安装 ZAVZ，下载 JAR 文件，并打开构建指南指定的游戏版本。",
+          "运行 ZAVZ 安装程序。下载 FDP Client Inject，并将 .jar 文件保存到容易找到的位置。如果下载的是 ZIP，请先解压其中的 .jar 文件。",
       },
       {
-        title: "选择 JAR",
+        title: "启动游戏并选择 JAR",
         description:
-          "在 ZAVZ 中打开 JAR，选择 FDP Client Inject 文件，然后点击 Save selection。",
+          "启动构建指南指定的游戏并等待主菜单出现。在 ZAVZ 中打开 JAR，选择 FDP Client Inject，再选择下载的文件并点击 Save selection。",
       },
       {
-        title: "加载项目",
+        title: "加载 FDP Client",
         description:
-          "点击 Inject，选择指南指定的选项并确认。等待 ZAVZ 提示项目已加载。",
+          "打开 Inject，选择构建指南指定的选项。如果你的版本显示 Start，请先点击 Start，再点击 Detect。选择正在运行的游戏后，点击 Inject 确认。",
+      },
+      {
+        title: "确认加载成功",
+        description:
+          "等待 ZAVZ 确认 FDP Client 已加载。回到 Minecraft，按右侧 Ctrl 键打开 ClickGUI。如果你更改过快捷键，请使用已保存的按键。",
       },
     ],
+    troubleshootingTitle: "常见问题",
+    troubleshooting: [
+      {
+        question: "列表中找不到游戏",
+        answer:
+          "确认 Minecraft 已启动并进入主菜单。核对当前构建指南中的客户端和版本，然后刷新 ZAVZ 的游戏列表。",
+      },
+      {
+        question: "移动了 JAR 或下载了新构建",
+        answer:
+          "在 ZAVZ 中重新选择当前的 .jar 文件并保存。如果已加载 FDP Client，请先重启 Minecraft，再加载其他构建。",
+      },
+      {
+        question: "下载页面显示即将推出",
+        answer:
+          "下载页面会显示构建是否可用。请在下一个 Inject 版本发布后再次查看。",
+      },
+      {
+        question: "ZAVZ 仍然报错",
+        answer:
+          "复制完整的错误信息，并记下 Minecraft、ZAVZ 和 FDP Client Inject 的版本。向社区求助时请附上这些信息。",
+      },
+    ],
+    supportLink: "向 FDP 社区求助",
   },
   hero: {
     scrollDown: "向下滚动",
