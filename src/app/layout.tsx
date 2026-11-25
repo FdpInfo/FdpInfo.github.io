@@ -18,7 +18,7 @@ const JSON_LD = {
       url: "https://fdpinfo.github.io/",
       name: "FDP Client",
       description:
-        "FDP Client — a free and open-source Minecraft Forge injection client.",
+        "FDP Client is a free, open-source Minecraft injection client.",
     },
     {
       "@type": "SoftwareApplication",

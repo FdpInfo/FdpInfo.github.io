@@ -48,6 +48,7 @@ export const cn: DeepPartial<Dict> = {
     downloadZavz: "下载 ZAVZ",
     downloadInject: "下载 FDP Client Inject",
     sourceCode: "在 GitHub 上查看 ZAVZ",
+    compatibilityTitle: "ZAVZ 支持的客户端",
     stepsTitle: "如何使用 FDP Client Inject",
     steps: [
       {
@@ -71,14 +72,14 @@ export const cn: DeepPartial<Dict> = {
     scrollDown: "向下滚动",
     badge: "立即下载最新 Beta",
     title: "FDP Client。最好的 Minecraft 作弊解决方案。",
-    subtitle: "一款免费开源的 Forge 注入式客户端。",
+    subtitle: "免费开源的 Minecraft 注入式客户端。",
     download: "立即下载！",
     sourceCode: "源代码",
   },
   whatIsFdp: {
     heading: "什么是 FDP？",
     intro:
-      "FDP 是一款用于 Minecraft 的破解客户端（也称作 cheat），旨在让你相比其他玩家获得显著优势。与众多竞品不同，FDP 完全免费、开源，并兼容 Forge。它最初基于 LiquidBounce（legacy）开发，而后者现已停止维护。如今，FDP 作为独立项目持续维护，与 LiquidBounce 无任何关联。",
+      "FDP 是一款免费开源的 Minecraft 客户端。你可以通过 ZAVZ 加载 FDP Client Inject。FDP 最初基于现已停止维护的 LiquidBounce（legacy）开发，目前作为独立项目持续维护。",
     cleanestGuiTitle: "最简洁的 GUI",
     cleanestGuiDesc:
       "简单易用，无论你的技术水平如何，都能让你实现最优的 bypass。",
@@ -281,7 +282,7 @@ export const cn: DeepPartial<Dict> = {
     eyebrow: "下载 · 最新 Beta",
     title: "下载 FDP Client。",
     subtitle:
-      "免费且开源的 Forge 注入客户端。在下方获取最新 Beta —— 或让我们带你前往官方下载页。",
+      "下载最新的 FDP Client Beta 版，或获取适用于 ZAVZ 的 FDP Client Inject。两者均免费且开源。",
     cardTitle: "FDP Client —— 最新 Beta",
     cardSub: "Forge 注入客户端 · Windows、macOS 和 Linux",
     chipBuild: "构建版本",
@@ -299,15 +300,14 @@ export const cn: DeepPartial<Dict> = {
     sourceEnd: " 即可留在本页。",
     aboutTitle: "什么是 FDP Client？",
     aboutBody:
-      "FDP Client 是一款免费开源的 Minecraft Forge 注入客户端，支持 1.8 – 1.20.1 版本，诞生于 LiquidBounce 放弃 1.8.9 支持之后。它自带注入器，可在 Windows、macOS 和 Linux 上运行，每个 Beta 都会带来新模块、绕过、修复与性能优化 ——",
+      "FDP Client 是一款免费开源的 Minecraft 客户端，诞生于 LiquidBounce 停止支持 1.8.9 之后。FDP Client Inject 通过 ZAVZ 加载。要了解新增模块、问题修复与性能优化，请",
     aboutChangelog: "在更新日志中查看所有变化",
     howTitle: "安装方法",
     step1: "点击上方按钮下载最新构建版本。",
     step2: "启动 Minecraft（1.8 – 1.20.1）并运行 FDP 注入器。",
     step3: "选择游戏实例并注入 —— FDP Client 会直接加载到运行中的游戏里。",
     injectTitle: "FDP Client —— Inject",
-    injectSub: "适用于 Lunar Client 1.8.9 · 通过 ZAVZ 注入器加载",
-    chipLunar: "Lunar Client 1.8.9",
+    injectSub: "通过 ZAVZ 注入器加载",
     chipZavz: "ZAVZ",
     chipAvailable: "● 可用",
     chipSoon: "即将推出",

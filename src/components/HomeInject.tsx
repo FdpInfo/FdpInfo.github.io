@@ -1,32 +1,53 @@
 "use client";
 
 import Link from "next/link";
+import type { CSSProperties } from "react";
 import { asset } from "@/lib/asset";
 import { FDP_LUNAR_GUIDE, ZAVZ_OFFICIAL_SITE, ZAVZ_REPO } from "@/lib/community-constants";
 import { useI18n } from "@/lib/i18n";
 import styles from "./HomeInject.module.css";
 
+const CLIENT_ASSETS = "/src/resources/png/zavz-clients";
+const SUPPORTED_CLIENTS = [
+  { id: "badlion", name: "Badlion Client" },
+  { id: "lunar", name: "Lunar Client" },
+  { id: "cheatbreaker", name: "CheatBreaker" },
+  { id: "cmclient", name: "CMClient" },
+  { id: "salwyrr", name: "Salwyrr Client" },
+  { id: "forge", name: "Forge" },
+  { id: "vanilla", name: "Vanilla" },
+];
+
 export function InjectAnnouncement() {
   const { t } = useI18n();
 
   return (
-    <a className={styles.announcement} href="#zavz">
-      <span className={styles.announcementLogos} role="img" aria-label="ZAVZ × FDP Client">
-        <img src={asset("/src/resources/svg/zavz-logo.svg")} width="44" height="44" alt="" />
-        <span aria-hidden="true">×</span>
-        <img src={asset("/src/resources/png/fdp.png")} width="44" height="44" alt="" />
-      </span>
-      <span className={styles.announcementCopy}>
-        <span className={styles.announcementTitle}>
-          <span className={styles.newLabel}>{t.homeInject.newLabel}</span>
-          FDP Client Inject
+    <div className={styles.announcementWrap}>
+      <a className={styles.announcement} href="#zavz">
+        <span className={styles.announcementLogos} role="img" aria-label="ZAVZ × FDP Client">
+          <img src={asset("/src/resources/svg/zavz-logo.svg")} width="44" height="44" alt="" />
+          <span aria-hidden="true">×</span>
+          <img src={asset("/src/resources/png/fdp.png")} width="44" height="44" alt="" />
         </span>
-        <span className={styles.announcementHint}>{t.homeInject.announcementHint}</span>
-      </span>
-      <span className={styles.tryButton}>
-        {t.homeInject.tryNow} <span aria-hidden="true">↓</span>
-      </span>
-    </a>
+        <span className={styles.announcementCopy}>
+          <span className={styles.announcementTitle}>
+            <span className={styles.newLabel}>{t.homeInject.newLabel}</span>
+            FDP Client Inject
+          </span>
+          <span className={styles.announcementHint}>{t.homeInject.announcementHint}</span>
+        </span>
+        <span className={styles.tryButton}>
+          {t.homeInject.tryNow} <span aria-hidden="true">↓</span>
+        </span>
+      </a>
+      <div className={styles.announcementClients} aria-hidden="true">
+        {SUPPORTED_CLIENTS.map(({ id }, index) => (
+          <span key={id} style={{ "--client-order": index } as CSSProperties}>
+            <img src={asset(`${CLIENT_ASSETS}/${id}.webp`)} width="32" height="32" alt="" />
+          </span>
+        ))}
+      </div>
+    </div>
   );
 }
 
@@ -72,6 +93,33 @@ export function ZavzGuide() {
                 alt=""
               />
             </picture>
+          </div>
+        </div>
+        <div className={styles.compatibility}>
+          <picture className={styles.clientArtwork}>
+            <source
+              media="(prefers-reduced-motion: no-preference)"
+              srcSet={asset(`${CLIENT_ASSETS}/clients.gif`)}
+            />
+            <img
+              src={asset(`${CLIENT_ASSETS}/clients.png`)}
+              width="190"
+              height="170"
+              loading="lazy"
+              decoding="async"
+              alt=""
+            />
+          </picture>
+          <div>
+            <h3 id="zavz-compatibility">{guide.compatibilityTitle}</h3>
+            <ul className={styles.clientList} aria-labelledby="zavz-compatibility" role="list">
+              {SUPPORTED_CLIENTS.map(({ id, name }, index) => (
+                <li key={id} style={{ "--client-order": index } as CSSProperties}>
+                  <img src={asset(`${CLIENT_ASSETS}/${id}.webp`)} width="28" height="28" loading="lazy" alt="" />
+                  <span>{name}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
         <div className={styles.guide}>

@@ -56,7 +56,6 @@ export function InjectCard({ build, state, official }: Props) {
         <span className="dl-chip">
           {d.chipBuild} {build}
         </span>
-        <span className="dl-chip">{d.chipLunar}</span>
         <span className="dl-chip">{d.chipZavz}</span>
         {available ? (
           <span className="dl-chip ok">{d.chipAvailable}</span>

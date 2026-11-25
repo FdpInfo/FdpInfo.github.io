@@ -20,6 +20,7 @@ export const en = {
     downloadZavz: "Download ZAVZ",
     downloadInject: "Download FDP Client Inject",
     sourceCode: "ZAVZ on GitHub",
+    compatibilityTitle: "Clients supported by ZAVZ",
     stepsTitle: "How to use FDP Client Inject",
     steps: [
       {
@@ -43,14 +44,14 @@ export const en = {
     scrollDown: "Scroll down",
     badge: "Download Latest Beta Now",
     title: "FDP Client.The best Minecraft cheating solution.",
-    subtitle: "A FREE & OPEN-SOURCE FORGE INJECTION CLIENT.",
+    subtitle: "FREE & OPEN-SOURCE MINECRAFT INJECTION CLIENT.",
     download: "Download now!",
     sourceCode: "Source Code",
   },
   whatIsFdp: {
     heading: "What is FDP?",
     intro:
-      "FDP is a hacked client (also known as a cheat) for Minecraft and designed to give you a significant advantage over other players. Unlike many of its competitors, FDP is completely free, open source and compatible with Forge. It was originally based on LiquidBounce (legacy), which has since been discontinued. Today, FDP is maintained as a standalone project and is not affiliated with LiquidBounce.",
+      "FDP is a free, open-source Minecraft client. You can load FDP Client Inject through ZAVZ. It was originally based on LiquidBounce (legacy), which has since been discontinued. Today, FDP is maintained as a standalone project.",
     cleanestGuiTitle: "Cleanest GUI",
     cleanestGuiDesc:
       "Easy to use, allowing you to bypass optimally no matter your skill level.",
@@ -253,7 +254,7 @@ export const en = {
     eyebrow: "Download · Latest Beta",
     title: "Download FDP Client.",
     subtitle:
-      "The free & open-source Forge injection client. Grab the latest beta below — or let us take you to the official downloads.",
+      "Download the latest FDP Client beta or get FDP Client Inject for ZAVZ. Both are free and open source.",
     cardTitle: "FDP Client — Latest Beta",
     cardSub: "Forge injection client · Windows, macOS & Linux",
     chipBuild: "Build",
@@ -271,7 +272,7 @@ export const en = {
     sourceEnd: " to stay here.",
     aboutTitle: "What is FDP Client?",
     aboutBody:
-      "FDP Client is a free, open-source Minecraft Forge injection client for versions 1.8 – 1.20.1, born as a replacement for LiquidBounce after 1.8.9 support was dropped. It ships with its own injector, runs on Windows, macOS and Linux, and every beta brings new modules, bypasses, bug fixes and performance work —",
+      "FDP Client is a free, open-source Minecraft client that began as a replacement for LiquidBounce after it dropped 1.8.9 support. FDP Client Inject loads through ZAVZ. For new modules, bug fixes and performance updates,",
     aboutChangelog: "see everything that changed in the changelogs",
     howTitle: "How to install",
     step1: "Download the latest build with the button above.",
@@ -279,8 +280,7 @@ export const en = {
     step3:
       "Pick your game instance and inject — FDP Client loads right into the running game.",
     injectTitle: "FDP Client — Inject",
-    injectSub: "For Lunar Client 1.8.9 · loads with the ZAVZ injector",
-    chipLunar: "Lunar Client 1.8.9",
+    injectSub: "Loads with the ZAVZ injector",
     chipZavz: "ZAVZ",
     chipAvailable: "● Available",
     chipSoon: "Coming soon",
